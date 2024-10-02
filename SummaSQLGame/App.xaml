@@ -1,0 +1,32 @@
+﻿<Application x:Class="SummaSQLGame.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:rpbs="http://XamlRadialProgressBar/DotNet"
+             xmlns:views="clr-namespace:SummaSQLGame.Views"
+             xmlns:viewModels="clr-namespace:SummaSQLGame.ViewModels"
+             xmlns:local="clr-namespace:SummaSQLGame">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:BundledTheme BaseTheme="Dark" PrimaryColor="BlueGrey" SecondaryColor="LightBlue" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <RadialGradientBrush x:Key="ProgressBarRadialGradientBrush"
+		        GradientOrigin="0.5,0.5" 
+		Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                <RadialGradientBrush.GradientStops>
+                    <GradientStop Color="SlateGray" Offset="0" />
+                    <GradientStop Color="LightSlateGray" Offset="0.25" />
+                    <GradientStop Color="LightGray" Offset="0.75" />
+                    <GradientStop Color="White" Offset="1" />
+                </RadialGradientBrush.GradientStops>
+            </RadialGradientBrush>
+            <DataTemplate DataType="{x:Type viewModels:DashboardViewModel}">
+                <views:DashboardView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+    

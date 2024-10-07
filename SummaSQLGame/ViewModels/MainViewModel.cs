@@ -106,8 +106,11 @@ namespace SummaSQLGame.ViewModels
         {
             BaseExplanationViewModel vm = sender as BaseExplanationViewModel;
             double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count -1) * 100;
-            SaveState.SelectCompletion = (int)Math.Floor(completionPercentage);
-            SaveState.UpdateProgress();
+            if(completionPercentage > SaveState.SelectCompletion)
+            {
+                SaveState.SelectCompletion = (int)Math.Floor(completionPercentage);
+                SaveState.UpdateProgress();
+            }
         }
         #endregion
     }

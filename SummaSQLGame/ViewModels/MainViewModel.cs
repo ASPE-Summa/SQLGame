@@ -23,10 +23,12 @@ namespace SummaSQLGame.ViewModels
         public MainViewModel()
         {
             _path = System.AppDomain.CurrentDomain.BaseDirectory;
-            _activeViewModel = new DashboardViewModel();
             WindowClosingCommand = new RelayCommand(SaveBeforeClosing);
+            DashBoardCommand = new RelayCommand(ExecuteShowDashboard);
+            SelectCommand = new RelayCommand(ExecuteShowSelect);
             LoadSaveState();
-            
+            _activeViewModel = new DashboardViewModel(){SaveState = SaveState};
+
         }
         #endregion
 
@@ -46,6 +48,8 @@ namespace SummaSQLGame.ViewModels
 
         #region commands
         public ICommand WindowClosingCommand { get; }
+        public ICommand DashBoardCommand { get; }
+        public ICommand SelectCommand { get; }
         #endregion
 
         #region methods
@@ -63,6 +67,7 @@ namespace SummaSQLGame.ViewModels
                 {
                     string jsonString = File.ReadAllText(_jsonPath);
                     SaveState = JsonConvert.DeserializeObject<SaveState>(jsonString)!;
+                    SaveState.UpdateProgress();
                 }
                 catch (JsonReaderException ex)
                 {
@@ -76,12 +81,23 @@ namespace SummaSQLGame.ViewModels
         
         private void SaveBeforeClosing(object? obj)
         {
+            SaveState.UpdateProgress();
             string combinedPath = Path.Combine(_path, _jsonPath);
             using(StreamWriter sw = File.CreateText(combinedPath))
             {
                 string contents = JsonConvert.SerializeObject(SaveState, Formatting.Indented);
                 sw.Write(contents);
             }
+        }
+
+        private void ExecuteShowDashboard(object? obj)
+        {
+            ActiveViewModel = new DashboardViewModel() { SaveState = SaveState };
+        }
+
+        private void ExecuteShowSelect(object? obj)
+        {
+            ActiveViewModel = new SelectViewModel();
         }
         #endregion
     }

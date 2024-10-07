@@ -24,6 +24,8 @@ namespace SummaSQLGame.ViewModels
 {
     public class SelectViewModel : BaseExplanationViewModel
     {
+        public event EventHandler<EventArgs> UpdateProgressEvent;
+
         #region constructor
         public SelectViewModel()
         {
@@ -76,5 +78,11 @@ namespace SummaSQLGame.ViewModels
             CurrentExplanation = _explanations.First();
         }
         #endregion
+
+        protected override void UpdateProgress()
+        {
+            EventArgs args = new EventArgs();
+            UpdateProgressEvent?.Invoke(this, new EventArgs());
+        }
     }
 }

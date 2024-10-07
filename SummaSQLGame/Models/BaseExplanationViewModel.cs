@@ -32,6 +32,18 @@ namespace SummaSQLGame.Models
             }
         }
 
+        public List<Explanation> Explanations
+        {
+            get { return _explanations; }
+            set { _explanations = value; OnPropertyChanged(); }
+        }
+
+        public int ExplanationIndex
+        {
+            get { return _explanationIndex; }
+            set { _explanationIndex = value; OnPropertyChanged(); }
+        }
+
         public DataTable QueryResult
         {
             get { return _queryResult; }
@@ -60,6 +72,7 @@ namespace SummaSQLGame.Models
         public ICommand QueryCommand { get; }
         #endregion
 
+        protected abstract void UpdateProgress();
         #region methods
         private bool CanExecuteNext(object? obj)
         {
@@ -75,6 +88,7 @@ namespace SummaSQLGame.Models
         {
             _explanationIndex++;
             CurrentExplanation = _explanations[_explanationIndex];
+            UpdateProgress();
         }
 
         private void ExecutePreviousDialogue(object? obj)

@@ -97,7 +97,17 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteShowSelect(object? obj)
         {
-            ActiveViewModel = new SelectViewModel();
+            SelectViewModel selectViewModel = new SelectViewModel();
+            selectViewModel.UpdateProgressEvent += SelectViewModel_UpdateProgressEvent;
+            ActiveViewModel = selectViewModel;
+        }
+
+        private void SelectViewModel_UpdateProgressEvent(object? sender, EventArgs e)
+        {
+            BaseExplanationViewModel vm = sender as BaseExplanationViewModel;
+            double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count -1) * 100;
+            SaveState.SelectCompletion = (int)Math.Floor(completionPercentage);
+            SaveState.UpdateProgress();
         }
         #endregion
     }

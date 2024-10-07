@@ -154,7 +154,7 @@ namespace SummaSQLGame.ViewModels
                     result.Load(reader);
                     QueryResult = result;
 
-                    if(CurrentExplanation.AcceptedQueries.Contains(QueryText))
+                    if(CurrentExplanation.AcceptedQueries.Contains(QueryText.Trim().ToLower()))
                     {
                         CurrentExplanation.CanPass = true;
                     }

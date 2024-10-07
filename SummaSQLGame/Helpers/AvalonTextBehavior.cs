@@ -50,7 +50,7 @@ namespace SummaSQLGame.Helpers
             DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
             var behavior = dependencyObject as AvalonEditBehaviour;
-            if (behavior.AssociatedObject != null)
+            if (behavior.AssociatedObject != null && dependencyPropertyChangedEventArgs.NewValue != null)
             {
                 var editor = behavior.AssociatedObject as TextEditor;
                 if (editor.Document != null)

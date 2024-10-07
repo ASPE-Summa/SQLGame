@@ -19,7 +19,7 @@ namespace SummaSQLGame.Models
         protected int _explanationIndex = 0;
         protected Explanation _currentExplanation;
         protected DataTable _queryResult;
-        protected string _queryText;
+        protected string _queryText = "";
         #endregion
 
         #region properties

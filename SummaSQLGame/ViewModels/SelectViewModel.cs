@@ -22,45 +22,11 @@ using System.Windows.Input;
 
 namespace SummaSQLGame.ViewModels
 {
-    public class SelectViewModel : ObservableObject
+    public class SelectViewModel : BaseExplanationViewModel
     {
-        #region fields
-        private List<Explanation> _explanations;
-        private int _explanationIndex = 0;
-        private Explanation _currentExplanation;
-        private DataTable _queryResult;
-        private string _queryText;
-        #endregion
-
-        #region properties
-        public Explanation CurrentExplanation
-        {
-            get { return _currentExplanation; }
-            set
-            {
-                _currentExplanation = value; OnPropertyChanged();
-            }
-        }
-
-        public DataTable QueryResult
-        {
-            get { return _queryResult; }
-            set { _queryResult = value; OnPropertyChanged(); }
-        }
-
-        public string QueryText
-        {
-            get { return _queryText; }
-            set { _queryText = value; OnPropertyChanged(); }
-        }
-        #endregion
-
         #region constructor
         public SelectViewModel()
         {
-            NextExplanationCommand = new RelayCommand(ExecuteNextDialogue, CanExecuteNext);
-            PreviousExplanationCommand = new RelayCommand(ExecutePreviousDialogue, CanExecutePrevious);
-            QueryCommand = new RelayCommand(ExecuteQuery);
             _explanations = new List<Explanation>()
             {
                 new Explanation() {
@@ -79,7 +45,7 @@ namespace SummaSQLGame.ViewModels
                     Image = Avatars.Default,
                     Dialog = "Boven de links zie je een afbeelding van wat we noemen een tabel. Een tabel is een soort container waar we aan elkaar verwante data opslaan. In dit geval staat er alle informatie in over honden. \n\n Om de data op te halen moeten we een Query (vraag) aan de database stellen. In die query vertellen we welke informatie we willen hebben en waar die informatie vandaan komt. In dit geval willen we alles ophalen uit de tabel honden, dat doen we met de query : SELECT * FROM honden; \n\n Probeer het eens uit in de TextBox boven mij en klik op Uitvoeren.",
                     CanPass = false,
-                    AcceptedQueries = new List<string>(){"SELECT * FROM honden;" }
+                    AcceptedQueries = new List<string>(){"select * from honden;" }
                 },
                 new Explanation()
                 {
@@ -92,14 +58,14 @@ namespace SummaSQLGame.ViewModels
                     Image = Avatars.Default,
                     Dialog = "Nu hebben we alle informatie uit honden opgehaald. Maar soms wil je maar een beperkte hoeveelheid informatie weten. \n De tabel honden bestaat uit drie kolommen; id, naam en ras. In plaats van een * kunnen we ook een specifieke kolom opgeven. \n\n probeer nu eens de namen op te halen uit de tabel honden.",
                     CanPass = false,
-                    AcceptedQueries = new List<string>(){"SELECT naam FROM honden;" }
+                    AcceptedQueries = new List<string>(){"select naam from honden;" }
                 },
                 new Explanation()
                 {
                     Image = Avatars.Content,
                     Dialog = "Top! \n Tot slot is het ook mogelijk meerdere kolommen tegelijk op te halen. Deze moeten dan worden gescheiden met een komma. \n\n Probeer nu eens zowel de naam als het ras van de honden op te halen.",
                     CanPass = false,
-                    AcceptedQueries = new List<string>(){"SELECT naam, ras FROM honden;", "SELECT naam,ras FROM honden;", "SELECT ras,naam FROM honden;", "SELECT ras, naam FROM honden;" }
+                    AcceptedQueries = new List<string>(){"select naam, ras from honden;", "select naam,ras from honden;", "select ras,naam from honden;", "select ras, naam from honden;" }
                 },
                 new Explanation()
                 {
@@ -108,64 +74,6 @@ namespace SummaSQLGame.ViewModels
                 }
             };
             CurrentExplanation = _explanations.First();
-        }
-        #endregion
-
-        #region commands
-        public ICommand NextExplanationCommand { get; }
-        public ICommand PreviousExplanationCommand { get; }
-        public ICommand QueryCommand { get; }
-        #endregion
-
-        #region methods
-        private bool CanExecuteNext(object? obj)
-        {
-            return _explanationIndex < _explanations.Count - 1 && CurrentExplanation.CanPass;
-        }
-
-        private bool CanExecutePrevious(object? obj)
-        {
-            return _explanationIndex > 0;
-        }
-
-        private void ExecuteNextDialogue(object? obj)
-        {
-            _explanationIndex++;
-            CurrentExplanation = _explanations[_explanationIndex];
-        }
-
-        private void ExecutePreviousDialogue(object? obj)
-        {
-            _explanationIndex--;
-            CurrentExplanation = _explanations[_explanationIndex];
-        }
-
-        private void ExecuteQuery(object? obj)
-        {
-            try
-            {
-                using (SqliteConnection conn = new SqliteConnection(ConfigurationManager.ConnectionStrings["localDb"].ConnectionString))
-                {
-                    conn.Open();
-
-                    SqliteCommand command = new SqliteCommand(QueryText, conn);
-                    SqliteDataReader reader = command.ExecuteReader();
-                    DataTable result = new DataTable();
-                    result.Load(reader);
-                    QueryResult = result;
-
-                    if(CurrentExplanation.AcceptedQueries.Contains(QueryText.Trim().ToLower()))
-                    {
-                        CurrentExplanation.CanPass = true;
-                    }
-
-                    reader.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
         #endregion
     }

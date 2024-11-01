@@ -35,8 +35,9 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                         <TextBlock Text="{Binding Mode=OneWay, Path=Key}" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right"></TextBlock>
-                        <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=Value}" Width="100" Height="100" OuterBackgroundBrush="#31313F" HorizontalAlignment="Right"
-                       ArcMode="Pie" Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
+                        <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=Value}" Width="75" Height="75" OuterBackgroundBrush="#31313F" ArcWidth="15" HorizontalAlignment="Right"
+                        Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=Value}"/><Run Text="%"/></TextBlock>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using SummaSQLGame.Helpers;
+using SummaSQLGame.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace SummaSQLGame.Models
+namespace SummaSQLGame.ViewModels
 {
     public abstract class BaseExplanationViewModel : ObservableObject
     {

@@ -28,6 +28,9 @@
             <DataTemplate DataType="{x:Type viewModels:SelectViewModel}">
                 <views:SelectView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:FilterViewModel}">
+                <views:FilterView/>
+            </DataTemplate>
 
         </ResourceDictionary>
     </Application.Resources>

@@ -45,7 +45,13 @@ namespace SummaSQLGame.ViewModels
                 new Explanation()
                 {
                     Image = Avatars.Default,
-                    Dialog = "Boven de links zie je een afbeelding van wat we noemen een tabel. Een tabel is een soort container waar we aan elkaar verwante data opslaan. In dit geval staat er alle informatie in over honden. \n\n Om de data op te halen moeten we een Query (vraag) aan de database stellen. In die query vertellen we welke informatie we willen hebben en waar die informatie vandaan komt. In dit geval willen we alles ophalen uit de tabel honden, dat doen we met de query : SELECT * FROM honden; \n\n Probeer het eens uit in de TextBox boven mij en klik op Uitvoeren.",
+                    Dialog = "Boven de links zie je een afbeelding van wat we noemen een tabel. Een tabel is een soort container waar we aan elkaar verwante data opslaan. In dit geval staat er alle informatie in over honden.",
+                    CanPass = true
+                },
+                new Explanation()
+                {
+                    Image = Avatars.Explaining,
+                    Dialog = "Om de data op te halen moeten we een Query (vraag) aan de database stellen. In die query vertellen we welke informatie we willen hebben en waar die informatie vandaan komt. In dit geval willen we alles ophalen uit de tabel honden, dat doen we met de query : SELECT * FROM honden; \n\n Probeer het eens uit in de TextBox boven mij en klik op Uitvoeren.",
                     CanPass = false,
                     AcceptedQueries = new List<string>(){"select * from honden;" }
                 },

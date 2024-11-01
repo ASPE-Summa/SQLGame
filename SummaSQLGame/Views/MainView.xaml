@@ -87,12 +87,12 @@
                         <materialDesign:PackIcon Kind="SelectionEllipseArrowInside" Foreground="White"></materialDesign:PackIcon>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem Header="Filteren" Command="{Binding FilterCommand}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Filter" Foreground="White"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <!--
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
-                    <materialDesign:PackIcon Kind="Filter" Height="32" Foreground="White"></materialDesign:PackIcon>
-                    <Label FontSize="20" >Filteren</Label>
-                </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
                     <materialDesign:PackIcon Kind="Sort" Height="32" Foreground="White"></materialDesign:PackIcon>
                     <Label FontSize="20" >Sorteren</Label>

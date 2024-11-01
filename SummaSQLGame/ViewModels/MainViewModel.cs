@@ -26,6 +26,7 @@ namespace SummaSQLGame.ViewModels
             WindowClosingCommand = new RelayCommand(SaveBeforeClosing);
             DashBoardCommand = new RelayCommand(ExecuteShowDashboard);
             SelectCommand = new RelayCommand(ExecuteShowSelect);
+            FilterCommand = new RelayCommand(ExecuteShowFilter);
             LoadSaveState();
             _activeViewModel = new DashboardViewModel(){SaveState = SaveState};
 
@@ -50,6 +51,7 @@ namespace SummaSQLGame.ViewModels
         public ICommand WindowClosingCommand { get; }
         public ICommand DashBoardCommand { get; }
         public ICommand SelectCommand { get; }
+        public ICommand FilterCommand { get; }
         #endregion
 
         #region methods
@@ -97,9 +99,16 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteShowSelect(object? obj)
         {
-            SelectViewModel selectViewModel = new SelectViewModel();
+            SelectViewModel selectViewModel = new();
             selectViewModel.UpdateProgressEvent += SelectViewModel_UpdateProgressEvent;
             ActiveViewModel = selectViewModel;
+        }
+
+        private void ExecuteShowFilter(object? obj)
+        {
+            FilterViewModel filterViewModel = new();
+            filterViewModel.UpdateProgressEvent += FilterViewModel_UpdateProgressEvent;
+            ActiveViewModel = filterViewModel;
         }
 
         private void SelectViewModel_UpdateProgressEvent(object? sender, EventArgs e)
@@ -109,6 +118,17 @@ namespace SummaSQLGame.ViewModels
             if(completionPercentage > SaveState.SelectCompletion)
             {
                 SaveState.SelectCompletion = (int)Math.Floor(completionPercentage);
+                SaveState.UpdateProgress();
+            }
+        }
+
+        private void FilterViewModel_UpdateProgressEvent(object? sender, EventArgs e)
+        {
+            BaseExplanationViewModel vm = sender as BaseExplanationViewModel;
+            double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count - 1) * 100;
+            if (completionPercentage > SaveState.WhereCompletion)
+            {
+                SaveState.WhereCompletion = (int)Math.Floor(completionPercentage);
                 SaveState.UpdateProgress();
             }
         }

@@ -31,6 +31,9 @@
             <DataTemplate DataType="{x:Type viewModels:FilterViewModel}">
                 <views:FilterView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:WildcardViewModel}">
+                <views:WildcardView/>
+            </DataTemplate>
 
         </ResourceDictionary>
     </Application.Resources>

@@ -27,6 +27,7 @@ namespace SummaSQLGame.ViewModels
             DashBoardCommand = new RelayCommand(ExecuteShowDashboard);
             SelectCommand = new RelayCommand(ExecuteShowSelect);
             FilterCommand = new RelayCommand(ExecuteShowFilter);
+            WildCardCommand = new RelayCommand(ExecuteShowWildCard);
             LoadSaveState();
             _activeViewModel = new DashboardViewModel(){SaveState = SaveState};
 
@@ -52,6 +53,7 @@ namespace SummaSQLGame.ViewModels
         public ICommand DashBoardCommand { get; }
         public ICommand SelectCommand { get; }
         public ICommand FilterCommand { get; }
+        public ICommand WildCardCommand { get; }
         #endregion
 
         #region methods
@@ -111,6 +113,13 @@ namespace SummaSQLGame.ViewModels
             ActiveViewModel = filterViewModel;
         }
 
+        private void ExecuteShowWildCard(object? obj)
+        {
+            WildcardViewModel wildcardViewModel = new();
+            wildcardViewModel.UpdateProgressEvent += WildcardViewModel_UpdateProgressEvent;
+            ActiveViewModel = wildcardViewModel;
+        }
+
         private void SelectViewModel_UpdateProgressEvent(object? sender, EventArgs e)
         {
             BaseExplanationViewModel vm = sender as BaseExplanationViewModel;
@@ -129,6 +138,16 @@ namespace SummaSQLGame.ViewModels
             if (completionPercentage > SaveState.WhereCompletion)
             {
                 SaveState.WhereCompletion = (int)Math.Floor(completionPercentage);
+                SaveState.UpdateProgress();
+            }
+        }
+
+        private void WildcardViewModel_UpdateProgressEvent(object? sender, EventArgs e)
+        {
+            BaseExplanationViewModel vm = sender as BaseExplanationViewModel;
+            double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count - 1) * 100;
+            if((completionPercentage > SaveState.WhereCompletion)){
+                SaveState.WildcardCompletion = (int)Math.Floor(completionPercentage); 
                 SaveState.UpdateProgress();
             }
         }

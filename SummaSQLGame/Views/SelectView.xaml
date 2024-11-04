@@ -56,7 +56,7 @@
         </Border>
         <Border Grid.Row="1" Grid.Column="2" BorderThickness="1" BorderBrush="Black" Background="LightGray" CornerRadius="20" Margin="5" Padding="20">
             <TextBlock HorizontalAlignment="Center">
-            <helpers:ExternalHyperlink FontSize="20"  NavigateUri="https://www.w3schools.com/sql/sql_select.asp">Select Statement</helpers:ExternalHyperlink>
+            <helpers:ExternalHyperlink FontSize="20"  NavigateUri="https://www.w3schools.com/sql/sql_select.asp">SELECT Statement</helpers:ExternalHyperlink>
             <LineBreak></LineBreak>
             </TextBlock>
         </Border>

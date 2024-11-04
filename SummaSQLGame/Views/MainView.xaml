@@ -92,6 +92,11 @@
                         <materialDesign:PackIcon Kind="Filter" Foreground="White"></materialDesign:PackIcon>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem Header="Wildcards" Command="{Binding WildCardCommand}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Percent" Foreground="White"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <!--
                 <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
                     <materialDesign:PackIcon Kind="Sort" Height="32" Foreground="White"></materialDesign:PackIcon>
@@ -100,10 +105,6 @@
                 <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
                     <materialDesign:PackIcon Kind="Calculator" Height="32" Foreground="White"></materialDesign:PackIcon>
                     <Label FontSize="20" >Rekenen</Label>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
-                    <materialDesign:PackIcon Kind="Percent" Height="32" Foreground="White"></materialDesign:PackIcon>
-                    <Label FontSize="20" >Wildcards</Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
                     <materialDesign:PackIcon Kind="Group" Height="32" Foreground="White"></materialDesign:PackIcon>

@@ -68,14 +68,14 @@ namespace SummaSQLGame.ViewModels
                     Image = Avatars.Default,
                     Dialog = "Goed gedaan, maar nu hebben we wel weer alle biersoorten. Als bieren willen die zowel van het type LAGER, AMBER zijn als uit het land GER kunnen we gebruik maken van het woordje AND Bijvoorbeeld. \n\n SELECT * FROM bieren WHERE soort = \"LAGER, AMBER\" AND land = \"GER\"",
                     CanPass = false,
-                    AcceptedQueries = {"select * from bieren where soort = \"lager, amber\" and land = \"ger\";"}
+                    AcceptedQueries = {"select * from bieren where soort = \"lager, amber\" and land = \"ger\";", "select * from bieren where land = \"ger\" and soort = \"lager, amber\";"}
                 },
                 new Explanation()
                 {
                     Image = Avatars.Smiling,
                     Dialog = "Top, nu heb ik een mooi lijstje duitse bieren om te proeven! \n\n We hebben nu bieren waarbij allebij onze filters waar zijn, maar stel we willen bieren die ofwel uit duitsland komen, of van het soort lager,amber zijn. \n\n Dat is eigenlijk heel gemakkelijk, we hoeven dan alleen het woordje AND in onze query te vervangen door OR. Probeer het eens.",
                     CanPass = false,
-                    AcceptedQueries = {"select * from bieren where soort = \"lager, amber\" or land = \"ger\";" }
+                    AcceptedQueries = {"select * from bieren where soort = \"lager, amber\" or land = \"ger\";", "select * from bieren where land = \"ger\" or soort = \"lager, amber\";" }
                 },
                 new Explanation()
                 {
@@ -95,7 +95,14 @@ namespace SummaSQLGame.ViewModels
                     Image = Avatars.Content,
                     Dialog = "Kijk eens aan, je bent een expert in filteren aan het worden. Nog een laatste query om de onderwerpen in dit onderdeel te controleren. \n\n Selecteer alle bieren van de soort WHEAT (GRAIN) met een alcoholpercentage groter dan 3% die afkomstig zijn uit Frankrijk (FRA)",
                     CanPass = false,
-                    AcceptedQueries = { "select * from bieren where soort = \"wheat (grain)\" and alcoholpercentage > 3 and land = \"fra\";" }
+                    AcceptedQueries = { 
+                        "select * from bieren where soort = \"wheat (grain)\" and alcoholpercentage > 3 and land = \"fra\";",
+                        "select * from bieren where soort = \"wheat (grain)\" and land = \"fra\" and alcoholpercentage > 3;",
+                        "select * from bieren where land = \"fra\" and alcoholpercentage > 3 and soort = \"wheat (grain)\";",
+                        "select * from bieren where land = \"fra\" and soort = \"wheat (grain)\" and alcoholpercentage > 3;",
+                        "select * from bieren where alcoholpercentage > 3 and land = \"fra\" and soort = \"wheat (grain)\";",
+                        "select * from bieren where alcoholpercentage > 3 and soort = \"wheat (grain)\" and land = \"fra\";",
+                    }
                 },
                 new Explanation()
                 {

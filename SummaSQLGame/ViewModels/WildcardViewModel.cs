@@ -1,24 +1,5 @@
-﻿using ICSharpCode.AvalonEdit.Document;
-using Microsoft.Data.Sqlite;
-using Microsoft.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
-using SummaSQLGame.Databases;
-using SummaSQLGame.Helpers;
+﻿using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Input;
 
 namespace SummaSQLGame.ViewModels
 {

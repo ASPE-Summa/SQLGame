@@ -1,5 +1,4 @@
-﻿using MaterialDesignThemes.Wpf;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using SummaSQLGame.Dialog;
 using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;

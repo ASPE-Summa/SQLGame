@@ -1,5 +1,4 @@
-﻿using SummaSQLGame.Databases;
-using SummaSQLGame.ViewModels;
+﻿using SummaSQLGame.ViewModels;
 using SummaSQLGame.Views;
 using System.Windows;
 

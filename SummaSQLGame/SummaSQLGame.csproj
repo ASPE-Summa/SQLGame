@@ -18,8 +18,12 @@
     <None Remove="Assets\avatar_default.png" />
     <None Remove="Assets\Diagrams\bieren.png" />
     <None Remove="Assets\Diagrams\honden.png" />
+    <None Remove="Assets\Diagrams\spotify.png" />
     <None Remove="Assets\faviconbomb.ico" />
+    <None Remove="Assets\Resources\anime_2023.json" />
     <None Remove="Assets\Resources\bieren.json" />
+    <None Remove="Assets\Resources\imdb_movies.json" />
+    <None Remove="Assets\Resources\spotify_most_streamed.json" />
     <None Remove="Assets\Resources\sql.xshd" />
     <None Remove="Databases\Database" />
     <None Remove="Databases\database.db" />
@@ -50,6 +54,9 @@
     <Content Include="Assets\Diagrams\bieren.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Diagrams\spotify.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\faviconbomb.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -59,7 +66,16 @@
     <Content Include="Assets\Diagrams\honden.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Resources\anime_2023.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Resources\bieren.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Resources\imdb_movies.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Resources\spotify_most_streamed.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Databases\database.db">

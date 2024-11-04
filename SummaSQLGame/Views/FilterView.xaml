@@ -19,28 +19,29 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.8*"></ColumnDefinition>
             <ColumnDefinition Width="1.5*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="10" VerticalAlignment="Center">
-            <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="200">
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="5,0,0,0" VerticalAlignment="Center">
+            <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="100">
                 <i:Interaction.Behaviors>
                     <helpers:AvalonEditBehaviour GiveMeTheText="{Binding QueryText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </i:Interaction.Behaviors>
             </avalonEdit:TextEditor>
-            <Button Foreground="White" Margin="0 10 0 0" Command="{Binding QueryCommand}">Uitvoeren</Button>
+            <Button Foreground="White" Margin="0 10 0 0" Width="100" HorizontalAlignment="Right" Command="{Binding QueryCommand}">Uitvoeren</Button>
         </StackPanel>
-        <DataGrid Grid.Column="1" VerticalAlignment="Center" AutoGenerateColumns="True" ItemsSource="{Binding QueryResult.DefaultView}" Foreground="White"></DataGrid>
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/Diagrams/bieren.png" Stretch="None" Grid.Row="0" Grid.Column="2"></Image>
+        <DataGrid Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,5,0" VerticalAlignment="Center" MinHeight="300" AutoGenerateColumns="True" ItemsSource="{Binding QueryResult.DefaultView}" Foreground="White"></DataGrid>
+        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/Diagrams/bieren.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2"></Image>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Image Source="{Binding CurrentExplanation.Image}" VerticalAlignment="Bottom"/>
         </StackPanel>
-        <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" Grid.Row="1" Grid.Column="1">
+        <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" Grid.Row="2" Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -54,7 +55,7 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <Border Grid.Row="1" Grid.Column="2" BorderThickness="1" BorderBrush="Black" Background="LightGray" CornerRadius="20" Margin="5" Padding="20">
+        <Border Grid.Row="2" Grid.Column="2" BorderThickness="1" BorderBrush="Black" Background="LightGray" CornerRadius="20" Margin="5" Padding="20">
             <TextBlock HorizontalAlignment="Center">
             <helpers:ExternalHyperlink FontSize="20"  NavigateUri="https://www.w3schools.com/sql/sql_select.asp">SELECT Statement</helpers:ExternalHyperlink>
             <LineBreak></LineBreak>

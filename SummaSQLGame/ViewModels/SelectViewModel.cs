@@ -39,7 +39,7 @@ namespace SummaSQLGame.ViewModels
                 new Explanation()
                 {
                     Image = Avatars.Explaining,
-                    Dialog = "Rechts naast deze dialoog staan links waar je meer informatie kunt vinden over huidige onderwerpen. In dit geval het SELECT statement. Op de website vindt je extra uitleg, zowel als voorbeelden.",
+                    Dialog = "Rechts naast deze dialoog staan hyperlinks waar je meer informatie kunt vinden over huidige onderwerpen. In dit geval het SELECT statement. Op de website vindt je extra uitleg, zowel als voorbeelden.",
                     CanPass = true
                 },
                 new Explanation()

@@ -79,6 +79,42 @@ namespace SummaSQLGame.Migrations
 
                     b.ToTable("honden");
                 });
+
+            modelBuilder.Entity("SummaSQLGame.Models.Songs", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Artists")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("artiesten");
+
+                    b.Property<int>("Bpm")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("bpm");
+
+                    b.Property<int>("ReleasedYear")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("verschijningsjaar");
+
+                    b.Property<int>("Streams")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("streams");
+
+                    b.Property<string>("Track")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("titel");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("spotify");
+                });
 #pragma warning restore 612, 618
         }
     }

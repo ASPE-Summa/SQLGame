@@ -34,7 +34,9 @@
             <DataTemplate DataType="{x:Type viewModels:WildcardViewModel}">
                 <views:WildcardView/>
             </DataTemplate>
-
+            <DataTemplate DataType="{x:Type viewModels:SortViewModel}">
+                <views:SortView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

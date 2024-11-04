@@ -97,11 +97,12 @@
                         <materialDesign:PackIcon Kind="Percent" Foreground="White"></materialDesign:PackIcon>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem Header="Sorteren" Command="{Binding SortCommand}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Sort" Foreground="White"></materialDesign:PackIcon>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <!--
-                <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
-                    <materialDesign:PackIcon Kind="Sort" Height="32" Foreground="White"></materialDesign:PackIcon>
-                    <Label FontSize="20" >Sorteren</Label>
-                </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
                     <materialDesign:PackIcon Kind="Calculator" Height="32" Foreground="White"></materialDesign:PackIcon>
                     <Label FontSize="20" >Rekenen</Label>

@@ -28,6 +28,7 @@ namespace SummaSQLGame.ViewModels
             SelectCommand = new RelayCommand(ExecuteShowSelect);
             FilterCommand = new RelayCommand(ExecuteShowFilter);
             WildCardCommand = new RelayCommand(ExecuteShowWildCard);
+            SortCommand = new RelayCommand(ExecuteShowSort);
             LoadSaveState();
             _activeViewModel = new DashboardViewModel(){SaveState = SaveState};
 
@@ -54,6 +55,7 @@ namespace SummaSQLGame.ViewModels
         public ICommand SelectCommand { get; }
         public ICommand FilterCommand { get; }
         public ICommand WildCardCommand { get; }
+        public ICommand SortCommand { get; }
         #endregion
 
         #region methods
@@ -120,36 +122,56 @@ namespace SummaSQLGame.ViewModels
             ActiveViewModel = wildcardViewModel;
         }
 
+        private void ExecuteShowSort(object? obj)
+        {
+            SortViewModel sortViewModel = new();
+            sortViewModel.UpdateProgressEvent += SortViewModel_UpdateProgressEvent;
+            ActiveViewModel = sortViewModel;
+        }
+
         private void SelectViewModel_UpdateProgressEvent(object? sender, EventArgs e)
         {
-            BaseExplanationViewModel vm = sender as BaseExplanationViewModel;
-            double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count -1) * 100;
-            if(completionPercentage > SaveState.SelectCompletion)
+            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
+            if (completionPercentage > SaveState.SelectCompletion)
             {
-                SaveState.SelectCompletion = (int)Math.Floor(completionPercentage);
+                SaveState.SelectCompletion = completionPercentage;
                 SaveState.UpdateProgress();
             }
         }
 
         private void FilterViewModel_UpdateProgressEvent(object? sender, EventArgs e)
         {
-            BaseExplanationViewModel vm = sender as BaseExplanationViewModel;
-            double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count - 1) * 100;
+            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
             if (completionPercentage > SaveState.WhereCompletion)
             {
-                SaveState.WhereCompletion = (int)Math.Floor(completionPercentage);
+                SaveState.WhereCompletion = completionPercentage;
                 SaveState.UpdateProgress();
             }
         }
 
         private void WildcardViewModel_UpdateProgressEvent(object? sender, EventArgs e)
         {
-            BaseExplanationViewModel vm = sender as BaseExplanationViewModel;
-            double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count - 1) * 100;
-            if((completionPercentage > SaveState.WhereCompletion)){
-                SaveState.WildcardCompletion = (int)Math.Floor(completionPercentage); 
+            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
+            if ((completionPercentage > SaveState.WildcardCompletion)){
+                SaveState.WildcardCompletion = completionPercentage; 
                 SaveState.UpdateProgress();
             }
+        }
+
+        private void SortViewModel_UpdateProgressEvent(object? sender, EventArgs e)
+        {
+            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
+            if ((completionPercentage > SaveState.SortCompletion))
+            {
+                SaveState.SortCompletion = completionPercentage;
+                SaveState.UpdateProgress();
+            }
+        }
+
+        private int calculateCompletionPercentage(BaseExplanationViewModel vm)
+        {
+            double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count - 1) * 100;
+            return (int)Math.Floor(completionPercentage);
         }
         #endregion
     }

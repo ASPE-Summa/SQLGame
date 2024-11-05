@@ -55,7 +55,7 @@ namespace SummaSQLGame.Models
             set { _sortCompletion = value; OnPropertyChanged(); }
         }
 
-        public int MathCompletion
+        public int AggregateCompletion
         {
             get { return _mathCompletion; }
             set { _mathCompletion = value; OnPropertyChanged(); }
@@ -87,7 +87,7 @@ namespace SummaSQLGame.Models
                 {Subjects.SELECT,SelectCompletion},
                 {Subjects.WHERE, WhereCompletion},
                 {Subjects.SORT, SortCompletion },
-                {Subjects.MATH, MathCompletion },
+                {Subjects.MATH, AggregateCompletion },
                 {Subjects.WILDCARDS,WildcardCompletion },
                 {Subjects.GROUP, GroupCompletion },
                 {Subjects.JOIN, JoinCompletion}

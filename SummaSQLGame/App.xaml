@@ -37,6 +37,9 @@
             <DataTemplate DataType="{x:Type viewModels:SortViewModel}">
                 <views:SortView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:AggregateViewModel}">
+                <views:AggregateView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

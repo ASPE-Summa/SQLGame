@@ -28,6 +28,11 @@ namespace SummaSQLGame.ViewModels
             FilterCommand = new RelayCommand(ExecuteShowFilter);
             WildCardCommand = new RelayCommand(ExecuteShowWildCard);
             SortCommand = new RelayCommand(ExecuteShowSort);
+            AggregateCommand = new RelayCommand(ExecuteShowAggregate);
+            GroupCommand = new RelayCommand(ExecuteShowGroup, e => false);
+            JoinCommand = new RelayCommand(ExecuteShowJoin, e => false);
+            ChallengeCommand = new RelayCommand(ExecuteShowChallenge, e => false);
+            LeaderboardCommand = new RelayCommand(ExecuteShowLeaderboard, e => false);
             LoadSaveState();
             _activeViewModel = new DashboardViewModel(){SaveState = SaveState};
 
@@ -55,6 +60,11 @@ namespace SummaSQLGame.ViewModels
         public ICommand FilterCommand { get; }
         public ICommand WildCardCommand { get; }
         public ICommand SortCommand { get; }
+        public ICommand AggregateCommand { get; }
+        public ICommand GroupCommand { get; }
+        public ICommand JoinCommand { get; }
+        public ICommand ChallengeCommand { get; }
+        public ICommand LeaderboardCommand {  get; }
         #endregion
 
         #region methods
@@ -128,6 +138,34 @@ namespace SummaSQLGame.ViewModels
             ActiveViewModel = sortViewModel;
         }
 
+        private void ExecuteShowAggregate(object? obj)
+        {
+            AggregateViewModel aggregateViewModel = new();
+            aggregateViewModel.UpdateProgressEvent += AggregateViewModel_UpdateProgressEvent;
+            ActiveViewModel = aggregateViewModel;
+        }
+
+
+        private void ExecuteShowGroup(object? obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ExecuteShowJoin(object? obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ExecuteShowChallenge(object? obj) 
+        {
+            throw new NotImplementedException(); 
+        }
+
+        private void ExecuteShowLeaderboard(object? obj) 
+        { 
+            throw new NotImplementedException(); 
+        }
+
         private void SelectViewModel_UpdateProgressEvent(object? sender, EventArgs e)
         {
             int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
@@ -163,6 +201,16 @@ namespace SummaSQLGame.ViewModels
             if ((completionPercentage > SaveState.SortCompletion))
             {
                 SaveState.SortCompletion = completionPercentage;
+                SaveState.UpdateProgress();
+            }
+        }
+
+        private void AggregateViewModel_UpdateProgressEvent(object? sender, EventArgs e)
+        {
+            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
+            if ((completionPercentage > SaveState.AggregateCompletion))
+            {
+                SaveState.AggregateCompletion = completionPercentage;
                 SaveState.UpdateProgress();
             }
         }

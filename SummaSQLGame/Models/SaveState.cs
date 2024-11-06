@@ -86,9 +86,9 @@ namespace SummaSQLGame.Models
             {
                 {Subjects.SELECT,SelectCompletion},
                 {Subjects.WHERE, WhereCompletion},
+                {Subjects.WILDCARDS,WildcardCompletion },
                 {Subjects.SORT, SortCompletion },
                 {Subjects.MATH, AggregateCompletion },
-                {Subjects.WILDCARDS,WildcardCompletion },
                 {Subjects.GROUP, GroupCompletion },
                 {Subjects.JOIN, JoinCompletion}
             };

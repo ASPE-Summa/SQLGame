@@ -7,7 +7,6 @@ namespace SummaSQLGame.ViewModels
     {
         #region fields
         private SaveState _saveState;
-        private Dictionary<string, int> _progress;
         #endregion
 
         #region properties
@@ -17,10 +16,39 @@ namespace SummaSQLGame.ViewModels
             set { _saveState = value; OnPropertyChanged(); }
         }
 
-        public Dictionary<string, int> Progress
+        public int SelectProgress
         {
-            get { return _progress; }
-            set { _progress = value; OnPropertyChanged(); }
+            get { return _saveState.Progress[Subjects.SELECT]; }
+        }
+
+        public int WhereProgress
+        {
+            get { return _saveState.Progress[Subjects.WHERE]; }
+        }
+
+        public int WildcardProgress
+        {
+            get { return _saveState.Progress[Subjects.WILDCARDS]; }
+        }
+
+        public int SortProgress
+        {
+            get { return _saveState.Progress[Subjects.SORT]; }
+        }
+
+        public int MathProgress
+        {
+            get { return _saveState.Progress[Subjects.MATH]; }
+        }
+
+        public int GroupProgress
+        {
+            get { return _saveState.Progress[Subjects.GROUP]; }
+        }
+
+        public int JoinProgress
+        {
+            get { return _saveState.Progress[Subjects.JOIN]; }
         }
         #endregion
     }

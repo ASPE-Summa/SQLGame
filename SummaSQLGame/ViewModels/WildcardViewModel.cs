@@ -20,14 +20,14 @@ namespace SummaSQLGame.ViewModels
                 new Explanation()
                 {
                     Image = Avatars.Content,
-                    Dialog = "Laten we beginnen met een beetje herhaling. Selecteer alle bieren met de soort ALE, ENGLISH",
+                    Dialog = "Laten we beginnen met een beetje herhaling. Selecteer alle bieren met de soort \"ALE, ENGLISH\"",
                     CanPass = false,
                     AcceptedQueries = {"select * from bieren where soort = \"ale, english\";"}
                 },
                 new Explanation()
                 {
                     Image = Avatars.Smiling,
-                    Dialog = "Dit werkt natuurlijk goed zolang we exact opgeven welk soort bier we willen. Maar nu wil ik een overzicht van alle verschillende soorten ale. \n\n Dat kunnen we doen met het woordje LIKE en een wildcard, bijvoorbeeld: \n\n SELECT * FROM bieren WHERE soort LIKE \"ale%\";",
+                    Dialog = "Dit werkt natuurlijk goed zolang we exact opgeven welk soort bier we willen. Maar nu wil ik een overzicht van alle verschillende soorten ale. \n\n Dat kunnen we doen met het woordje LIKE en een wildcard, bijvoorbeeld: \n\n SELECT * FROM bieren WHERE soort LIKE \"ALE%\";",
                     CanPass= false,
                     AcceptedQueries = {"select * from bieren where soort like \"ale%\";"}
                 },
@@ -47,7 +47,7 @@ namespace SummaSQLGame.ViewModels
                 new Explanation()
                 {
                     Image = Avatars.Content,
-                    Dialog = "Goed gedaan! Er zijn nog meer mogelijkheden met wildcards, maar dit is de meest voorkomende. Mocht je meer willen weten kun je dat vinden met de links rechtsonderin, maar je hebt dit onderdeel in ieder geval afgerond."
+                    Dialog = "Goed gedaan! Er zijn nog meer mogelijkheden met wildcards maar dit is de meest voorkomende toepassing. Mocht je meer willen weten, klik dan op de linkjes rechtsonderin. Je hebt dit onderdeel in ieder geval afgerond."
                 }
             };
             CurrentExplanation = _explanations.First();

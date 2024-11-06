@@ -14,13 +14,13 @@ namespace SummaSQLGame.ViewModels
             {
                 new Explanation() {
                     Image = Avatars.Default,
-                    Dialog = "Je weet nu hoe je alle informatie kunt ophalen uit een tabel. En hoe je specifieke kolommen uit een tabel kunt opvragen. Maar tot nu toe krijgen we telkens alle rijen terug. Dat is niet handig als je een hele waslijst aan data door moet zoeken voor antwoord op een specifieke vraag.",
+                    Dialog = "Je weet nu hoe je alle informatie kunt ophalen uit een tabel en hoe je specifieke kolommen uit een tabel kunt opvragen. Tot nu toe krijgen we telkens alle rijen terug. Dat is niet handig als je een hele waslijst aan data door moet zoeken voor antwoord op een specifieke vraag.",
                     CanPass = true
                 },
                 new Explanation()
                 {
                     Image = Avatars.Explaining,
-                    Dialog = "Wellicht is het handig om te zien wat ik bedoel met een waslijst aan data. En daarmee kunnen we gelijk het selecteren nog eens oefenen. \n\n Schrijf een query om alle informatie op te halen uit de tabel genaamd `bieren`",
+                    Dialog = "Wellicht is het handig om te zien wat ik bedoel met een waslijst aan data. Daarmee kunnen we gelijk het selecteren nog eens oefenen. \n\n Schrijf een query om alle informatie op te halen uit de tabel genaamd `bieren`",
                     CanPass = false,
                     AcceptedQueries = { "select * from bieren;" }
                 },
@@ -54,7 +54,7 @@ namespace SummaSQLGame.ViewModels
                 new Explanation()
                 {
                     Image = Avatars.Smiling,
-                    Dialog = "Top, nu heb ik een mooi lijstje duitse bieren om te proeven! \n\n We hebben nu bieren waarbij allebij onze filters waar zijn, maar stel we willen bieren die ofwel uit duitsland komen, of van het soort lager,amber zijn. \n\n Dat is eigenlijk heel gemakkelijk, we hoeven dan alleen het woordje AND in onze query te vervangen door OR. Probeer het eens.",
+                    Dialog = "Top, nu heb ik een mooi lijstje duitse bieren om te proeven! \n\n We hebben nu bieren waarbij beide filters waar zijn. Stel we willen bieren die ofwel uit duitsland komen of van het soort lager,amber zijn. \n\n Dat is eigenlijk heel gemakkelijk, we hoeven dan alleen het woordje AND in onze query te vervangen door OR. Probeer het eens.",
                     CanPass = false,
                     AcceptedQueries = {"select * from bieren where soort = \"lager, amber\" or land = \"ger\";", "select * from bieren where land = \"ger\" or soort = \"lager, amber\";" }
                 },

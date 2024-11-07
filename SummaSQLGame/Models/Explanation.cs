@@ -6,7 +6,7 @@ namespace SummaSQLGame.Models
     {
         private Uri _image;
         private string _dialog;
-        private bool _canPass;
+        private bool _canPass = true;
         private List<String> _acceptedQueries = new List<String>();
 
         public Uri Image

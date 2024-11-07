@@ -15,7 +15,7 @@ namespace SummaSQLGame.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
 
             modelBuilder.Entity("SummaSQLGame.Models.Anime", b =>
                 {
@@ -42,8 +42,8 @@ namespace SummaSQLGame.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("naam");
 
-                    b.Property<int?>("Score")
-                        .HasColumnType("INTEGER")
+                    b.Property<decimal?>("Score")
+                        .HasColumnType("decimal(3,1)")
                         .HasColumnName("score");
 
                     b.Property<string>("Studios")

@@ -12,7 +12,7 @@ namespace SummaSQLGame.Models
         private readonly int _id;
         private string _name;
         private string _englishName;
-        private int? _score;
+        private decimal? _score;
         private string _genres;
         private string _synopsis;
         private string _type;
@@ -31,8 +31,8 @@ namespace SummaSQLGame.Models
         [StringLength(255)]
         public string EnglishName { get { return _englishName; } set {_englishName = value; OnPropertyChanged(); } }
 
-        [Column("score")]
-        public int? Score { get { return _score; } set { _score = value; OnPropertyChanged(); } }
+        [Column("score", TypeName = "decimal(2,1)")]
+        public decimal? Score { get { return _score; } set { _score = value; OnPropertyChanged(); } }
 
         [Column("genres")]
         [StringLength(255)]

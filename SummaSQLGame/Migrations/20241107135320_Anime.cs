@@ -18,7 +18,7 @@ namespace SummaSQLGame.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     naam = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     engelsenaam = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
-                    score = table.Column<int>(type: "INTEGER", nullable: true),
+                    score = table.Column<decimal>(type: "decimal(2,1)", nullable: true),
                     genres = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),
                     omschrijving = table.Column<string>(type: "TEXT", nullable: false),
                     type = table.Column<string>(type: "TEXT", maxLength: 255, nullable: false),

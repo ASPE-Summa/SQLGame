@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -112,9 +113,12 @@ namespace SummaSQLGame.ViewModels
                     result.Load(reader);
                     QueryResult = result;
 
-                    if (CurrentExplanation.AcceptedQueries.Contains(QueryText.Trim().ToLower()))
+                    if (CurrentExplanation.CanPass == false && CurrentExplanation.AcceptedQueries.Contains(QueryText.Trim().ToLower()))
                     {
                         CurrentExplanation.CanPass = true;
+                        SoundPlayer player = new SoundPlayer(@"Assets/Sounds/SUCCESS TUNE Win Complete Short 04.wav");
+                        player.Load();
+                        player.Play();
                     }
 
                     reader.Close();

@@ -9,8 +9,9 @@ namespace SummaSQLGame.Databases
         public DbSet<Dog> Dogs { get; set; }
         public DbSet<Beer> Beers { get; set; }
         public DbSet<Songs> Songs { get; set; }
-
         public DbSet<Anime> Animes { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

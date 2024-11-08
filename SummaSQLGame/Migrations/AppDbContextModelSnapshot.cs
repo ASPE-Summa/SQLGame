@@ -43,7 +43,7 @@ namespace SummaSQLGame.Migrations
                         .HasColumnName("naam");
 
                     b.Property<decimal?>("Score")
-                        .HasColumnType("decimal(3,1)")
+                        .HasColumnType("decimal(2,1)")
                         .HasColumnName("score");
 
                     b.Property<string>("Studios")
@@ -108,6 +108,56 @@ namespace SummaSQLGame.Migrations
                     b.ToTable("bieren");
                 });
 
+            modelBuilder.Entity("SummaSQLGame.Models.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("id");
+
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("land");
+
+                    b.Property<bool>("IsCapital")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("is_hoofdstad");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("naam");
+
+                    b.Property<int?>("Population")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("inwoners");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("stad");
+                });
+
+            modelBuilder.Entity("SummaSQLGame.Models.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("naam");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("land");
+                });
+
             modelBuilder.Entity("SummaSQLGame.Models.Dog", b =>
                 {
                     b.Property<int>("Id")
@@ -166,6 +216,20 @@ namespace SummaSQLGame.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("spotify");
+                });
+
+            modelBuilder.Entity("SummaSQLGame.Models.City", b =>
+                {
+                    b.HasOne("SummaSQLGame.Models.Country", "Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId");
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("SummaSQLGame.Models.Country", b =>
+                {
+                    b.Navigation("Cities");
                 });
 #pragma warning restore 612, 618
         }

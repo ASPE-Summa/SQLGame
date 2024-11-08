@@ -23,6 +23,8 @@
     <None Remove="Assets\faviconbomb.ico" />
     <None Remove="Assets\Resources\anime_2023.json" />
     <None Remove="Assets\Resources\bieren.json" />
+    <None Remove="Assets\Resources\cities.json" />
+    <None Remove="Assets\Resources\countries.json" />
     <None Remove="Assets\Resources\imdb_movies.json" />
     <None Remove="Assets\Resources\spotify_most_streamed.json" />
     <None Remove="Assets\Resources\sql.xshd" />
@@ -77,6 +79,12 @@
     <Content Include="Assets\Resources\bieren.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Resources\cities.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Resources\countries.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Resources\imdb_movies.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -119,6 +127,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\GroupView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AggregateView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -128,6 +139,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Views\GroupView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\AggregateView.xaml">
       <SubType>Designer</SubType>
     </Page>

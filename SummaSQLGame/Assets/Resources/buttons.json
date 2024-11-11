@@ -1,0 +1,437 @@
+[
+    {
+        "id": "9917",
+        "emoji": "⚽",
+        "name": "soccer ball"
+    },
+    {
+        "id": "9918",
+        "emoji": "⚾",
+        "name": "baseball"
+    },
+    {
+        "id": "127798",
+        "emoji": "🌶",
+        "name": "hot pepper"
+    },
+    {
+        "id": "127812",
+        "emoji": "🍄",
+        "name": "mushroom"
+    },
+    {
+        "id": "127814",
+        "emoji": "🍆",
+        "name": "eggplant"
+    },
+    {
+        "id": "127817",
+        "emoji": "🍉",
+        "name": "watermelon"
+    },
+    {
+        "id": "127820",
+        "emoji": "🍌",
+        "name": "banana"
+    },
+    {
+        "id": "127821",
+        "emoji": "🍍",
+        "name": "pineapple"
+    },
+    {
+        "id": "127825",
+        "emoji": "🍑",
+        "name": "peach"
+    },
+    {
+        "id": "127826",
+        "emoji": "🍒",
+        "name": "cherries"
+    },
+    {
+        "id": "127827",
+        "emoji": "🍓",
+        "name": "strawberry"
+    },
+    {
+        "id": "127828",
+        "emoji": "🍔",
+        "name": "hamburger"
+    },
+    {
+        "id": "127829",
+        "emoji": "🍕",
+        "name": "pizza"
+    },
+    {
+        "id": "127838",
+        "emoji": "🍞",
+        "name": "bread"
+    },
+    {
+        "id": "127839",
+        "emoji": "🍟",
+        "name": "french fries"
+    },
+    {
+        "id": "127880",
+        "emoji": "🎈",
+        "name": "balloon"
+    },
+    {
+        "id": "127923",
+        "emoji": "🎳",
+        "name": "bowling"
+    },
+    {
+        "id": "127934",
+        "emoji": "🎾",
+        "name": "tennis"
+    },
+    {
+        "id": "127936",
+        "emoji": "🏀",
+        "name": "basketball"
+    },
+    {
+        "id": "127944",
+        "emoji": "🏈",
+        "name": "american football"
+    },
+    {
+        "id": "127952",
+        "emoji": "🏐",
+        "name": "volleyball"
+    },
+    {
+        "id": "128001",
+        "emoji": "🐁",
+        "name": "mouse"
+    },
+    {
+        "id": "128004",
+        "emoji": "🐄",
+        "name": "cow"
+    },
+    {
+        "id": "128005",
+        "emoji": "🐅",
+        "name": "tiger"
+    },
+    {
+        "id": "128007",
+        "emoji": "🐇",
+        "name": "rabbit"
+    },
+    {
+        "id": "128008",
+        "emoji": "🐈",
+        "name": "cat"
+    },
+    {
+        "id": "128010",
+        "emoji": "🐊",
+        "name": "crocodile"
+    },
+    {
+        "id": "128011",
+        "emoji": "🐋",
+        "name": "whale"
+    },
+    {
+        "id": "128012",
+        "emoji": "🐌",
+        "name": "snail"
+    },
+    {
+        "id": "128013",
+        "emoji": "🐍",
+        "name": "snake"
+    },
+    {
+        "id": "128014",
+        "emoji": "🐎",
+        "name": "horse"
+    },
+    {
+        "id": "128016",
+        "emoji": "🐐",
+        "name": "goat"
+    },
+    {
+        "id": "128018",
+        "emoji": "🐒",
+        "name": "monkey"
+    },
+    {
+        "id": "128020",
+        "emoji": "🐔",
+        "name": "chicken"
+    },
+    {
+        "id": "128021",
+        "emoji": "🐕",
+        "name": "dog"
+    },
+    {
+        "id": "128022",
+        "emoji": "🐖",
+        "name": "pig"
+    },
+    {
+        "id": "128024",
+        "emoji": "🐘",
+        "name": "elephant"
+    },
+    {
+        "id": "128025",
+        "emoji": "🐙",
+        "name": "octopus"
+    },
+    {
+        "id": "128028",
+        "emoji": "🐜",
+        "name": "ant"
+    },
+    {
+        "id": "128029",
+        "emoji": "🐝",
+        "name": "honeybee"
+    },
+    {
+        "id": "128031",
+        "emoji": "🐟",
+        "name": "fish"
+    },
+    {
+        "id": "128034",
+        "emoji": "🐢",
+        "name": "turtle"
+    },
+    {
+        "id": "128036",
+        "emoji": "🐤",
+        "name": "baby chick"
+    },
+    {
+        "id": "128039",
+        "emoji": "🐧",
+        "name": "penguin"
+    },
+    {
+        "id": "128042",
+        "emoji": "🐪",
+        "name": "camel"
+    },
+    {
+        "id": "128044",
+        "emoji": "🐬",
+        "name": "dolphin"
+    },
+    {
+        "id": "128056",
+        "emoji": "🐸",
+        "name": "frog"
+    },
+    {
+        "id": "128063",
+        "emoji": "🐿",
+        "name": "chipmunk"
+    },
+    {
+        "id": "128064",
+        "emoji": "👀",
+        "name": "eyes"
+    },
+    {
+        "id": "128065",
+        "emoji": "👁",
+        "name": "eye"
+    },
+    {
+        "id": "128068",
+        "emoji": "👄",
+        "name": "mouth"
+    },
+    {
+        "id": "128069",
+        "emoji": "👅",
+        "name": "tongue"
+    },
+    {
+        "id": "128077",
+        "emoji": "👍",
+        "name": "thumbs up"
+    },
+    {
+        "id": "128078",
+        "emoji": "👎",
+        "name": "thumbs down"
+    },
+    {
+        "id": "128121",
+        "emoji": "👹",
+        "name": "ogre"
+    },
+    {
+        "id": "128122",
+        "emoji": "👺",
+        "name": "goblin"
+    },
+    {
+        "id": "128123",
+        "emoji": "👻",
+        "name": "ghost"
+    },
+    {
+        "id": "128125",
+        "emoji": "👽",
+        "name": "alien"
+    },
+    {
+        "id": "128169",
+        "emoji": "💩",
+        "name": "pile of poo"
+    },
+    {
+        "id": "128170",
+        "emoji": "💪",
+        "name": "flexed biceps"
+    },
+    {
+        "id": "128273",
+        "emoji": "🔑",
+        "name": "key"
+    },
+    {
+        "id": "128274",
+        "emoji": "🔒",
+        "name": "locked"
+    },
+    {
+        "id": "128296",
+        "emoji": "🔨",
+        "name": "hammer"
+    },
+    {
+        "id": "128375",
+        "emoji": "🕷",
+        "name": "spider"
+    },
+    {
+        "id": "128376",
+        "emoji": "🕸",
+        "name": "spider web"
+    },
+    {
+        "id": "128521",
+        "emoji": "😉",
+        "name": "winking face"
+    },
+    {
+        "id": "128682",
+        "emoji": "🚪",
+        "name": "door"
+    },
+    {
+        "id": "128719",
+        "emoji": "🛏",
+        "name": "bed"
+    },
+    {
+        "id": "129302",
+        "emoji": "🤖",
+        "name": "robot"
+    },
+    {
+        "id": "129304",
+        "emoji": "🤘",
+        "name": "sign of the horns"
+    },
+    {
+        "id": "129313",
+        "emoji": "🤡",
+        "name": "clown face"
+    },
+    {
+        "id": "129354",
+        "emoji": "🥊",
+        "name": "boxing glove"
+    },
+    {
+        "id": "129360",
+        "emoji": "🥐",
+        "name": "croissant"
+    },
+    {
+        "id": "129361",
+        "emoji": "🥑",
+        "name": "avocado"
+    },
+    {
+        "id": "129363",
+        "emoji": "🥓",
+        "name": "bacon"
+    },
+    {
+        "id": "129364",
+        "emoji": "🥔",
+        "name": "potato"
+    },
+    {
+        "id": "129365",
+        "emoji": "🥕",
+        "name": "carrot"
+    },
+    {
+        "id": "129366",
+        "emoji": "🥖",
+        "name": "baguette bread"
+    },
+    {
+        "id": "129370",
+        "emoji": "🥚",
+        "name": "egg"
+    },
+    {
+        "id": "129408",
+        "emoji": "🦀",
+        "name": "crab"
+    },
+    {
+        "id": "129414",
+        "emoji": "🦆",
+        "name": "duck"
+    },
+    {
+        "id": "129415",
+        "emoji": "🦇",
+        "name": "bat"
+    },
+    {
+        "id": "129417",
+        "emoji": "🦉",
+        "name": "owl"
+    },
+    {
+        "id": "129419",
+        "emoji": "🦋",
+        "name": "butterfly"
+    },
+    {
+        "id": "129422",
+        "emoji": "🦎",
+        "name": "lizard"
+    },
+    {
+        "id": "129423",
+        "emoji": "🦏",
+        "name": "rhinoceros"
+    },
+    {
+        "id": "129472",
+        "emoji": "🧀",
+        "name": "cheese wedge"
+    }
+]

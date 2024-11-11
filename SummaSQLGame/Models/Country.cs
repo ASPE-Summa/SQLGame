@@ -23,6 +23,7 @@ namespace SummaSQLGame.Models
         [StringLength(255)]
         public string Name { get { return _name; } set { _name = value; OnPropertyChanged(); } }
 
+        [InverseProperty("Country")]
         public ICollection<City> Cities { get { return _cities; } set { _cities = value; OnPropertyChanged(); } }
     }
 }

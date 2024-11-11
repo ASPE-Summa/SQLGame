@@ -24,6 +24,7 @@
     <None Remove="Assets\faviconbomb.ico" />
     <None Remove="Assets\Resources\anime_2023.json" />
     <None Remove="Assets\Resources\bieren.json" />
+    <None Remove="Assets\Resources\buttons.json" />
     <None Remove="Assets\Resources\cities.json" />
     <None Remove="Assets\Resources\countries.json" />
     <None Remove="Assets\Resources\imdb_movies.json" />
@@ -81,6 +82,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Resources\bieren.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Resources\buttons.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Resources\cities.json">

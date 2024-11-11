@@ -12,7 +12,12 @@ namespace SummaSQLGame.Databases
         public DbSet<Anime> Animes { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
-
+        public DbSet<Adventurer> Adventurers { get; set; }
+        public DbSet<BattleShip> BattleShips { get; set; }
+        public DbSet<Button> Buttons { get; set; }
+        public DbSet<ButtonSafety> ButtonSafeties { get; set; }
+        public DbSet<MazePuzzle> MazePuzzles { get; set; }
+        public DbSet<Student> Students { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

@@ -37,7 +37,6 @@
                     Tot slot is het zo dat grote datasets erg veel voorkomen in het werkveld. De vaardigheid om dergelijke data te analyseren en verwerken is daarom erg gewild, met name in business analyse en machine learning velden.
                 </TextBlock>
             </StackPanel>
-            
         </Border>
     </Grid>
 </UserControl>

@@ -25,6 +25,9 @@
             <DataTemplate DataType="{x:Type viewModels:DashboardViewModel}">
                 <views:DashboardView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:WhyViewModel}">
+                <views:WhyView/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type viewModels:SelectViewModel}">
                 <views:SelectView/>
             </DataTemplate>

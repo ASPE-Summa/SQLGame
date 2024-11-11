@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="SummaSQLGame.Views.WhyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:SummaSQLGame.Views"
+             xmlns:viewmodels="clr-namespace:SummaSQLGame.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:xrpb="http://XamlRadialProgressBar/DotNet"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Foreground="White">
+
+    <d:UserControl.DataContext>
+        <viewmodels:WhyViewModel/>
+    </d:UserControl.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Source="/Assets/Avatar/avatar_explaining.png" VerticalAlignment="Bottom"/>
+        <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" VerticalAlignment="Center" Grid.Column="1">
+            <StackPanel>
+                <TextBlock Margin="15" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                    Je vraagt je misschien af waarom het nuttig is om Queries te leren in een eeuw waar ChatGPT het voor je zou kunnen doen. Het doel achter SQL leren is echter niet alleen het schrijven van de queries.
+                </TextBlock>
+                <TextBlock Margin="15" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                    Je leert onder andere de data die je gegeven wordt analyseren zodat je vragen van stakeholders kunt beantwoorden en begrijpen waarom een query (bijvoorbeeld geschreven door een AI) niet het resultaat teruggeeft wat je verwacht. Zie het als een soort puzzel waarbij het antwoord bepaalde data is die je gebruikers en/of klanten graag willen weten.
+                </TextBlock>
+                <TextBlock Margin="15" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                    Als software developer maak je het jezelf ook makkelijk door de juiste data op te halen en te beperken tot alleen die data die je daadwerkelijk nodig hebt. Daarmee maak je de applicatie vaak sneller en de code duidelijker.
+                </TextBlock>
+                <TextBlock Margin="15" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                    Tot slot is het zo dat grote datasets erg veel voorkomen in het werkveld. De vaardigheid om dergelijke data te analyseren en verwerken is daarom erg gewild, met name in business analyse en machine learning velden.
+                </TextBlock>
+            </StackPanel>
+            
+        </Border>
+    </Grid>
+</UserControl>

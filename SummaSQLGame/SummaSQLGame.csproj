@@ -131,6 +131,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\WhyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\JoinView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -24,6 +24,7 @@ namespace SummaSQLGame.ViewModels
             _path = System.AppDomain.CurrentDomain.BaseDirectory;
             WindowClosingCommand = new RelayCommand(SaveBeforeClosing);
             DashBoardCommand = new RelayCommand(ExecuteShowDashboard);
+            WhyCommand = new RelayCommand(ExecuteShowWhy);
             SelectCommand = new RelayCommand(ExecuteShowSelect);
             FilterCommand = new RelayCommand(ExecuteShowFilter);
             WildCardCommand = new RelayCommand(ExecuteShowWildCard);
@@ -56,6 +57,7 @@ namespace SummaSQLGame.ViewModels
         #region commands
         public ICommand WindowClosingCommand { get; }
         public ICommand DashBoardCommand { get; }
+        public ICommand WhyCommand { get; }
         public ICommand SelectCommand { get; }
         public ICommand FilterCommand { get; }
         public ICommand WildCardCommand { get; }
@@ -110,6 +112,10 @@ namespace SummaSQLGame.ViewModels
             ActiveViewModel = new DashboardViewModel() { SaveState = SaveState };
         }
 
+        private void ExecuteShowWhy(object? obj)
+        {
+            ActiveViewModel = new WhyViewModel();
+        }
         private void ExecuteShowSelect(object? obj)
         {
             SelectViewModel selectViewModel = new();

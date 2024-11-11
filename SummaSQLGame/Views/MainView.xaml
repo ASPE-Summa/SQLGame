@@ -81,6 +81,11 @@
                         <materialDesign:PackIcon Kind="ChartPie"/>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem Header="Waarom" Command="{Binding WhyCommand}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="QuestionMark"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <Separator/>
                 <MenuItem Header="Selecteren" Command="{Binding SelectCommand}">
                     <MenuItem.Icon>

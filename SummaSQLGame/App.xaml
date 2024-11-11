@@ -43,6 +43,9 @@
             <DataTemplate DataType="{x:Type viewModels:GroupViewModel}">
                 <views:GroupView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:JoinViewModel}">
+                <views:JoinView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

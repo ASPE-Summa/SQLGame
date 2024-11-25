@@ -1,6 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using SummaSQLGame.Models;
 using System.Configuration;
+using System.Data;
+using System.Media;
+using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace SummaSQLGame.Databases
 {
@@ -18,6 +23,28 @@ namespace SummaSQLGame.Databases
         public DbSet<ButtonSafety> ButtonSafeties { get; set; }
         public DbSet<MazePuzzle> MazePuzzles { get; set; }
         public DbSet<Student> Students { get; set; }
+
+        public DataTable ExecuteQuery(string queryText)
+        {
+            DataTable result = new DataTable();
+            try
+            {
+                using (SqliteConnection conn = new SqliteConnection(ConfigurationManager.ConnectionStrings["localDb"].ConnectionString))
+                {
+                    conn.Open();
+
+                    SqliteCommand command = new SqliteCommand(queryText, conn);
+                    SqliteDataReader reader = command.ExecuteReader();
+                    result.Load(reader);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show("Er is iets foutgegaan met je query. Controleer of de volgorde van onderdelen klopt en of de kolommen/tabellen bestaan.");
+            }
+            return result;
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -27,5 +54,6 @@ namespace SummaSQLGame.Databases
                 optionsBuilder.UseSqlite(connstr);
             }
         }
+
     }
 }

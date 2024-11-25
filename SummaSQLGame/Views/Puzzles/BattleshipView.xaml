@@ -1,0 +1,202 @@
+﻿<UserControl x:Class="SummaSQLGame.Views.Puzzles.BattleshipView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:helpers="clr-namespace:SummaSQLGame.Helpers"
+             xmlns:local="clr-namespace:SummaSQLGame.Views.Puzzles"
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.ColumnSpan="3" HorizontalAlignment="Center">
+            <TextBlock>
+                Vind en klik op het juiste coördinaat
+            </TextBlock>
+        </Viewbox>
+        <Grid Grid.Row="1" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--#region FirstRow -->
+            <Button Grid.Row="0" Grid.Column="0" Content="a0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="1" Content="a1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="2" Content="a2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="3" Content="a3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="4" Content="a4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="5" Content="a5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="6" Content="a6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="7" Content="a7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="8" Content="a8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="0" Grid.Column="9" Content="a9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region second row-->
+            <Button Grid.Row="1" Grid.Column="0" Content="b0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="1" Content="b1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="2" Content="b2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="3" Content="b3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="4" Content="b4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="5" Content="b5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="6" Content="b6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="7" Content="b7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="8" Content="b8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="1" Grid.Column="9" Content="b9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region third row-->
+            <Button Grid.Row="2" Grid.Column="0" Content="c0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="1" Content="c1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="2" Content="c2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="3" Content="c3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="4" Content="c4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="5" Content="c5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="6" Content="c6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="7" Content="c7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="8" Content="c8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="2" Grid.Column="9" Content="c9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region fourth row-->
+            <Button Grid.Row="3" Grid.Column="0" Content="d0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="1" Content="d1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="d2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="3" Content="d3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="4" Content="d4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="5" Content="d5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="6" Content="d6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="7" Content="d7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="8" Content="d8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="3" Grid.Column="9" Content="d9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region fifth row-->
+            <Button Grid.Row="4" Grid.Column="0" Content="e0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="1" Content="e1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="e2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="3" Content="e3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="4" Content="e4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="5" Content="e5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="6" Content="e6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="7" Content="e7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="8" Content="e8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="4" Grid.Column="9" Content="e9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region sixth row-->
+            <Button Grid.Row="5" Grid.Column="0" Content="f0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="1" Content="f1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="2" Content="f2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="3" Content="f3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="4" Content="f4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="5" Content="f5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="6" Content="f6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="7" Content="f7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="8" Content="f8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="5" Grid.Column="9" Content="f9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region seventh row-->
+            <Button Grid.Row="6" Grid.Column="0" Content="g0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="1" Content="g1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="2" Content="g2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="3" Content="g3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="4" Content="g4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="5" Content="g5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="6" Content="g6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="7" Content="g7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="8" Content="g8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="6" Grid.Column="9" Content="g9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region eigth row-->
+            <Button Grid.Row="7" Grid.Column="0" Content="h0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="1" Content="h1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="2" Content="h2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="3" Content="h3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="4" Content="h4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="5" Content="h5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="6" Content="h6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="7" Content="h7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="8" Content="h8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="7" Grid.Column="9" Content="h9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region ninth row-->
+            <Button Grid.Row="8" Grid.Column="0" Content="i0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="1" Content="i1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="2" Content="i2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="3" Content="i3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="4" Content="i4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="5" Content="i5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="6" Content="i6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="7" Content="i7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="8" Content="i8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="8" Grid.Column="9" Content="i9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+            <!--#region tenth row-->
+            <Button Grid.Row="9" Grid.Column="0" Content="j0" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="1" Content="j1" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="2" Content="j2" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="3" Content="j3" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="4" Content="j4" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="5" Content="j5" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="6" Content="j6" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="7" Content="j7" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="8" Content="j8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <Button Grid.Row="9" Grid.Column="9" Content="j9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
+            <!--#endregion-->
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{Binding FirstWord}" Background="LightGray" Margin="10,40,10,40"></TextBlock>
+            <TextBlock Grid.Column="1" Text="{Binding SecondWord}" Background="LightGray" Margin="10,40,10,40"></TextBlock>
+            <TextBlock Grid.Column="2" Text="{Binding ThirdWord}" Background="LightGray" Margin="10,40,10,40"></TextBlock>
+        </Grid>
+
+        <DataGrid Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" MinHeight="300" AutoGenerateColumns="True" ItemsSource="{Binding QueryResult.DefaultView}" Foreground="White"></DataGrid>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center">
+            <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="100">
+                <i:Interaction.Behaviors>
+                    <helpers:AvalonEditBehaviour GiveMeTheText="{Binding QueryText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </i:Interaction.Behaviors>
+            </avalonEdit:TextEditor>
+            <Button Foreground="White" Margin="0 10 0 0" Width="100" HorizontalAlignment="Right" Command="{Binding QueryCommand}">Uitvoeren</Button>
+        </StackPanel>
+
+        <Image Source="/Assets/Diagrams/zeeslag.png" Grid.Column="2" Grid.Row="1" Margin="20,20,20,20"/>
+        <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <TextBlock Margin="10" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                Bij deze puzzel ga je opzoek naar de juiste regel in de tabel zeeslag waarin de drie zoektermen onder in je scherm voorkomen in de omschrijving. Als je de juiste regel weet te vinden krijg je een coördinaat. Als je op de knop met dat coördinaat klikt heb je de puzzel voltooid.
+            </TextBlock>
+        </Border>
+    </Grid>
+</UserControl>

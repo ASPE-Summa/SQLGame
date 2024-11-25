@@ -4,7 +4,9 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:rpbs="http://XamlRadialProgressBar/DotNet"
              xmlns:views="clr-namespace:SummaSQLGame.Views"
+             xmlns:puzzleViews="clr-namespace:SummaSQLGame.Views.Puzzles"
              xmlns:viewModels="clr-namespace:SummaSQLGame.ViewModels"
+             xmlns:puzzleViewModels="clr-namespace:SummaSQLGame.ViewModels.Puzzles"
              xmlns:local="clr-namespace:SummaSQLGame">
     <Application.Resources>
         <ResourceDictionary>
@@ -48,6 +50,27 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModels:JoinViewModel}">
                 <views:JoinView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:ChallengeViewModel}">
+                <views:ChallengeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:ChallengeExplanationViewModel}">
+                <views:ChallengeExplanationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type puzzleViewModels:AdventurerViewModel}">
+                <puzzleViews:AdventurerView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type puzzleViewModels:BattleshipViewModel}">
+                <puzzleViews:BattleshipView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type puzzleViewModels:ButtonViewModel}">
+                <puzzleViews:ButtonView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type puzzleViewModels:MazeViewModel}">
+                <puzzleViews:MazeView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type puzzleViewModels:StudentViewModel}">
+                <puzzleViews:StudentView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

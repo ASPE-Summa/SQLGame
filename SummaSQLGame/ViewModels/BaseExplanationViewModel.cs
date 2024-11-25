@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using SummaSQLGame.Databases;
 using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;
 using System;
@@ -65,7 +66,7 @@ namespace SummaSQLGame.ViewModels
         {
             NextExplanationCommand = new RelayCommand(ExecuteNextDialogue, CanExecuteNext);
             PreviousExplanationCommand = new RelayCommand(ExecutePreviousDialogue, CanExecutePrevious);
-            QueryCommand = new RelayCommand(ExecuteQuery);
+            QueryCommand = new RelayCommand(ExecuteAndValidateQuery);
         }
         #endregion
 
@@ -101,40 +102,24 @@ namespace SummaSQLGame.ViewModels
             CurrentExplanation = _explanations[_explanationIndex];
         }
 
-        private void ExecuteQuery(object? obj)
+        private void ExecuteAndValidateQuery(object? obj)
         {
-            try
+            using (AppDbContext dbContext = new AppDbContext())
             {
-                using (SqliteConnection conn = new SqliteConnection(ConfigurationManager.ConnectionStrings["localDb"].ConnectionString))
+                DataTable result = dbContext.ExecuteQuery(QueryText);
+                QueryResult = result;
+                var sanitizedQuery = QueryText.ToLower().Trim();
+                sanitizedQuery = Regex.Replace(sanitizedQuery, @"\t|\n|\r", " "); //Remove newlines
+                sanitizedQuery = Regex.Replace(sanitizedQuery, @"\s+", " "); // Remove doulbe spaces
+
+
+                if (CurrentExplanation.CanPass == false && CurrentExplanation.AcceptedQueries.Contains(sanitizedQuery))
                 {
-                    conn.Open();
-
-                    SqliteCommand command = new SqliteCommand(QueryText, conn);
-                    SqliteDataReader reader = command.ExecuteReader();
-                    DataTable result = new DataTable();
-                    result.Load(reader);
-                    QueryResult = result;
-
-                    var sanitizedQuery = QueryText.ToLower().Trim();
-                    sanitizedQuery = Regex.Replace(sanitizedQuery, @"\t|\n|\r", " "); //Remove newlines
-                    sanitizedQuery = Regex.Replace(sanitizedQuery, @"\s+", " "); // Remove doulbe spaces
-                    
-
-                    if (CurrentExplanation.CanPass == false && CurrentExplanation.AcceptedQueries.Contains(sanitizedQuery))
-                    {
-                        CurrentExplanation.CanPass = true;
-                        SoundPlayer player = new SoundPlayer(@"Assets/Sounds/SUCCESS TUNE Win Complete Short 04.wav");
-                        player.Load();
-                        player.Play();
-                    }
-
-                    reader.Close();
+                    CurrentExplanation.CanPass = true;
+                    SoundPlayer player = new SoundPlayer(@"Assets/Sounds/SUCCESS TUNE Win Complete Short 04.wav");
+                    player.Load();
+                    player.Play();
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("Er is iets foutgegaan met je query. Controleer of de volgorde van onderdelen klopt en of de kolommen/tabellen bestaan.");
             }
         }
         #endregion

@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="SummaSQLGame.Views.ChallengeExplanationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SummaSQLGame.Views"
+             xmlns:viewmodels="clr-namespace:SummaSQLGame.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:helpers="clr-namespace:SummaSQLGame.Helpers"
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800"
+             >
+    <Grid>
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/Avatar/avatar_explaining.png" VerticalAlignment="Bottom"/>
+            <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" VerticalAlignment="Center" Grid.Column="1">
+                <StackPanel>
+                <TextBlock Margin="15" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                    Welkom bij de challenge. Zodra je op de startknop drukt begint de timer rechtsbovenin met aftellen. Het doel is een zo hoog mogelijke score te behalen voordat de timer op 0 komt.
+                </TextBlock>
+                <TextBlock Margin="15" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                    Er zijn verschillende puzzels welke willekeurig gekozen worden. Ook zijn er meerdere combinaties aan vragen mogelijk per puzzel. Zo heb je nooit twee keer dezelfde ervaring.
+                </TextBlock>
+                <TextBlock Margin="15" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                    Je hebt oneindig mogelijkheden om queries uit te voeren op de tabellen van de puzzel. Dit staat los van het antwoord wat je geeft. Maar let op, hoe vaker je een fout antwoord invoert hoe minder punten je krijgt voor de puzzel.
+                </TextBlock>
+                <TextBlock Margin="15" FontSize="18" TextWrapping="Wrap" Foreground="Black">
+                    Je hoogste score wordt in het leaderboard gepubliceerd. Veel succes met het proberen te behalen van de highscore!
+                </TextBlock>
+            </StackPanel>
+            </Border>
+        </Grid>
+</UserControl>

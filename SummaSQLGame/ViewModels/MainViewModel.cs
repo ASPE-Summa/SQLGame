@@ -32,7 +32,7 @@ namespace SummaSQLGame.ViewModels
             AggregateCommand = new RelayCommand(ExecuteShowAggregate);
             GroupCommand = new RelayCommand(ExecuteShowGroup);
             JoinCommand = new RelayCommand(ExecuteShowJoin);
-            ChallengeCommand = new RelayCommand(ExecuteShowChallenge, e => false);
+            ChallengeCommand = new RelayCommand(ExecuteShowChallenge);
             LeaderboardCommand = new RelayCommand(ExecuteShowLeaderboard, e => false);
             LoadSaveState();
             _activeViewModel = new DashboardViewModel(){SaveState = SaveState};
@@ -168,7 +168,9 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteShowChallenge(object? obj) 
         {
-            throw new NotImplementedException(); 
+            ChallengeViewModel challengeViewModel = new();
+            challengeViewModel.UpdateProgressEvent += ChallengeViewModel_UpdateProgressEvent;
+            ActiveViewModel = challengeViewModel;
         }
 
         private void ExecuteShowLeaderboard(object? obj) 
@@ -243,6 +245,11 @@ namespace SummaSQLGame.ViewModels
                 SaveState.JoinCompletion = completionPercentage;
                 SaveState.UpdateProgress();
             }
+        }
+
+        private void ChallengeViewModel_UpdateProgressEvent(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private int calculateCompletionPercentage(BaseExplanationViewModel vm)

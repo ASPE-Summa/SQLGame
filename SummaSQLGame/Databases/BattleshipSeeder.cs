@@ -57,7 +57,7 @@ namespace SummaSQLGame.Databases
                 words[randomPosition2] = pattern["word2"];
                 words[randomPosition3] = pattern["word3"];
 
-                char randomLetter = (char)rand.Next('a', 'z'+1);
+                char randomLetter = (char)rand.Next('a', 'j'+1);
                 char randomDigit = (char)rand.Next('0', '9'+1);
                 string coordinate = $"{randomLetter}{randomDigit}";
 

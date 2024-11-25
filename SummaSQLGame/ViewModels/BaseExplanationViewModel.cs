@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Media;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -74,8 +75,9 @@ namespace SummaSQLGame.ViewModels
         public ICommand QueryCommand { get; }
         #endregion
 
-        protected abstract void UpdateProgress();
+
         #region methods
+        protected abstract void UpdateProgress();
         private bool CanExecuteNext(object? obj)
         {
             return _explanationIndex < _explanations.Count - 1 && CurrentExplanation.CanPass;
@@ -113,7 +115,12 @@ namespace SummaSQLGame.ViewModels
                     result.Load(reader);
                     QueryResult = result;
 
-                    if (CurrentExplanation.CanPass == false && CurrentExplanation.AcceptedQueries.Contains(QueryText.Trim().ToLower()))
+                    var sanitizedQuery = QueryText.ToLower().Trim();
+                    sanitizedQuery = Regex.Replace(sanitizedQuery, @"\t|\n|\r", " "); //Remove newlines
+                    sanitizedQuery = Regex.Replace(sanitizedQuery, @"\s+", " "); // Remove doulbe spaces
+                    
+
+                    if (CurrentExplanation.CanPass == false && CurrentExplanation.AcceptedQueries.Contains(sanitizedQuery))
                     {
                         CurrentExplanation.CanPass = true;
                         SoundPlayer player = new SoundPlayer(@"Assets/Sounds/SUCCESS TUNE Win Complete Short 04.wav");

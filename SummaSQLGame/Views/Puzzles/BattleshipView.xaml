@@ -25,7 +25,7 @@
                 Vind en klik op het juiste coördinaat
             </TextBlock>
         </Viewbox>
-        <Grid Grid.Row="1" Background="White">
+        <Grid Grid.Row="1" Background="DarkSlateGray" Height="400">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -37,6 +37,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
@@ -170,20 +171,26 @@
             <Button Grid.Row="9" Grid.Column="8" Content="j8" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
             <Button Grid.Row="9" Grid.Column="9" Content="j9" Command="{Binding ButtonClickedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}"/>
             <!--#endregion-->
-        </Grid>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="{Binding FirstWord}" Background="LightGray" Margin="10,40,10,40"></TextBlock>
-            <TextBlock Grid.Column="1" Text="{Binding SecondWord}" Background="LightGray" Margin="10,40,10,40"></TextBlock>
-            <TextBlock Grid.Column="2" Text="{Binding ThirdWord}" Background="LightGray" Margin="10,40,10,40"></TextBlock>
+            <Grid Grid.Row="10" Grid.ColumnSpan="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Viewbox Height="50">
+                    <TextBlock Text="{Binding FirstWord}"></TextBlock>
+                </Viewbox>
+                <Viewbox Grid.Column="1"  Height="50">
+                    <TextBlock Grid.Column="1" Text="{Binding SecondWord}"></TextBlock>
+                </Viewbox>
+                <Viewbox Grid.Column="2" Height="50">
+                    <TextBlock Text="{Binding ThirdWord}"></TextBlock>
+                </Viewbox>
+            </Grid>
         </Grid>
 
         <DataGrid Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" MinHeight="300" AutoGenerateColumns="True" ItemsSource="{Binding QueryResult.DefaultView}" Foreground="White"></DataGrid>
-        <StackPanel Grid.Row="2" Grid.Column="1" Margin="5,0,0,0" VerticalAlignment="Center">
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,0,0" VerticalAlignment="Center">
             <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="100">
                 <i:Interaction.Behaviors>
                     <helpers:AvalonEditBehaviour GiveMeTheText="{Binding QueryText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -192,7 +199,7 @@
             <Button Foreground="White" Margin="0 10 0 0" Width="100" HorizontalAlignment="Right" Command="{Binding QueryCommand}">Uitvoeren</Button>
         </StackPanel>
 
-        <Image Source="/Assets/Diagrams/zeeslag.png" Grid.Column="2" Grid.Row="1" Margin="20,20,20,20"/>
+        <Image Source="/Assets/Diagrams/zeeslag.png" Grid.Column="2" Grid.Row="1" Stretch="None"/>
         <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <TextBlock Margin="10" FontSize="18" TextWrapping="Wrap" Foreground="Black">
                 Bij deze puzzel ga je opzoek naar de juiste regel in de tabel zeeslag waarin de drie zoektermen onder in je scherm voorkomen in de omschrijving. Als je de juiste regel weet te vinden krijg je een coördinaat. Als je op de knop met dat coördinaat klikt heb je de puzzel voltooid.

@@ -25,7 +25,7 @@ namespace SummaSQLGame.Databases
         new Dictionary<string, string> { { "word1", "pride" }, { "word2", "guess" }, { "word3", "abyss" } },
         new Dictionary<string, string> { { "word1", "broke" }, { "word2", "tardy" }, { "word3", "blank" } },
         new Dictionary<string, string> { { "word1", "wheel" }, { "word2", "alarm" }, { "word3", "guest" } },
-        new Dictionary<string, string> { { "word1", "grass" }, { "word2", "stuck" }, { "word3", "spend" } },
+        new Dictionary<string, string> { { "word1", "grass" }, { "word2", "stuck" }, { "word3", "teeth" } },
         new Dictionary<string, string> { { "word1", "mouth" }, { "word2", "fresh" }, { "word3", "teeth" } },
         new Dictionary<string, string> { { "word1", "money" }, { "word2", "wound" }, { "word3", "heart" } },
         new Dictionary<string, string> { { "word1", "puppy" }, { "word2", "wound" }, { "word3", "teeth" } },

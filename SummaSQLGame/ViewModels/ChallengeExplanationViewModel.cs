@@ -17,7 +17,7 @@ namespace SummaSQLGame.ViewModels
 
         public int Attempts { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string QueryText { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
+        public string PuzzleType { get => throw new NotImplementedException(); }
         public event EventHandler<EventArgs> PuzzleCompleted;
     }
 }

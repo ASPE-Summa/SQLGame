@@ -52,7 +52,12 @@ namespace SummaSQLGame.Helpers
                 {
                     var caretOffset = editor.CaretOffset;
                     editor.Document.Text = dependencyPropertyChangedEventArgs.NewValue.ToString();
-                    editor.CaretOffset = caretOffset;
+
+                    // This ensures that the caret does not jump to end between quotes with each character typed.
+                    if (caretOffset != null && caretOffset <= editor.Text.Length)
+                    {
+                        editor.CaretOffset = caretOffset;
+                    }
                 }
             }
         }

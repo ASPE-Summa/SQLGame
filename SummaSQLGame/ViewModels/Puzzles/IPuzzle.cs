@@ -13,8 +13,8 @@ namespace SummaSQLGame.ViewModels.Puzzles
         public event EventHandler<EventArgs> PuzzleCompleted;
         public DataTable QueryResult { get; set; }
         public ICommand QueryCommand { get; }
-
         public int Attempts { get; set; }
         public string QueryText { get; set; }
+        public string PuzzleType {  get; }
     }
 }

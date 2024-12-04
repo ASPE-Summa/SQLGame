@@ -20,10 +20,12 @@ namespace SummaSQLGame.ViewModels.Puzzles
         protected int _attempts = 0;
         protected string _queryText = "";
         protected DataTable _queryResult;
+        protected string _puzzleType;
 
 
         public int Attempts { get { return _attempts; } set { _attempts = value; OnPropertyChanged(); } }
         public string QueryText { get { return _queryText; } set { _queryText = value; OnPropertyChanged(); } }
+        public string PuzzleType { get { return _puzzleType; } }
 
         public BasePuzzleViewModel()
         {

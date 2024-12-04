@@ -43,46 +43,59 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
                 <TextBlock Text="Selecteren" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SelectProgress}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
+                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SaveState.SelectCompletion}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
                 Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SelectProgress}"/><Run Text="%"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SaveState.SelectCompletion}"/><Run Text="%"/></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
                 <TextBlock Text="Filteren" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=WhereProgress}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
+                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SaveState.WhereCompletion}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
                 Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=WhereProgress}"/><Run Text="%"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SaveState.WhereCompletion}"/><Run Text="%"/></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Stretch">
                 <TextBlock Text="Wildcards" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=WildcardProgress}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
+                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SaveState.WildcardCompletion}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
                 Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=WildcardProgress}"/><Run Text="%"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SaveState.WildcardCompletion}"/><Run Text="%"/></TextBlock>
             </StackPanel>
             <StackPanel Grid.Column="4" Orientation="Vertical" HorizontalAlignment="Stretch">
                 <TextBlock Text="Sorteren" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SortProgress}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
+                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SaveState.SortCompletion}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
                 Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SortProgress}"/><Run Text="%"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SaveState.SortCompletion}"/><Run Text="%"/></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1"  Orientation="Vertical" HorizontalAlignment="Stretch">
                 <TextBlock Text="Rekenen" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=MathProgress}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
+                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SaveState.AggregateCompletion}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
                 Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=MathProgress}"/><Run Text="%"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SaveState.AggregateCompletion}"/><Run Text="%"/></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
                 <TextBlock Text="Grouperen" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=GroupProgress}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
+                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SaveState.GroupCompletion}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
                 Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=GroupProgress}"/><Run Text="%"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SaveState.GroupCompletion}"/><Run Text="%"/></TextBlock>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Stretch">
                 <TextBlock Text="Koppelen" Foreground="White" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=JoinProgress}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
+                <xrpb:RadialProgressBar Value="{Binding Mode=OneWay, Path=SaveState.JoinCompletion}" Width="120" Height="120" ArcWidth="30" HorizontalAlignment="Center"
                 Foreground="{StaticResource ProgressBarRadialGradientBrush}"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=JoinProgress}"/><Run Text="%"/></TextBlock>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="{Binding Mode=OneWay, Path=SaveState.JoinCompletion}"/><Run Text="%"/></TextBlock>
             </StackPanel>
         </Grid>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Label>Puzzels</Label>
+                <materialDesign:PackIcon Kind="Info" ToolTip="Onderstaande balken tonen de hoeveelheid keer dat je een bepaalde puzzel bent tegengekomen t.o.v. hoevaak je hem succesvol hebt voltooid."/>
+            </StackPanel>
+            <Border BorderThickness="1" CornerRadius="20" Margin="15"  BorderBrush="Transparent">
+                <Grid Height="20">
+                    <ProgressBar Value="{Binding SaveState.BattleShipPuzzlesCompleted}" Maximum="{Binding SaveState.BattleShipPuzzlesEncountered}" Height="50" Background="DarkSlateGray" Foreground="#5786a1"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Zeeslag</TextBlock>
+                </Grid>
+            </Border>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -13,42 +13,13 @@ namespace SummaSQLGame.ViewModels
         public SaveState SaveState
         {
             get { return _saveState; }
-            set { _saveState = value; OnPropertyChanged(); }
         }
+        #endregion
 
-        public int SelectProgress
+        #region constructor
+        public DashboardViewModel(SaveState saveState)
         {
-            get { return _saveState.SelectCompletion; }
-        }
-
-        public int WhereProgress
-        {
-            get { return _saveState.WhereCompletion; }
-        }
-
-        public int WildcardProgress
-        {
-            get { return _saveState.WildcardCompletion; }
-        }
-
-        public int SortProgress
-        {
-            get { return _saveState.SortCompletion; }
-        }
-
-        public int MathProgress
-        {
-            get { return _saveState.AggregateCompletion; }
-        }
-
-        public int GroupProgress
-        {
-            get { return _saveState.GroupCompletion; }
-        }
-
-        public int JoinProgress
-        {
-            get { return _saveState.JoinCompletion; }
+           _saveState = saveState;
         }
         #endregion
     }

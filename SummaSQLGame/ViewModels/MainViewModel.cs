@@ -35,7 +35,7 @@ namespace SummaSQLGame.ViewModels
             ChallengeCommand = new RelayCommand(ExecuteShowChallenge);
             LeaderboardCommand = new RelayCommand(ExecuteShowLeaderboard, e => false);
             LoadSaveState();
-            _activeViewModel = new DashboardViewModel(){SaveState = SaveState};
+            _activeViewModel = new DashboardViewModel(SaveState);
 
         }
         #endregion
@@ -107,7 +107,7 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteShowDashboard(object? obj)
         {
-            ActiveViewModel = new DashboardViewModel() { SaveState = SaveState };
+            ActiveViewModel = new DashboardViewModel(SaveState);
         }
 
         private void ExecuteShowWhy(object? obj)
@@ -166,7 +166,7 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteShowChallenge(object? obj) 
         {
-            ChallengeViewModel challengeViewModel = new();
+            ChallengeViewModel challengeViewModel = new(this);
             challengeViewModel.UpdateProgressEvent += ChallengeViewModel_UpdateProgressEvent;
             ActiveViewModel = challengeViewModel;
         }

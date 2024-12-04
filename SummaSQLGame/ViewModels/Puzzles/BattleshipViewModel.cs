@@ -36,6 +36,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
         #region constructors
         public BattleshipViewModel() : base()
         {
+            _puzzleType = Helpers.Puzzles.BATTLESHIP;
             ButtonClickedCommand = new RelayCommand(ExecuteButtonClicked);
             SelectRandomPuzzle();
         }

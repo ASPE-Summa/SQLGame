@@ -1,4 +1,5 @@
 ﻿using SummaSQLGame.Helpers;
+using SummaSQLGame.Models;
 using SummaSQLGame.ViewModels.Puzzles;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace SummaSQLGame.ViewModels
         private int _score = 0;
         private int _basePuzzleScore = 500;
         private Visibility _startButtonVisibility = Visibility.Visible;
+        private SaveState _saveState;
+        private MainViewModel _mainViewModel;
         #endregion
 
         #region properties
@@ -39,8 +42,9 @@ namespace SummaSQLGame.ViewModels
         #endregion
 
         #region constructors
-        public ChallengeViewModel()
+        public ChallengeViewModel(MainViewModel mainViewModel)
         {
+            _mainViewModel = mainViewModel;
             _remainingTime = _totalTime;
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1);
@@ -64,7 +68,9 @@ namespace SummaSQLGame.ViewModels
         private void SetNewPuzzle()
         {
             ActivePuzzle = new BattleshipViewModel();
+            _mainViewModel.SaveState.UpdateEncountered(ActivePuzzle.PuzzleType);
             ActivePuzzle.PuzzleCompleted += HandlePuzzleCompletion;
+            
         }
 
         private void _timer_Tick(object? sender, EventArgs e)
@@ -93,6 +99,7 @@ namespace SummaSQLGame.ViewModels
             var puzzle = sender as IPuzzle;
             var score = _basePuzzleScore - (50 * puzzle.Attempts);
             Score += score > 50 ? score : 50;
+            _mainViewModel.SaveState.UpdateCompleted(ActivePuzzle.PuzzleType);
             SetNewPuzzle();
         }
         #endregion

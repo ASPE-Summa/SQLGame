@@ -72,6 +72,18 @@ namespace SummaSQLGame.Models
             get { return _joinCompletion; }
             set { _joinCompletion = value; OnPropertyChanged(); }
         }
+
+        public int BattleShipPuzzlesEncountered
+        {
+            get { return _battleshipPuzzlesEncountered; }
+            set { _battleshipPuzzlesEncountered = value; OnPropertyChanged(); }
+        }
+
+        public int BattleShipPuzzlesCompleted
+        {
+            get { return _battleshipPuzzlesCompleted; }
+            set { _battleshipPuzzlesCompleted = value; OnPropertyChanged(); }
+        }
         #endregion
 
         public void UpdateCompletion(string subject, int value)
@@ -86,6 +98,22 @@ namespace SummaSQLGame.Models
                 case Subjects.GROUP: GroupCompletion = value; break;
                 case Subjects.JOIN: JoinCompletion = value; break;
 
+            }
+        }
+
+        public void UpdateEncountered(string puzzle)
+        {
+            switch (puzzle)
+            {
+                case Puzzles.BATTLESHIP: BattleShipPuzzlesEncountered++; break;
+            }
+        }
+
+        public void UpdateCompleted(string puzzle)
+        {
+            switch (puzzle)
+            {
+                case Puzzles.BATTLESHIP: BattleShipPuzzlesCompleted++; break;
             }
         }
     }

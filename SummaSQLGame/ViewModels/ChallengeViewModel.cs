@@ -58,6 +58,11 @@ namespace SummaSQLGame.ViewModels
             _timer.Start();
             StartButtonVisibility = Visibility.Collapsed;
             /* Set active viewmodel */
+            SetNewPuzzle();
+        }
+
+        private void SetNewPuzzle()
+        {
             ActivePuzzle = new BattleshipViewModel();
             ActivePuzzle.PuzzleCompleted += HandlePuzzleCompletion;
         }
@@ -75,7 +80,7 @@ namespace SummaSQLGame.ViewModels
         private void ResetGame()
         {
             _timer.Stop();
-            //Submit the score
+            // score to leaderboard Submit the score
             Score = 0;
             _elapsedTime = TimeSpan.FromSeconds(0);
             RemainingTime = _totalTime;
@@ -87,7 +92,8 @@ namespace SummaSQLGame.ViewModels
         {
             var puzzle = sender as IPuzzle;
             var score = _basePuzzleScore - (50 * puzzle.Attempts);
-            Score += score > 50 ? score : 50; 
+            Score += score > 50 ? score : 50;
+            SetNewPuzzle();
         }
         #endregion
     }

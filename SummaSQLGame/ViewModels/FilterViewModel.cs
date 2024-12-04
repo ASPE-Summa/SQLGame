@@ -10,6 +10,7 @@ namespace SummaSQLGame.ViewModels
         #region constructor
         public FilterViewModel()
         {
+            _subject = Subjects.WHERE;
             _explanations = new List<Explanation>()
             {
                 new Explanation() {

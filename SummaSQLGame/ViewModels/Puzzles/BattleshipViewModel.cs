@@ -26,7 +26,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
         public string? FirstWord { get { return _firstWord; } set { _firstWord = value; OnPropertyChanged(); } }
         public string? SecondWord { get { return _secondWord; } set { _secondWord = value; OnPropertyChanged(); } }
         public string? ThirdWord { get { return _thirdWord; } set { _thirdWord = value; OnPropertyChanged(); } }
-        public override event EventHandler<EventArgs> PuzzleCompleted;
+        public override event EventHandler<EventArgs>? PuzzleCompleted;
         #endregion
 
         #region commands

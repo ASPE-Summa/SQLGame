@@ -12,7 +12,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
 {
     public abstract class BasePuzzleViewModel : ObservableObject, IPuzzle
     {
-        public abstract event EventHandler<EventArgs> PuzzleCompleted;
+        public abstract event EventHandler<EventArgs>? PuzzleCompleted;
 
         public DataTable QueryResult { get { return _queryResult; } set { _queryResult = value; OnPropertyChanged(); } }
         public ICommand QueryCommand { get; }

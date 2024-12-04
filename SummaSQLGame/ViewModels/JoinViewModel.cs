@@ -10,6 +10,7 @@ namespace SummaSQLGame.ViewModels
         #region constructor
         public JoinViewModel()
         {
+            _subject = Subjects.JOIN;
             _explanations = new List<Explanation>()
             {
                 new Explanation() {

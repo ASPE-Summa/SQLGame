@@ -10,6 +10,7 @@ namespace SummaSQLGame.ViewModels
         #region constructor
         public SortViewModel()
         {
+            _subject = Subjects.SORT;
             _explanations = new List<Explanation>()
             {
                 new Explanation() {

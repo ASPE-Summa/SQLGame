@@ -7,9 +7,11 @@ namespace SummaSQLGame.ViewModels
     {
         public event EventHandler<EventArgs> UpdateProgressEvent;
 
+
         #region constructor
         public GroupViewModel()
         {
+            _subject = Subjects.JOIN;
             _explanations = new List<Explanation>()
             {
                 new Explanation() {

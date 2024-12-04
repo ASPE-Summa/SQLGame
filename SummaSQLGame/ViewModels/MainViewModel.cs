@@ -84,7 +84,6 @@ namespace SummaSQLGame.ViewModels
                 {
                     string jsonString = File.ReadAllText(_jsonPath);
                     SaveState = JsonConvert.DeserializeObject<SaveState>(jsonString)!;
-                    SaveState.UpdateProgress();
                 }
                 catch (JsonReaderException ex)
                 {
@@ -98,7 +97,6 @@ namespace SummaSQLGame.ViewModels
         
         private void SaveBeforeClosing(object? obj)
         {
-            SaveState.UpdateProgress();
             string combinedPath = Path.Combine(_path, _jsonPath);
             using(StreamWriter sw = File.CreateText(combinedPath))
             {
@@ -119,35 +117,35 @@ namespace SummaSQLGame.ViewModels
         private void ExecuteShowSelect(object? obj)
         {
             SelectViewModel selectViewModel = new();
-            selectViewModel.UpdateProgressEvent += SelectViewModel_UpdateProgressEvent;
+            selectViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = selectViewModel;
         }
 
         private void ExecuteShowFilter(object? obj)
         {
             FilterViewModel filterViewModel = new();
-            filterViewModel.UpdateProgressEvent += FilterViewModel_UpdateProgressEvent;
+            filterViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = filterViewModel;
         }
 
         private void ExecuteShowWildCard(object? obj)
         {
             WildcardViewModel wildcardViewModel = new();
-            wildcardViewModel.UpdateProgressEvent += WildcardViewModel_UpdateProgressEvent;
+            wildcardViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = wildcardViewModel;
         }
 
         private void ExecuteShowSort(object? obj)
         {
             SortViewModel sortViewModel = new();
-            sortViewModel.UpdateProgressEvent += SortViewModel_UpdateProgressEvent;
+            sortViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = sortViewModel;
         }
 
         private void ExecuteShowAggregate(object? obj)
         {
             AggregateViewModel aggregateViewModel = new();
-            aggregateViewModel.UpdateProgressEvent += AggregateViewModel_UpdateProgressEvent;
+            aggregateViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = aggregateViewModel;
         }
 
@@ -155,14 +153,14 @@ namespace SummaSQLGame.ViewModels
         private void ExecuteShowGroup(object? obj)
         {
             GroupViewModel groupViewModel = new();
-            groupViewModel.UpdateProgressEvent += GroupViewModel_UpdateProgressEvent;
+            groupViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = groupViewModel;
         }
 
         private void ExecuteShowJoin(object? obj)
         {
             JoinViewModel joinViewModel = new();
-            joinViewModel.UpdateProgressEvent += JoinViewModel_UpdateProgressEvent;
+            joinViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = joinViewModel;
         }
 
@@ -178,73 +176,10 @@ namespace SummaSQLGame.ViewModels
             throw new NotImplementedException(); 
         }
 
-        private void SelectViewModel_UpdateProgressEvent(object? sender, EventArgs e)
-        {
-            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
-            if (completionPercentage > SaveState.SelectCompletion)
-            {
-                SaveState.SelectCompletion = completionPercentage;
-                SaveState.UpdateProgress();
-            }
-        }
-
-        private void FilterViewModel_UpdateProgressEvent(object? sender, EventArgs e)
-        {
-            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
-            if (completionPercentage > SaveState.WhereCompletion)
-            {
-                SaveState.WhereCompletion = completionPercentage;
-                SaveState.UpdateProgress();
-            }
-        }
-
-        private void WildcardViewModel_UpdateProgressEvent(object? sender, EventArgs e)
-        {
-            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
-            if ((completionPercentage > SaveState.WildcardCompletion)){
-                SaveState.WildcardCompletion = completionPercentage; 
-                SaveState.UpdateProgress();
-            }
-        }
-
-        private void SortViewModel_UpdateProgressEvent(object? sender, EventArgs e)
-        {
-            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
-            if ((completionPercentage > SaveState.SortCompletion))
-            {
-                SaveState.SortCompletion = completionPercentage;
-                SaveState.UpdateProgress();
-            }
-        }
-
-        private void AggregateViewModel_UpdateProgressEvent(object? sender, EventArgs e)
-        {
-            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
-            if ((completionPercentage > SaveState.AggregateCompletion))
-            {
-                SaveState.AggregateCompletion = completionPercentage;
-                SaveState.UpdateProgress();
-            }
-        }
-
-        private void GroupViewModel_UpdateProgressEvent(object? sender, EventArgs e)
-        {
-            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
-            if ((completionPercentage > SaveState.GroupCompletion))
-            {
-                SaveState.GroupCompletion = completionPercentage;
-                SaveState.UpdateProgress();
-            }
-        }
-
-        private void JoinViewModel_UpdateProgressEvent(object? sender, EventArgs e)
-        {
-            int completionPercentage = calculateCompletionPercentage((BaseExplanationViewModel)sender);
-            if (completionPercentage > SaveState.JoinCompletion)
-            {
-                SaveState.JoinCompletion = completionPercentage;
-                SaveState.UpdateProgress();
-            }
+        private void UpdateProgressEvent(object? sender, EventArgs e) {
+            BaseExplanationViewModel viewModel = (BaseExplanationViewModel)sender;
+            int completionPercentage = calculateCompletionPercentage(viewModel);
+            SaveState.UpdateCompletion(viewModel.Subject, completionPercentage);
         }
 
         private void ChallengeViewModel_UpdateProgressEvent(object? sender, EventArgs e)

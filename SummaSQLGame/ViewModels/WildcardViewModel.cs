@@ -10,6 +10,7 @@ namespace SummaSQLGame.ViewModels
         #region constructor
         public WildcardViewModel()
         {
+            _subject = Subjects.WILDCARDS;
             _explanations = new List<Explanation>()
             {
                 new Explanation() {

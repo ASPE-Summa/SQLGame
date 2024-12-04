@@ -10,6 +10,7 @@ namespace SummaSQLGame.ViewModels
         #region constructor
         public AggregateViewModel()
         {
+            _subject = Subjects.AGGREGATES;
             _explanations = new List<Explanation>()
             {
                 new Explanation() {

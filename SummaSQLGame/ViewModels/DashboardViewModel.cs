@@ -18,37 +18,37 @@ namespace SummaSQLGame.ViewModels
 
         public int SelectProgress
         {
-            get { return _saveState.Progress[Subjects.SELECT]; }
+            get { return _saveState.SelectCompletion; }
         }
 
         public int WhereProgress
         {
-            get { return _saveState.Progress[Subjects.WHERE]; }
+            get { return _saveState.WhereCompletion; }
         }
 
         public int WildcardProgress
         {
-            get { return _saveState.Progress[Subjects.WILDCARDS]; }
+            get { return _saveState.WildcardCompletion; }
         }
 
         public int SortProgress
         {
-            get { return _saveState.Progress[Subjects.SORT]; }
+            get { return _saveState.SortCompletion; }
         }
 
         public int MathProgress
         {
-            get { return _saveState.Progress[Subjects.MATH]; }
+            get { return _saveState.AggregateCompletion; }
         }
 
         public int GroupProgress
         {
-            get { return _saveState.Progress[Subjects.GROUP]; }
+            get { return _saveState.GroupCompletion; }
         }
 
         public int JoinProgress
         {
-            get { return _saveState.Progress[Subjects.JOIN]; }
+            get { return _saveState.JoinCompletion; }
         }
         #endregion
     }

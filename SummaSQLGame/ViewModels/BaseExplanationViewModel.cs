@@ -24,6 +24,7 @@ namespace SummaSQLGame.ViewModels
         protected Explanation _currentExplanation;
         protected DataTable _queryResult;
         protected string _queryText = "";
+        protected string _subject;
         #endregion
 
         #region properties
@@ -58,6 +59,10 @@ namespace SummaSQLGame.ViewModels
         {
             get { return _queryText; }
             set { _queryText = value; OnPropertyChanged(); }
+        }
+
+        public string Subject { 
+            get { return _subject; } 
         }
         #endregion
 

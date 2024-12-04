@@ -4,30 +4,24 @@ namespace SummaSQLGame.Models
 {
     public class SaveState : ObservableObject
     {
-
-
         #region fields
         private string _name;
         private int _selectCompletion;
         private int _whereCompletion;
         private int _sortCompletion;
-        private int _mathCompletion;
+        private int _aggregateCompletion;
         private int _wildcardCompletion;
         private int _groupCompletion;
         private int _joinCompletion;
-        private Dictionary<string, int> _progress;
+        private int _highScore;
+        private int _battleshipPuzzlesEncountered;
+        private int _battleshipPuzzlesCompleted;
 
-        public Dictionary<string, int> Progress
-        {
-            get { return _progress; }
-            set {  _progress = value; OnPropertyChanged(); }
-        }
         #endregion
 
         public SaveState(string name)
         {
             _name = name;
-            UpdateProgress();
         }
 
         #region properties
@@ -57,8 +51,8 @@ namespace SummaSQLGame.Models
 
         public int AggregateCompletion
         {
-            get { return _mathCompletion; }
-            set { _mathCompletion = value; OnPropertyChanged(); }
+            get { return _aggregateCompletion; }
+            set { _aggregateCompletion = value; OnPropertyChanged(); }
         }
 
         public int WildcardCompletion
@@ -80,18 +74,19 @@ namespace SummaSQLGame.Models
         }
         #endregion
 
-        public void UpdateProgress()
+        public void UpdateCompletion(string subject, int value)
         {
-            Progress = new Dictionary<string, int>
+            switch (subject)
             {
-                {Subjects.SELECT,SelectCompletion},
-                {Subjects.WHERE, WhereCompletion},
-                {Subjects.WILDCARDS,WildcardCompletion },
-                {Subjects.SORT, SortCompletion },
-                {Subjects.MATH, AggregateCompletion },
-                {Subjects.GROUP, GroupCompletion },
-                {Subjects.JOIN, JoinCompletion}
-            };
+                case Subjects.SELECT: SelectCompletion = value; break;
+                case Subjects.WHERE: WhereCompletion = value; break;
+                case Subjects.WILDCARDS: WildcardCompletion = value; break;
+                case Subjects.SORT: SortCompletion = value; break;
+                case Subjects.AGGREGATES: AggregateCompletion = value; break;
+                case Subjects.GROUP: GroupCompletion = value; break;
+                case Subjects.JOIN: JoinCompletion = value; break;
+
+            }
         }
     }
 }

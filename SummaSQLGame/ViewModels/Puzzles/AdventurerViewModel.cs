@@ -88,7 +88,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
                 return generateSumQuery();
             }
 
-            string query = $"SELECT {_function.ToLower()}({_subject.ToLower()}) FROM avonturier";
+            string query = $"SELECT {_function.ToLower()}({_subject.ToLower()}) FROM avonturiers";
             if (_selector != "AVONTURIER")
             {
                 query += $" WHERE klasse = '{_selector.ToLower()}';";
@@ -99,7 +99,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
 
         private string generateSumQuery()
         {
-            string query = $"SELECT {_function.ToLower()}(id) FROM avonturier";
+            string query = $"SELECT {_function.ToLower()}(id) FROM avonturiers";
             if (_function == "COUNT" && _selector == "AVONTURIER")
             {
                 query += $" WHERE {_subject.ToLower()} = {_targetNumber};";

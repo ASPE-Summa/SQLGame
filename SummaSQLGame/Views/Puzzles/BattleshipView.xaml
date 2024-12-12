@@ -202,7 +202,7 @@
         <Image Source="/Assets/Diagrams/zeeslag.png" Grid.Column="2" Grid.Row="1" Stretch="None"/>
         <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <TextBlock Margin="10" FontSize="18" TextWrapping="Wrap" Foreground="Black">
-                Bij deze puzzel ga je opzoek naar de juiste regel in de tabel zeeslag waarin de drie zoektermen onder in je scherm voorkomen in de omschrijving. Als je de juiste regel weet te vinden krijg je een coördinaat. Als je op de knop met dat coördinaat klikt heb je de puzzel voltooid.
+                Bij deze puzzel ga je opzoek naar de juiste regel in de tabel woorden waarin de drie zoektermen onder in je scherm voorkomen in de omschrijving. Als je de juiste regel weet te vinden krijg je een coördinaat. Als je op de knop met dat coördinaat klikt heb je de puzzel voltooid.
             </TextBlock>
         </Border>
     </Grid>

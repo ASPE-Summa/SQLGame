@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SummaSQLGame.Models
 {
-    [Table("zeeslag")]
+    [Table("woorden")]
     [PrimaryKey("Id")]
     public class BattleShip : ObservableObject
     {
         private readonly int _id;
-        private string _coordinatess;
+        private string _coordinates;
         private string _description;
 
         [Key]
@@ -20,7 +20,7 @@ namespace SummaSQLGame.Models
 
         [Column("coordinaat")]
         [StringLength(2)]
-        public string Coordinates { get { return _coordinatess; } set { _coordinatess = value; OnPropertyChanged(); } }
+        public string Coordinates { get { return _coordinates; } set { _coordinates = value; OnPropertyChanged(); } }
 
         [Column("omschrijving")]
         public string Description { get { return _description; } set { _description = value; OnPropertyChanged(); } }

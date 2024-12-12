@@ -8,7 +8,7 @@ namespace SummaSQLGame.Helpers
 {
     public static class Puzzles
     {
-        public const string BATTLESHIP = "Zeeslag";
+        public const string BATTLESHIP = "Woorden";
         public const string ADVENTURER = "Avonturiers";
     }
 }

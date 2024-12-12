@@ -25,6 +25,8 @@ namespace SummaSQLGame.ViewModels
         private Visibility _startButtonVisibility = Visibility.Visible;
         private SaveState _saveState;
         private MainViewModel _mainViewModel;
+        private Random _rand;
+        private List<Type> _puzzleTypes;
         #endregion
 
         #region properties
@@ -44,6 +46,8 @@ namespace SummaSQLGame.ViewModels
         #region constructors
         public ChallengeViewModel(MainViewModel mainViewModel)
         {
+            _rand = new Random();
+            _puzzleTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()).Where(type => typeof(IPuzzle).IsAssignableFrom(type) && !type.IsInterface && !type.IsAbstract && type != typeof(ChallengeExplanationViewModel) && type != typeof(ButtonViewModel) && type != typeof(MazeViewModel) && type != typeof(StudentViewModel)).ToList();
             _mainViewModel = mainViewModel;
             _remainingTime = _totalTime;
             _timer = new DispatcherTimer();
@@ -67,7 +71,9 @@ namespace SummaSQLGame.ViewModels
 
         private void SetNewPuzzle()
         {
-            ActivePuzzle = new AdventurerViewModel();
+            Type randomPuzzleType = _puzzleTypes[_rand.Next(_puzzleTypes.Count)];
+            IPuzzle puzzleViewModel = (IPuzzle)Activator.CreateInstance(randomPuzzleType);
+            ActivePuzzle = puzzleViewModel;
             _mainViewModel.SaveState.UpdateEncountered(ActivePuzzle.PuzzleType);
             ActivePuzzle.PuzzleCompleted += HandlePuzzleCompletion;
             

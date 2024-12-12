@@ -33,7 +33,7 @@
                     <helpers:AvalonEditBehaviour GiveMeTheText="{Binding QueryText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </i:Interaction.Behaviors>
             </avalonEdit:TextEditor>
-            <Button Foreground="White" Margin="0 10 0 0" Width="100" HorizontalAlignment="Right" Command="{Binding QueryCommand}">Uitvoeren</Button>
+            <Button Foreground="White" Background="OrangeRed" Margin="0 10 0 0" Width="100" HorizontalAlignment="Right" Command="{Binding QueryCommand}">Uitvoeren</Button>
         </StackPanel>
         <DataGrid Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,5,0" VerticalAlignment="Center" MinHeight="300" AutoGenerateColumns="True" ItemsSource="{Binding QueryResult.DefaultView}" Foreground="White"></DataGrid>
         <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/Diagrams/bieren.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2"></Image>

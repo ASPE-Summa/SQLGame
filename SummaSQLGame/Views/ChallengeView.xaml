@@ -46,6 +46,6 @@
             </Border>
         </Grid>
         <ContentControl Content="{Binding ActivePuzzle}" Grid.Row="1"/>
-        <Button Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" Margin="0,0,10,10" Foreground="White" Command="{Binding StartCommand}" Visibility="{Binding StartButtonVisibility}">Start</Button>
+        <Button Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1" Margin="0,0,10,10" Foreground="White" Background="OrangeRed" Command="{Binding StartCommand}" Visibility="{Binding StartButtonVisibility}">Start</Button>
     </Grid>
 </UserControl>

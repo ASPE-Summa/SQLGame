@@ -16,6 +16,7 @@
     <None Remove="Assets\Avatar\avatar_fear.png" />
     <None Remove="Assets\Avatar\avatar_smiling.png" />
     <None Remove="Assets\avatar_default.png" />
+    <None Remove="Assets\Decorations\adventurers.png" />
     <None Remove="Assets\Diagrams\adventurer.png" />
     <None Remove="Assets\Diagrams\anime.png" />
     <None Remove="Assets\Diagrams\bieren.png" />
@@ -62,22 +63,33 @@
     <Content Include="Assets\Avatar\avatar_smiling.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Diagrams\adventurer.png" />
+    <Content Include="Assets\Decorations\adventurers.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Diagrams\adventurer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Diagrams\anime.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Diagrams\bieren.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Diagrams\button.png" />
+    <Content Include="Assets\Diagrams\button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Diagrams\countries_cities.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Diagrams\maze.png" />
+    <Content Include="Assets\Diagrams\maze.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Diagrams\spotify.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Diagrams\student.png" />
+    <Content Include="Assets\Diagrams\student.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Diagrams\zeeslag.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

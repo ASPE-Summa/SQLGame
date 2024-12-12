@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SummaSQLGame.Models
 {
-    [Table("student")]
+    [Table("studenten")]
     [PrimaryKey("Id")]
     public class Student : ObservableObject
     {

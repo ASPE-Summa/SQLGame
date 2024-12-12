@@ -11,7 +11,7 @@ namespace SummaSQLGame.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "spotify",
+                name: "liederen",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -32,7 +32,7 @@ namespace SummaSQLGame.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "spotify");
+                name: "liederen");
         }
     }
 }

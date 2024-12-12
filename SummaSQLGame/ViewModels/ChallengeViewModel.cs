@@ -67,7 +67,7 @@ namespace SummaSQLGame.ViewModels
 
         private void SetNewPuzzle()
         {
-            ActivePuzzle = new BattleshipViewModel();
+            ActivePuzzle = new AdventurerViewModel();
             _mainViewModel.SaveState.UpdateEncountered(ActivePuzzle.PuzzleType);
             ActivePuzzle.PuzzleCompleted += HandlePuzzleCompletion;
             

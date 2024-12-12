@@ -15,7 +15,9 @@ namespace SummaSQLGame.Models
         private int _joinCompletion;
         private int _highScore;
         private int _battleshipPuzzlesEncountered;
+        private int _adventurerPuzzlesEncountered;
         private int _battleshipPuzzlesCompleted;
+        private int _adventurerPuzzlesCompleted;
 
         #endregion
 
@@ -79,10 +81,22 @@ namespace SummaSQLGame.Models
             set { _battleshipPuzzlesEncountered = value; OnPropertyChanged(); }
         }
 
+        public int AdventurerPuzzlesEncountered
+        {
+            get { return _adventurerPuzzlesEncountered; }
+            set { _adventurerPuzzlesEncountered = value; OnPropertyChanged(); }
+        }
+
         public int BattleShipPuzzlesCompleted
         {
             get { return _battleshipPuzzlesCompleted; }
             set { _battleshipPuzzlesCompleted = value; OnPropertyChanged(); }
+        }
+
+        public int AdventurerPuzzlesCompleted
+        {
+            get { return _adventurerPuzzlesCompleted; }
+            set { _adventurerPuzzlesCompleted = value; OnPropertyChanged(); }
         }
         #endregion
 
@@ -106,6 +120,7 @@ namespace SummaSQLGame.Models
             switch (puzzle)
             {
                 case Puzzles.BATTLESHIP: BattleShipPuzzlesEncountered++; break;
+                case Puzzles.ADVENTURER: AdventurerPuzzlesEncountered++; break;
             }
         }
 
@@ -114,6 +129,7 @@ namespace SummaSQLGame.Models
             switch (puzzle)
             {
                 case Puzzles.BATTLESHIP: BattleShipPuzzlesCompleted++; break;
+                case Puzzles.ADVENTURER: AdventurerPuzzlesCompleted++; break;
             }
         }
     }

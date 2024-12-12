@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -67,6 +68,9 @@ namespace SummaSQLGame.ViewModels.Puzzles
             var button = sender as System.Windows.Controls.Button;
             if(button?.Content.ToString() == _solution.Coordinates)
             {
+                SoundPlayer player = new SoundPlayer(@"Assets/Sounds/SUCCESS TUNE Win Complete Short 04.wav");
+                player.Load();
+                player.Play();
                 PuzzleCompleted.Invoke(this, EventArgs.Empty);
             }
         }

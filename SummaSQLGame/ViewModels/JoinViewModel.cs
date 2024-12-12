@@ -25,9 +25,9 @@ namespace SummaSQLGame.ViewModels
                 new Explanation()
                 {
                     Image = Avatars.Explaining,
-                    Dialog = "Het nadeel is dat een id je natuurlijk niet zo veel zegt als de naam van een land. Daarvoor hebben we de JOIN. JOIN koppelt de data van twee tabellen aan elkaar maar je moet wel zelf opgeven op welke kolommen je die koppeling maakt, dat doen we met ON. Onderstaand een voorbeeld \n\nSELECT * FROM stad JOIN land ON stad.land = land.id;",
+                    Dialog = "Het nadeel is dat een id je natuurlijk niet zo veel zegt als de naam van een land. Daarvoor hebben we de JOIN. JOIN koppelt de data van twee tabellen aan elkaar maar je moet wel zelf opgeven op welke kolommen je die koppeling maakt, dat doen we met ON. Onderstaand een voorbeeld \n\nSELECT * FROM steden JOIN landen ON steden.land = landen.id;",
                     CanPass = false,
-                    AcceptedQueries = { "select * from stad join land on stad.land = land.id;" }
+                    AcceptedQueries = { "select * from steden join landen on steden.land = landen.id;" }
                 } ,
                 new Explanation()
                 {
@@ -42,29 +42,29 @@ namespace SummaSQLGame.ViewModels
                 new Explanation()
                 {
                     Image = Avatars.Fear,
-                    Dialog = "Bedenk welke optie voor jouw het meest logisch is en probeer de bijbehorende query te schrijven: \n\n1. Selecteer alles, JOIN land en stad op id en schrijf een WHERE waarin is_hoofdstad waar is en de namen met elkaar vergeleken worden. \n\n2. Selecteer alles, JOIN land en stad op naam en schrijf een WHERE waarin is_hoofdstad waar is.",
+                    Dialog = "Bedenk welke optie voor jouw het meest logisch is en probeer de bijbehorende query te schrijven: \n\n1. Selecteer alles, JOIN landen en steden op id en schrijf een WHERE waarin is_hoofdstad waar is en de namen met elkaar vergeleken worden. \n\n2. Selecteer alles, JOIN landen en steden op naam en schrijf een WHERE waarin is_hoofdstad waar is.",
                     CanPass = false,
-                    AcceptedQueries = { 
-                        "select * from stad join land on stad.naam = land.naam where ishoofdstad = true;",
-                        "select * from stad join land on land.naam = stad.naam where ishoofdstad = true;",
-                        "select * from land join stad on land.naam = stad.naam where ishoofdstad = true;",
-                        "select * from land join stad on stad.naam = land.naam where ishoofdstad = true;",
-                        "select * from stad join land on stad.land = land.id where ishoofdstad = true and land.naam = stad.naam;",
-                        "select * from stad join land on stad.land = land.id where ishoofdstad = true and stad.naam = land.naam;",
-                        "select * from stad join land on land.id = stad.land where ishoofdstad = true and land.naam = stad.naam;",
-                        "select * from stad join land on land.id = stad.land where ishoofdstad = true and stad.naam = land.naam;",
-                        "select * from land join stad on stad.land = land.id where ishoofdstad = true and land.naam = stad.naam;",
-                        "select * from land join stad on stad.land = land.id where ishoofdstad = true and stad.naam = land.naam;",
-                        "select * from land join stad on land.id = stad.land where ishoofdstad = true and land.naam = stad.naam;",
-                        "select * from land join stad on land.id = stad.land where ishoofdstad = true and stad.naam = land.naam;",
-                        "select * from stad join land on stad.land = land.id where land.naam = stad.naam and ishoofdstad = true;",
-                        "select * from stad join land on stad.land = land.id where stad.naam = land.naam and ishoofdstad = true;",
-                        "select * from stad join land on land.id = stad.land where land.naam = stad.naam and ishoofdstad = true;",
-                        "select * from stad join land on land.id = stad.land where stad.naam = land.naam and ishoofdstad = true;",
-                        "select * from land join stad on stad.land = land.id where land.naam = stad.naam and ishoofdstad = true;",
-                        "select * from land join stad on stad.land = land.id where stad.naam = land.naam and ishoofdstad = true;",
-                        "select * from land join stad on land.id = stad.land where land.naam = stad.naam and ishoofdstad = true;",
-                        "select * from land join stad on land.id = stad.land where stad.naam = land.naam and ishoofdstad = true;",
+                    AcceptedQueries = {
+                        "select * from steden join landen on steden.naam = landen.naam where ishoofdstad = true;",
+                        "select * from steden join landen on landen.naam = steden.naam where ishoofdstad = true;",
+                        "select * from landen join steden on landen.naam = steden.naam where ishoofdstad = true;",
+                        "select * from landen join steden on steden.naam = landen.naam where ishoofdstad = true;",
+                        "select * from steden join landen on steden.land = landen.id where ishoofdstad = true and landen.naam = steden.naam;",
+                        "select * from steden join landen on steden.land = landen.id where ishoofdstad = true and steden.naam = landen.naam;",
+                        "select * from steden join landen on landen.id = steden.land where ishoofdstad = true and landen.naam = steden.naam;",
+                        "select * from steden join landen on landen.id = steden.land where ishoofdstad = true and steden.naam = landen.naam;",
+                        "select * from landen join steden on steden.land = landen.id where ishoofdstad = true and landen.naam = steden.naam;",
+                        "select * from landen join steden on steden.land = landen.id where ishoofdstad = true and steden.naam = landen.naam;",
+                        "select * from landen join steden on landen.id = steden.land where ishoofdstad = true and landen.naam = steden.naam;",
+                        "select * from landen join steden on landen.id = steden.land where ishoofdstad = true and steden.naam = landen.naam;",
+                        "select * from steden join landen on steden.land = landen.id where landen.naam = steden.naam and ishoofdstad = true;",
+                        "select * from steden join landen on steden.land = landen.id where steden.naam = landen.naam and ishoofdstad = true;",
+                        "select * from steden join landen on landen.id = steden.land where landen.naam = steden.naam and ishoofdstad = true;",
+                        "select * from steden join landen on landen.id = steden.land where steden.naam = landen.naam and ishoofdstad = true;",
+                        "select * from landen join steden on steden.land = landen.id where landen.naam = steden.naam and ishoofdstad = true;",
+                        "select * from landen join steden on steden.land = landen.id where steden.naam = landen.naam and ishoofdstad = true;",
+                        "select * from landen join steden on landen.id = steden.land where landen.naam = steden.naam and ishoofdstad = true;",
+                        "select * from landen join steden on landen.id = steden.land where steden.naam = landen.naam and ishoofdstad = true;",
                     }
                 },
                 new Explanation()

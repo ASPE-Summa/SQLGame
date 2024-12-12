@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SummaSQLGame.Models
 {
-    [Table("doolhof")]
+    [Table("doolhoven")]
     [PrimaryKey("Id")]
     public class MazePuzzle : ObservableObject
     {

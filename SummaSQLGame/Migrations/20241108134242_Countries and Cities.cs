@@ -11,7 +11,7 @@ namespace SummaSQLGame.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "land",
+                name: "landen",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -24,7 +24,7 @@ namespace SummaSQLGame.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "stad",
+                name: "steden",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -40,13 +40,13 @@ namespace SummaSQLGame.Migrations
                     table.ForeignKey(
                         name: "FK_stad_land_land",
                         column: x => x.land,
-                        principalTable: "land",
+                        principalTable: "landen",
                         principalColumn: "id");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_stad_land",
-                table: "stad",
+                table: "steden",
                 column: "land");
         }
 
@@ -54,10 +54,10 @@ namespace SummaSQLGame.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "stad");
+                name: "steden");
 
             migrationBuilder.DropTable(
-                name: "land");
+                name: "landen");
         }
     }
 }

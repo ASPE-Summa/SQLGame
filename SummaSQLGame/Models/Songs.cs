@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SummaSQLGame.Models
 {
-    [Table("spotify")]
+    [Table("liederen")]
     [PrimaryKey("Id")]
     public class Songs : ObservableObject
     {

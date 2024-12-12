@@ -92,8 +92,14 @@
             </StackPanel>
             <Border BorderThickness="1" CornerRadius="20" Margin="15"  BorderBrush="Transparent">
                 <Grid Height="20">
-                    <ProgressBar Value="{Binding SaveState.BattleShipPuzzlesCompleted}" Maximum="{Binding SaveState.BattleShipPuzzlesEncountered}" Height="50" Background="DarkSlateGray" Foreground="#5786a1"/>
+                    <ProgressBar Value="{Binding SaveState.BattleShipPuzzlesCompleted}" Maximum="{Binding SaveState.BattleShipPuzzlesEncountered}" Height="50" Background="OrangeRed" Foreground="#5786a1"/>
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Zeeslag</TextBlock>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" CornerRadius="20" Margin="15"  BorderBrush="Transparent">
+                <Grid Height="20">
+                    <ProgressBar Value="{Binding SaveState.AdventurerPuzzlesCompleted}" Maximum="{Binding SaveState.AdventurerPuzzlesEncountered}" Height="50" Background="OrangeRed" Foreground="#5786a1"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Avonturiers</TextBlock>
                 </Grid>
             </Border>
         </StackPanel>

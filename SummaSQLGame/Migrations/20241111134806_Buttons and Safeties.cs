@@ -11,7 +11,7 @@ namespace SummaSQLGame.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "knop",
+                name: "knoppen",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -25,7 +25,7 @@ namespace SummaSQLGame.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "knopveiligheid",
+                name: "knoppen_veiligheid",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -39,14 +39,14 @@ namespace SummaSQLGame.Migrations
                     table.ForeignKey(
                         name: "FK_knopveiligheid_knop_knop_id",
                         column: x => x.knop_id,
-                        principalTable: "knop",
+                        principalTable: "knoppen",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_knopveiligheid_knop_id",
-                table: "knopveiligheid",
+                table: "knoppen_veiligheid",
                 column: "knop_id",
                 unique: true);
         }
@@ -55,10 +55,10 @@ namespace SummaSQLGame.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "knopveiligheid");
+                name: "knoppen_veiligheid");
 
             migrationBuilder.DropTable(
-                name: "knop");
+                name: "knoppen");
         }
     }
 }

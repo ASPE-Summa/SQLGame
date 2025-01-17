@@ -75,7 +75,9 @@ namespace SummaSQLGame.ViewModels
                     Image = Avatars.Content,
                     Dialog = "Goed gedaan. Dan gaan we gelijk door naar de laatste aggregaatfunctie, SUM. SUM kijkt wél naar de inhoud van geselecteerde kolommen en telt die bij elkaar op. Het geeft dus een totaal terug, dit werkt natuurlijk alleen op numerieke kolommen. \n\nDe laatste opdracht: selecteer de som van scores van anime waarbij de genres \"Action\" of \"Adventure\" bevatten",
                     CanPass = false,
-                    AcceptedQueries = { "select sum(score) from anime where genres like \"%anime%\" or genres like \"%adventure%\";", "select sum(score) from anime where genres like \"%adventure%\" or genres like \"%action%\";" }
+                    AcceptedQueries = { 
+                        "select sum(score) from anime where genres like \"%action%\" or genres like \"%adventure%\";",
+                        "select sum(score) from anime where genres like \"%adventure%\" or genres like \"%action%\";" }
                 },
                 new Explanation()
                 {

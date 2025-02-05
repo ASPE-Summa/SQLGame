@@ -9,10 +9,13 @@ namespace SummaSQLGame.Models
     [PrimaryKey("Id")]
     public class Dog : ObservableObject
     {
+        #region fields
         private readonly int _id;
         private string _name;
         private string _race;
+        #endregion
 
+        #region properties
         [Key]
         [Column("id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -25,5 +28,6 @@ namespace SummaSQLGame.Models
         [Column("ras")]
         [StringLength(255)]
         public string Race { get { return _race; } set {_race = value; OnPropertyChanged(); } }
+        #endregion
     }
 }

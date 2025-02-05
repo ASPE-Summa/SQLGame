@@ -35,7 +35,7 @@ namespace SummaSQLGame.ViewModels
                     Image = Avatars.Explaining,
                     Dialog = "Om de data op te halen moeten we een Query (vraag) aan de database stellen. In die query vertellen we welke informatie we willen hebben en waar die informatie vandaan komt. In dit geval willen we alles ophalen uit de tabel honden, dat doen we met de query : SELECT * FROM honden; \n\n Probeer het eens uit in de TextBox boven mij en klik op Uitvoeren.",
                     CanPass = false,
-                    AcceptedQueries = new List<string>(){"select * from honden;" }
+                    AnswerQuery = "select * from honden;" 
                 },
                 new Explanation()
                 {
@@ -48,14 +48,14 @@ namespace SummaSQLGame.ViewModels
                     Image = Avatars.Default,
                     Dialog = "Nu hebben we alle informatie uit honden opgehaald. Soms wil je echter maar een beperkte hoeveelheid informatie weten. \nDe tabel honden bestaat uit drie kolommen; id, naam en ras. In plaats van een * kunnen we ook een specifieke kolom opgeven. \n\n Probeer nu eens de namen op te halen uit de tabel honden.",
                     CanPass = false,
-                    AcceptedQueries = new List<string>(){"select naam from honden;" }
+                    AnswerQuery = "select naam from honden;" 
                 },
                 new Explanation()
                 {
                     Image = Avatars.Content,
                     Dialog = "Top! \nTot slot is het ook mogelijk meerdere kolommen tegelijk op te halen. Deze moeten dan worden gescheiden met een komma. \n\n Probeer nu eens zowel de naam als het ras van de honden op te halen.",
                     CanPass = false,
-                    AcceptedQueries = new List<string>(){"select naam, ras from honden;", "select naam,ras from honden;", "select ras,naam from honden;", "select ras, naam from honden;" }
+                    AnswerQuery = "select naam, ras from honden;"
                 },
                 new Explanation()
                 {

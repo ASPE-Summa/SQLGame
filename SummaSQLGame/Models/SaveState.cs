@@ -104,14 +104,13 @@ namespace SummaSQLGame.Models
         {
             switch (subject)
             {
-                case Subjects.SELECT: SelectCompletion = value; break;
-                case Subjects.WHERE: WhereCompletion = value; break;
-                case Subjects.WILDCARDS: WildcardCompletion = value; break;
-                case Subjects.SORT: SortCompletion = value; break;
-                case Subjects.AGGREGATES: AggregateCompletion = value; break;
-                case Subjects.GROUP: GroupCompletion = value; break;
-                case Subjects.JOIN: JoinCompletion = value; break;
-
+                case Subjects.SELECT: SelectCompletion = value > SelectCompletion ? value : SelectCompletion; break;
+                case Subjects.WHERE: WhereCompletion = value > WhereCompletion ? value : WhereCompletion; break;
+                case Subjects.WILDCARDS: WildcardCompletion = value > WildcardCompletion ? value : WildcardCompletion; break;
+                case Subjects.SORT: SortCompletion = value > SortCompletion ? value : SortCompletion; break;
+                case Subjects.AGGREGATES: AggregateCompletion = value > AggregateCompletion ? value : AggregateCompletion; break;
+                case Subjects.GROUP: GroupCompletion = value > GroupCompletion ? value : GroupCompletion; break;
+                case Subjects.JOIN: JoinCompletion = value > JoinCompletion ? value : JoinCompletion; break;
             }
         }
 

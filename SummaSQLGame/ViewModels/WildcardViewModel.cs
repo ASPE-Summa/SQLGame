@@ -23,14 +23,14 @@ namespace SummaSQLGame.ViewModels
                     Image = Avatars.Content,
                     Dialog = "Laten we beginnen met een beetje herhaling. Selecteer alle bieren met de soort \"ALE, ENGLISH\"",
                     CanPass = false,
-                    AcceptedQueries = {"select * from bieren where soort = \"ale, english\";"}
+                    AnswerQuery = "select * from bieren where soort = \"ALE, ENGLISH\";"
                 },
                 new Explanation()
                 {
                     Image = Avatars.Smiling,
                     Dialog = "Dit werkt natuurlijk goed zolang we exact opgeven welk soort bier we willen. Maar nu wil ik een overzicht van alle verschillende soorten ale. \n\n Dat kunnen we doen met het woordje LIKE en een wildcard, bijvoorbeeld: \n\n SELECT * FROM bieren WHERE soort LIKE \"ALE%\";",
                     CanPass= false,
-                    AcceptedQueries = {"select * from bieren where soort like \"ale%\";"}
+                    AnswerQuery = "select * from bieren where soort like \"ALE%\";"
                 },
                 new Explanation()
                 {
@@ -41,9 +41,9 @@ namespace SummaSQLGame.ViewModels
                 new Explanation()
                 {
                     Image = Avatars.Explaining,
-                    Dialog = "De wildcard hoeft niet persé aan het einde te staan en je kunt er zelfs meerdere in één query gebruiken.\n\n probeer eens alle bieren te vinden met het woord TRIPLE in de naam. \n\n hint: het maakt niet uit of er tekst voor of na het woord tripel staat.",
+                    Dialog = "De wildcard hoeft niet persé aan het einde te staan en je kunt er zelfs meerdere in één query gebruiken.\n\n probeer eens alle bieren te vinden met het woord TRIPLE in de naam. \n\n hint: het maakt niet uit of er tekst voor of na het woord staat.",
                     CanPass = false,
-                    AcceptedQueries = {"select * from bieren where naam like \"%triple%\";"}
+                    AnswerQuery = "select * from bieren where naam like \"%TRIPLE%\";"
                 },
                 new Explanation()
                 {

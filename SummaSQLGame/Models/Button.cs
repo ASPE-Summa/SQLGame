@@ -15,6 +15,7 @@ namespace SummaSQLGame.Models
         private string _name;
         private ButtonSafety _buttonSafety;
         private bool _isSafe = false;
+        private bool _isPressed = false;
 
         [Key]
         [Column("id")]
@@ -29,6 +30,9 @@ namespace SummaSQLGame.Models
 
         [NotMapped]
         public bool IsSafe { get { return _isSafe; } set { _isSafe = value; OnPropertyChanged(); } }
+
+        [NotMapped]
+        public bool IsPressed { get { return _isPressed;} set { _isPressed = value; OnPropertyChanged(); } }
 
         [InverseProperty("Button")]
         public ButtonSafety  ButtonSafety {  get { return _buttonSafety; } set { _buttonSafety = value; OnPropertyChanged(); } }

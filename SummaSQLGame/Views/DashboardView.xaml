@@ -102,6 +102,12 @@
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Avonturiers</TextBlock>
                 </Grid>
             </Border>
+            <Border BorderThickness="1" CornerRadius="20" Margin="15"  BorderBrush="Transparent">
+                <Grid Height="20">
+                    <ProgressBar Value="{Binding SaveState.ButtonPuzzlesCompleted}" Maximum="{Binding SaveState.ButtonPuzzlesEncountered}" Height="50" Background="OrangeRed" Foreground="#5786a1"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Knoppen</TextBlock>
+                </Grid>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

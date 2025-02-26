@@ -52,7 +52,9 @@ namespace SummaSQLGame.ViewModels
                 && !type.IsInterface 
                 && !type.IsAbstract 
                 && type != typeof(ChallengeExplanationViewModel) 
-                && type != typeof(ButtonViewModel) 
+                //&& type != typeof(AdventurerViewModel) 
+                //&& type != typeof(BattleshipViewModel) 
+                //&& type != typeof(ButtonViewModel) 
                 && type != typeof(MazeViewModel) 
                 && type != typeof(StudentViewModel)).ToList();
             _mainViewModel = mainViewModel;

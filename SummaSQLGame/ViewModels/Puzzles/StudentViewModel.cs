@@ -18,11 +18,17 @@ namespace SummaSQLGame.ViewModels.Puzzles
         public override event EventHandler<EventArgs> PuzzleCompleted;
         public new event PropertyChangedEventHandler? PropertyChanged;
 
+        private string _questionText;
+        private string _answerText;
         private List<String> functions = new List<String>() { "SUM", "AVG" };
         private List<String> operators = new List<String>() { "HIGHEST", "LOWEST" };
         private List<String> functionStrings = new List<String>() { "TOTAL", "AVERAGE" };
         private List<String> grades = new List<String>() { "NINTH", "TENTH", "ELEVENTH", "TWELFTH" };
         private List<String> subjects = new List<String>() { "MATH", "ENGLISH", "HISTORY", "GEOGRAPHY", "SCIENCE", "ART" };
+
+        public string QuestionTb { get { return _questionText; } set { _questionText = value; OnPropertyChanged(); } }
+
+        public string AnswerTb { get { return _answerText; } set { _answerText = value; OnPropertyChanged(); } }
 
         private Random rand;
         private string function;

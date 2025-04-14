@@ -1,7 +1,7 @@
 ﻿using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;
 
-namespace SummaSQLGame.ViewModels
+namespace SummaSQLGame.ViewModels.Select
 {
     public class AggregateViewModel : BaseExplanationViewModel
     {

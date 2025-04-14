@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace SummaSQLGame.Views
+namespace SummaSQLGame.Views.Select
 {
     /// <summary>
     /// Interaction logic for WildcardView.xaml

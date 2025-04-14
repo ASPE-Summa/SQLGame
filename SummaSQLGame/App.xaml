@@ -4,8 +4,10 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:rpbs="http://XamlRadialProgressBar/DotNet"
              xmlns:views="clr-namespace:SummaSQLGame.Views"
+             xmlns:selectViews="clr-namespace:SummaSQLGame.Views.Select"
              xmlns:puzzleViews="clr-namespace:SummaSQLGame.Views.Puzzles"
              xmlns:viewModels="clr-namespace:SummaSQLGame.ViewModels"
+             xmlns:selectViewModels="clr-namespace:SummaSQLGame.ViewModels.Select"
              xmlns:puzzleViewModels="clr-namespace:SummaSQLGame.ViewModels.Puzzles"
              xmlns:local="clr-namespace:SummaSQLGame">
     <Application.Resources>
@@ -30,26 +32,26 @@
             <DataTemplate DataType="{x:Type viewModels:WhyViewModel}">
                 <views:WhyView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:SelectViewModel}">
-                <views:SelectView/>
+            <DataTemplate DataType="{x:Type selectViewModels:SelectViewModel}">
+                <selectViews:SelectView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:FilterViewModel}">
-                <views:FilterView/>
+            <DataTemplate DataType="{x:Type selectViewModels:FilterViewModel}">
+                <selectViews:FilterView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:WildcardViewModel}">
-                <views:WildcardView/>
+            <DataTemplate DataType="{x:Type selectViewModels:WildcardViewModel}">
+                <selectViews:WildcardView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:SortViewModel}">
-                <views:SortView/>
+            <DataTemplate DataType="{x:Type selectViewModels:SortViewModel}">
+                <selectViews:SortView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:AggregateViewModel}">
-                <views:AggregateView/>
+            <DataTemplate DataType="{x:Type selectViewModels:AggregateViewModel}">
+                <selectViews:AggregateView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:GroupViewModel}">
-                <views:GroupView/>
+            <DataTemplate DataType="{x:Type selectViewModels:GroupViewModel}">
+                <selectViews:GroupView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:JoinViewModel}">
-                <views:JoinView/>
+            <DataTemplate DataType="{x:Type selectViewModels:JoinViewModel}">
+                <selectViews:JoinView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModels:ChallengeViewModel}">
                 <views:ChallengeView/>

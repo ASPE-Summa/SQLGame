@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="SummaSQLGame.Views.SortView"
+﻿<UserControl x:Class="SummaSQLGame.Views.Select.WildcardView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                 xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:local="clr-namespace:SummaSQLGame.Views"
-             xmlns:viewmodels="clr-namespace:SummaSQLGame.ViewModels"
+             xmlns:local="clr-namespace:SummaSQLGame.Views.Select"
+             xmlns:viewmodels="clr-namespace:SummaSQLGame.ViewModels.Select"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:helpers="clr-namespace:SummaSQLGame.Helpers"
              xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
@@ -13,7 +13,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="800">
     <d:UserControl.DataContext>
-        <viewmodels:SortViewModel/>
+        <viewmodels:WildcardViewModel/>
     </d:UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -36,7 +36,7 @@
             <Button Foreground="White" Background="OrangeRed" Margin="0 10 0 0" Width="100" HorizontalAlignment="Right" Command="{Binding QueryCommand}">Uitvoeren</Button>
         </StackPanel>
         <DataGrid Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,5,0" VerticalAlignment="Center" MinHeight="300" AutoGenerateColumns="True" ItemsSource="{Binding QueryResult.DefaultView}" Foreground="White"></DataGrid>
-        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/Diagrams/spotify.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2"></Image>
+        <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="/Assets/Diagrams/bieren.png" Stretch="Uniform" Grid.Row="0" Grid.Column="2"></Image>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Image Source="{Binding CurrentExplanation.Image}" VerticalAlignment="Bottom"/>
@@ -61,8 +61,11 @@
             <LineBreak></LineBreak>
             <helpers:ExternalHyperlink FontSize="20" NavigateUri="https://www.w3schools.com/sql/sql_where.asp">WHERE Statement</helpers:ExternalHyperlink>
             <LineBreak></LineBreak>
-            <helpers:ExternalHyperlink FontSize="20" NavigateUri="https://www.w3schools.com/sql/sql_orderby.asp">ORDER BY Statement</helpers:ExternalHyperlink>
+            <helpers:ExternalHyperlink FontSize="20" NavigateUri="https://www.w3schools.com/sql/sql_like.asp">LIKE Statement</helpers:ExternalHyperlink>
+            <LineBreak></LineBreak>
+            <helpers:ExternalHyperlink FontSize="20" NavigateUri="https://www.w3schools.com/sql/sql_wildcards.asp">Wildcards</helpers:ExternalHyperlink>
             </TextBlock>
         </Border>
     </Grid>
 </UserControl>
+

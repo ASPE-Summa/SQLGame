@@ -28,7 +28,7 @@ namespace SummaSQLGame.Models
         [StringLength(255)]
         public string Name { get { return _name; } set { _name = value; OnPropertyChanged(); } }
 
-        [Column("klas")]
+        [Column("klas")] 
         public int Group { get { return _group; } set { _group = value; OnPropertyChanged(); } }
 
         [Column("rekenen")]

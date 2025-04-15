@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace SummaSQLGame.Databases
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : DbContext, IAppDbContext
     {
         public DbSet<Dog> Dogs { get; set; }
         public DbSet<Beer> Beers { get; set; }

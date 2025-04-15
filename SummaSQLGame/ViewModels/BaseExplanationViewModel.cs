@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using MySqlX.XDevAPI;
 using SummaSQLGame.Databases;
 using SummaSQLGame.Helpers;
@@ -26,6 +27,7 @@ namespace SummaSQLGame.ViewModels
         protected DataTable _queryResult;
         protected string _queryText = "";
         protected string _subject;
+        protected IAppDbContext _context;
         #endregion
 
         #region properties
@@ -66,6 +68,12 @@ namespace SummaSQLGame.ViewModels
         {
             get { return _subject; }
         }
+
+        public IAppDbContext Context
+        {
+            get { return _context; }
+            set { _context = value; OnPropertyChanged(); }
+        }
         #endregion
 
         #region constructor
@@ -74,6 +82,7 @@ namespace SummaSQLGame.ViewModels
             NextExplanationCommand = new RelayCommand(ExecuteNextDialogue, CanExecuteNext);
             PreviousExplanationCommand = new RelayCommand(ExecutePreviousDialogue, CanExecutePrevious);
             QueryCommand = new RelayCommand(ExecuteAndValidateQuery);
+            _context = new AppDbContext();
         }
         #endregion
 
@@ -98,6 +107,10 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteNextDialogue(object? obj)
         {
+            if (CurrentExplanation.CanPass == false || ExplanationIndex == Explanations.Count - 1)
+            {
+                return;
+            }
             _explanationIndex++;
             CurrentExplanation = _explanations[_explanationIndex];
             UpdateProgress();
@@ -105,52 +118,67 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecutePreviousDialogue(object? obj)
         {
+            if (_explanationIndex <= 0)
+            {
+                return;
+            }
             _explanationIndex--;
             CurrentExplanation = _explanations[_explanationIndex];
         }
 
         private void ExecuteAndValidateQuery(object? obj)
         {
-            using (AppDbContext dbContext = new AppDbContext())
+            if (QueryText.Contains("select", StringComparison.OrdinalIgnoreCase) && QueryText.Contains("from", StringComparison.OrdinalIgnoreCase))
             {
+                ExecuteAndValidateSelect(QueryText);
+            }
+        }
 
-                DataTable result = dbContext.ExecuteQuery(QueryText);
-                QueryResult = result;
+        private void ExecuteAndValidateSelect(string queryText)
+        {
+            DataTable result = _context.ExecuteQuery(QueryText);
+            QueryResult = result;
 
-                if (String.IsNullOrEmpty(CurrentExplanation.AnswerQuery) || result.Rows.Count == 0)
+            if (String.IsNullOrEmpty(CurrentExplanation.AnswerQuery) || result.Rows.Count == 0)
+            {
+                return;
+            }
+
+            //Validate whether the result of the query is what we expect. Using the amount of rows and the names of the columns
+            DataTable expectedResult = _context.ExecuteQuery(CurrentExplanation.AnswerQuery);
+            var isRowsCorrect = result.Rows.Count == expectedResult.Rows.Count;
+            var actualColumnNames = result.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
+            var expectedColumnNames = expectedResult.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
+            var unmatchedColumnNames = from col in actualColumnNames where !expectedColumnNames.Contains(col) select col;
+
+            //This checks whether the first column of the first row of the expected result exists somewhere in the first row of actual.
+            //To determine whether order by queries have been executed correctly.
+            var containsFirstExpectedValue = false;
+            DataRow firstActualRow = result.Rows[0];
+            string expectedValue = expectedResult.Rows[0][0].ToString();
+            foreach (var value in firstActualRow.ItemArray)
+            {
+                if (value.ToString() == expectedValue)
                 {
-                    return;
-                }
-
-                //Validate whether the result of the query is what we expect. Using the amount of rows and the names of the columns
-                DataTable expectedResult = dbContext.ExecuteQuery(CurrentExplanation.AnswerQuery);
-                var isRowsCorrect = result.Rows.Count == expectedResult.Rows.Count;
-                var actualColumnNames = result.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
-                var expectedColumnNames = expectedResult.Columns.Cast<DataColumn>().Select(c => c.ColumnName.ToLower()).ToList();
-                var unmatchedColumnNames = from col in actualColumnNames where !expectedColumnNames.Contains(col) select col;
-
-                //This checks whether the first column of the first row of the expected result exists somewhere in the first row of actual.
-                //To determine whether order by queries have been executed correctly.
-                var containsFirstExpectedValue = false;
-                DataRow firstActualRow = result.Rows[0];
-                string expectedValue = expectedResult.Rows[0][0].ToString();
-                foreach (var value in firstActualRow.ItemArray) {
-                    if (value.ToString() == expectedValue)
-                    {
-                        containsFirstExpectedValue = true;
-                    }
-                }
-
-
-                if (CurrentExplanation.CanPass == false && isRowsCorrect && unmatchedColumnNames.Count() == 0 && containsFirstExpectedValue)
-                {
-                    CurrentExplanation.CanPass = true;
-                    SoundPlayer player = new SoundPlayer(@"Assets/Sounds/SUCCESS TUNE Win Complete Short 04.wav");
-                    player.Load();
-                    player.Play();
+                    containsFirstExpectedValue = true;
                 }
             }
+
+
+            if (CurrentExplanation.CanPass == false && isRowsCorrect && unmatchedColumnNames.Count() == 0 && containsFirstExpectedValue)
+            {
+                CurrentExplanation.CanPass = true;
+                PlayCorrectTune();
+            }
+        }
+
+        private void PlayCorrectTune()
+        {
+            SoundPlayer player = new SoundPlayer(@"Assets/Sounds/SUCCESS TUNE Win Complete Short 04.wav");
+            player.Load();
+            player.Play();
         }
         #endregion
     }
+
 }

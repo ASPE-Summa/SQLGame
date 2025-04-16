@@ -39,12 +39,11 @@ namespace SummaSQLGame.ViewModels.Puzzles
         {
             _puzzleType = Helpers.Puzzles.BATTLESHIP;
             ButtonClickedCommand = new RelayCommand(ExecuteButtonClicked);
-            SelectRandomPuzzle();
         }
         #endregion
 
         #region methods
-        private void SelectRandomPuzzle()
+        public override void InitializePuzzle()
         {
             using (AppDbContext context = new AppDbContext())
             {

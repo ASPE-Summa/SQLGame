@@ -28,7 +28,6 @@ namespace SummaSQLGame.ViewModels.Puzzles
         public ButtonViewModel() : base()
         {
             _puzzleType = Helpers.Puzzles.BUTTON;
-            LoadButtons();
             ButtonClickedCommand = new RelayCommand(ExecuteButtonClicked);
         }
         #endregion
@@ -41,7 +40,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
         /**
          * Draws 9 buttons from the database of which 3 are armed and 6 are not.
          */
-        public void LoadButtons()
+        public override void InitializePuzzle()
         {
             using (AppDbContext context = new AppDbContext())
             {

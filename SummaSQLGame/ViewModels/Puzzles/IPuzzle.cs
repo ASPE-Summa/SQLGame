@@ -14,6 +14,8 @@ namespace SummaSQLGame.ViewModels.Puzzles
         public DataTable QueryResult { get; set; }
         public ICommand QueryCommand { get; }
         public int Attempts { get; set; }
+
+        public void InitializePuzzle();
         public string QueryText { get; set; }
         public string PuzzleType {  get; }
     }

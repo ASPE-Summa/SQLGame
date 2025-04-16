@@ -5,6 +5,7 @@ using SummaSQLGame.Models;
 using SummaSQLGame.ViewModels.Select;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Abstractions;
 using System.Windows;
 using System.Windows.Input;
 
@@ -12,17 +13,18 @@ namespace SummaSQLGame.ViewModels
 {
     public class MainViewModel : ObservableObject
     {
+        public const string JSONPATH = @"Assets/SaveState.json";
+
         #region fields
         private object _activeViewModel;
         private SaveState? _saveState;
-        private string _path;
-        private string _jsonPath = @"Assets/SaveState.json";
+        private readonly IFileSystem _fileSystem;
         #endregion
 
         #region constructors
-        public MainViewModel()
+        public MainViewModel(IFileSystem fileSystem)
         {
-            _path = System.AppDomain.CurrentDomain.BaseDirectory;
+            _fileSystem = fileSystem;
             WindowClosingCommand = new RelayCommand(SaveBeforeClosing);
             DashBoardCommand = new RelayCommand(ExecuteShowDashboard);
             WhyCommand = new RelayCommand(ExecuteShowWhy);
@@ -39,6 +41,8 @@ namespace SummaSQLGame.ViewModels
             ActiveViewModel = new DashboardViewModel(SaveState);
 
         }
+
+        public MainViewModel() : this(fileSystem: new FileSystem()) { }
         #endregion
 
         #region properties
@@ -73,7 +77,7 @@ namespace SummaSQLGame.ViewModels
         #region methods
         private void LoadSaveState()
         {
-            if (!File.Exists(_jsonPath))
+            if (!_fileSystem.File.Exists(JSONPATH))
             {
                 NameDialog dialog = new NameDialog();
                 dialog.ShowDialog();
@@ -83,14 +87,14 @@ namespace SummaSQLGame.ViewModels
             {
                 try
                 {
-                    string jsonString = File.ReadAllText(_jsonPath);
+                    string jsonString = _fileSystem.File.ReadAllText(JSONPATH);
                     SaveState = JsonConvert.DeserializeObject<SaveState>(jsonString)!;
                 }
                 catch (JsonReaderException ex)
                 {
                     Debug.Write(ex);
                     MessageBox.Show("Error bij het lezen van je opgeslagen voortgang. Herstart de applicatie");
-                    File.Delete(_jsonPath);
+                    _fileSystem.File.Delete(JSONPATH);
                     WindowClosingCommand.Execute(null);
                 }
             }
@@ -98,8 +102,7 @@ namespace SummaSQLGame.ViewModels
         
         private void SaveBeforeClosing(object? obj)
         {
-            string combinedPath = Path.Combine(_path, _jsonPath);
-            using(StreamWriter sw = File.CreateText(combinedPath))
+            using(StreamWriter sw = _fileSystem.File.CreateText(JSONPATH))
             {
                 string contents = JsonConvert.SerializeObject(SaveState, Formatting.Indented);
                 sw.Write(contents);

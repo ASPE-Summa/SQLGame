@@ -1,20 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+﻿using Moq;
 using SummaSQLGame.Databases;
-using SummaSQLGame.ViewModels;
 using SummaSQLGame.ViewModels.Select;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SummaSQLGame.ViewModels.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class BaseExplanationViewModelTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void NextCommand_CanPass_GoesToNext()
         {
             // Arrange
@@ -31,7 +24,7 @@ namespace SummaSQLGame.ViewModels.Tests
             Assert.AreEqual(viewModel.CurrentExplanation, viewModel.Explanations[expectedIndex]);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void NextCommand_CannotPass_DoesNotGoToNext()
         {
             // Arrange
@@ -48,7 +41,7 @@ namespace SummaSQLGame.ViewModels.Tests
             Assert.AreEqual(viewModel.CurrentExplanation, viewModel.Explanations[expectedIndex]);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void NextCommand_NoMoreExplanations_DoesNotGoToNext()
         {
             // Arrange
@@ -64,7 +57,7 @@ namespace SummaSQLGame.ViewModels.Tests
             Assert.AreEqual(expectedExplanation, viewModel.CurrentExplanation);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void PreviousCommand_GoesToPrevious()
         {
             // Arrange
@@ -81,7 +74,7 @@ namespace SummaSQLGame.ViewModels.Tests
             Assert.AreEqual(viewModel.CurrentExplanation, viewModel.Explanations[0]);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void PreviousCommand_AtFirstIndex_DoesNotGoToPrevious()
         {
             // Arrange
@@ -98,7 +91,7 @@ namespace SummaSQLGame.ViewModels.Tests
             Assert.AreEqual(expectedIndex, viewModel.ExplanationIndex);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void QueryCommand_WithCorrectQuery_SetsCanPass()
         {
             // Arrange
@@ -123,7 +116,7 @@ namespace SummaSQLGame.ViewModels.Tests
             Assert.AreEqual(expectedCanPass, viewModel.CurrentExplanation.CanPass);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void QueryCommand_WithWrongColumns_DoesNotSetCanPass()
         {
             var viewModel = new SelectViewModel();
@@ -155,7 +148,7 @@ namespace SummaSQLGame.ViewModels.Tests
             Assert.AreEqual(expectedCanPass, viewModel.CurrentExplanation.CanPass);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void QueryCommand_WithWrongRows_DoesNotSetCanPass()
         {
             var viewModel = new SelectViewModel();

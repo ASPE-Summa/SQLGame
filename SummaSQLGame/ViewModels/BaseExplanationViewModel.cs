@@ -82,7 +82,7 @@ namespace SummaSQLGame.ViewModels
             NextExplanationCommand = new RelayCommand(ExecuteNextDialogue, CanExecuteNext);
             PreviousExplanationCommand = new RelayCommand(ExecutePreviousDialogue, CanExecutePrevious);
             QueryCommand = new RelayCommand(ExecuteAndValidateQuery);
-            _context = new AppDbContext();
+            Context = new AppDbContext();
         }
         #endregion
 

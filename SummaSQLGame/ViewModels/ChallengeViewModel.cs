@@ -27,6 +27,7 @@ namespace SummaSQLGame.ViewModels
         private MainViewModel _mainViewModel;
         private Random _rand;
         private List<Type> _puzzleTypes;
+            
         #endregion
 
         #region properties
@@ -82,6 +83,7 @@ namespace SummaSQLGame.ViewModels
         {
             Type randomPuzzleType = _puzzleTypes[_rand.Next(_puzzleTypes.Count)];
             IPuzzle puzzleViewModel = (IPuzzle)Activator.CreateInstance(randomPuzzleType);
+            puzzleViewModel.InitializePuzzle();
             ActivePuzzle = puzzleViewModel;
             _mainViewModel.SaveState.UpdateEncountered(ActivePuzzle.PuzzleType);
             ActivePuzzle.PuzzleCompleted += HandlePuzzleCompletion;

@@ -39,6 +39,7 @@
     <None Remove="Assets\Resources\sql.xshd" />
     <None Remove="Assets\Sounds\SUCCESS TUNE Win Complete Short 04.wav" />
     <None Remove="Databases\Database" />
+    <None Remove="Databases\database.db" />
   </ItemGroup>
 
   <ItemGroup>
@@ -129,6 +130,9 @@
     <Content Include="Assets\Sounds\SUCCESS TUNE Win Complete Short 04.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Databases\database.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -159,31 +163,25 @@
     <Compile Update="Views\WhyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\JoinView.xaml.cs">
+    <Compile Update="Views\Select\JoinView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\GroupView.xaml.cs">
+    <Compile Update="Views\Select\GroupView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\AggregateView.xaml.cs">
+    <Compile Update="Views\Select\AggregateView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\WildcardView.xaml.cs">
+    <Compile Update="Views\Select\WildcardView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Databases\database.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Views\GroupView.xaml">
+    <Page Update="Views\Select\GroupView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\AggregateView.xaml">
+    <Page Update="Views\Select\AggregateView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

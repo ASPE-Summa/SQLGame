@@ -1,14 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace SummaSQLGame.Views
+namespace SummaSQLGame.Views.Select
 {
     /// <summary>
-    /// Interaction logic for SelectView.xaml
+    /// Interaction logic for GroupView.xaml
     /// </summary>
-    public partial class SelectView : UserControl
+    public partial class GroupView : UserControl
     {
-        public SelectView()
+        public GroupView()
         {
             InitializeComponent();
         }

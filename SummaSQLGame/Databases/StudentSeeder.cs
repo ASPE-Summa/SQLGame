@@ -277,7 +277,7 @@ namespace SummaSQLGame.Databases
             }
             using AppDbContext db = new AppDbContext();
 
-            db.studenten.AddRange(
+            db.Students.AddRange(
                 students
             );
 

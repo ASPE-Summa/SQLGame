@@ -22,7 +22,7 @@ namespace SummaSQLGame.Databases
         public DbSet<Button> Buttons { get; set; }
         public DbSet<ButtonSafety> ButtonSafeties { get; set; }
         public DbSet<MazePuzzle> MazePuzzles { get; set; }
-        public DbSet<Student> studenten { get; set; }
+        public DbSet<Student> Students { get; set; }
 
         public DataTable ExecuteQuery(string queryText)
         {

@@ -40,7 +40,7 @@
          
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <xctk:WatermarkTextBox Watermark="Vul hier het antwoord in op de vraag" Text="{Binding AnswerTb}"/>
+                <xctk:WatermarkTextBox Watermark="Vul hier het antwoord in op de vraag" Text="{Binding Answer}"/>
                 <Button Grid.Column="1" VerticalAlignment="Bottom" Command="{Binding ProcessAnswerCommand}" Background="OrangeRed" Foreground="White">Valideren</Button>
             </Grid>
         </Grid>

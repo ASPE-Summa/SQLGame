@@ -17,7 +17,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
         private string _answerText;
         private List<String> _functions = new List<String>() { "SUM", "AVG" };
         private List<String> _operators = new List<String>() { "Hoogste", "Laagste" };
-        private List<String> _functionStrings = new List<String>() { "totaal", "gemiddelde" };
+        private List<String> _functionStrings = new List<String>() { "totale", "gemiddelde" };
         private List<String> _klassen = new List<String>() { "negende", "tiende", "elfde", "twaalfde" };
         private List<String> _subjects = new List<String>() { "rekenen", "engels", "geschiedenis", "aardrijkskunde", "scheikunde", "kunst" };
 
@@ -100,8 +100,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
         // Verwerkt het antwoord en vergelijkt het met de oplossing; triggert event bij correct antwoord.
         private void ProcessAnswer(object obj)
         {
-            string answer = Answer;
-            if (answer == _solution)
+            if (Answer == _solution)
             {
                 PuzzleCompleted?.Invoke(this, new EventArgs());
                 return;

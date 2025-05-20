@@ -6,7 +6,7 @@ using SummaSQLGame.Databases;
 namespace SummaSQLGame.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedStudents : Migration
+    public partial class Seedstudents : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

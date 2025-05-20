@@ -11,8 +11,8 @@ using SummaSQLGame.Databases;
 namespace SummaSQLGame.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250519100046_SeedStudenten")]
-    partial class SeedStudenten
+    [Migration("20250520113526_Seed students")]
+    partial class Seedstudents
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

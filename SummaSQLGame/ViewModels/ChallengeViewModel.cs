@@ -48,15 +48,15 @@ namespace SummaSQLGame.ViewModels
         {
             _rand = new Random();
             _puzzleTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()).Where(
-                type => typeof(IPuzzle).IsAssignableFrom(type) 
-                && !type.IsInterface 
-                && !type.IsAbstract 
-                && type != typeof(ChallengeExplanationViewModel) 
-                //&& type != typeof(AdventurerViewModel) 
-                //&& type != typeof(BattleshipViewModel) 
-                //&& type != typeof(ButtonViewModel) 
-                && type != typeof(MazeViewModel) 
-                && type != typeof(StudentViewModel)).ToList();
+                type => typeof(IPuzzle).IsAssignableFrom(type)
+                && !type.IsInterface
+                && !type.IsAbstract
+                && type != typeof(ChallengeExplanationViewModel)
+                && type != typeof(AdventurerViewModel)
+                && type != typeof(BattleshipViewModel)
+                && type != typeof(ButtonViewModel)
+                && type != typeof(MazeViewModel)).ToList();
+                //&& type != typeof(StudentViewModel)).ToList();
             _mainViewModel = mainViewModel;
             _remainingTime = _totalTime;
             _timer = new DispatcherTimer();

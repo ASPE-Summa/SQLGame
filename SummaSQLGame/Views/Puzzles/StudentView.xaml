@@ -26,15 +26,18 @@
         </Viewbox>
         <Grid Grid.Row="1" Background="DarkSlateGray" Height="400">
             <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
                 <RowDefinition Height="3*"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
             </Grid.ColumnDefinitions>
-            <Image Source="\Assets\Decorations\studenten_Foto.png"/>
-            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <TextBlock Background="DarkSlateGray" TextAlignment="Center" Foreground="White" Grid.Row="0" Text="{Binding QuestionString}"/>
+                <Image Source="\Assets\Decorations\studenten_Foto.png" Grid.Row="1"/>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"></ColumnDefinition>
+         
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <xctk:WatermarkTextBox Watermark="Vul hier het antwoord in op de vraag" Text="{Binding AnswerTb}"/>

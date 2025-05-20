@@ -11,14 +11,14 @@ using SummaSQLGame.Databases;
 namespace SummaSQLGame.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241111153739_Students")]
+    [Migration("20250513114029_Students")]
     partial class Students
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.11");
 
             modelBuilder.Entity("SummaSQLGame.Models.Adventurer", b =>
                 {
@@ -69,7 +69,7 @@ namespace SummaSQLGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("avonturier");
+                    b.ToTable("avonturiers");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.Anime", b =>
@@ -143,7 +143,7 @@ namespace SummaSQLGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("zeeslag");
+                    b.ToTable("woorden");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.Beer", b =>
@@ -205,7 +205,7 @@ namespace SummaSQLGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("knop");
+                    b.ToTable("knoppen");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.ButtonSafety", b =>
@@ -228,7 +228,7 @@ namespace SummaSQLGame.Migrations
                     b.HasIndex("ButtonId")
                         .IsUnique();
 
-                    b.ToTable("knopveiligheid");
+                    b.ToTable("knoppen_veiligheid");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.City", b =>
@@ -260,7 +260,7 @@ namespace SummaSQLGame.Migrations
 
                     b.HasIndex("CountryId");
 
-                    b.ToTable("stad");
+                    b.ToTable("steden");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.Country", b =>
@@ -278,7 +278,7 @@ namespace SummaSQLGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("land");
+                    b.ToTable("landen");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.Dog", b =>
@@ -328,7 +328,7 @@ namespace SummaSQLGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("doolhof");
+                    b.ToTable("doolhoven");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.Songs", b =>
@@ -364,7 +364,7 @@ namespace SummaSQLGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("spotify");
+                    b.ToTable("liederen");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.Student", b =>
@@ -410,7 +410,7 @@ namespace SummaSQLGame.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("student");
+                    b.ToTable("studenten");
                 });
 
             modelBuilder.Entity("SummaSQLGame.Models.ButtonSafety", b =>

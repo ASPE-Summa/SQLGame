@@ -1,15 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SummaSQLGame.Databases;
-using SummaSQLGame.Models;
-using System;
-using System.Collections.Generic;
+using SummaSQLGame.Helpers;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace SummaSQLGame.ViewModels.Puzzles
 {
@@ -21,19 +17,21 @@ namespace SummaSQLGame.ViewModels.Puzzles
         private string _questionText;
         private string _answerText;
         private List<String> functions = new List<String>() { "SUM", "AVG" };
-        private List<String> operators = new List<String>() { "HIGHEST", "LOWEST" };
-        private List<String> functionStrings = new List<String>() { "TOTAL", "AVERAGE" };
-        private List<String> grades = new List<String>() { "NINTH", "TENTH", "ELEVENTH", "TWELFTH" };
-        private List<String> subjects = new List<String>() { "MATH", "ENGLISH", "HISTORY", "GEOGRAPHY", "SCIENCE", "ART" };
+        private List<String> operators = new List<String>() { "Hoogste", "Laagste" };
+        private List<String> functionStrings = new List<String>() { "totaal", "gemiddelde" };
+        private List<String> klassen = new List<String>() { "negende", "tiende", "elfde", "twaalfde" };
+        private List<String> subjects = new List<String>() { "rekenen", "engels", "geschiedenis", "aardrijkskunde", "scheikunde", "kunst" };
 
         public string QuestionTb { get { return _questionText; } set { _questionText = value; OnPropertyChanged(); } }
 
         public string AnswerTb { get { return _answerText; } set { _answerText = value; OnPropertyChanged(); } }
 
+        public ICommand ProcessAnswerCommand { get; }
+
         private Random rand;
         private string function;
         private string operation;
-        private string grade;
+        private string klas;
         private string subject;
         private string solution;
 
@@ -56,11 +54,13 @@ namespace SummaSQLGame.ViewModels.Puzzles
             rand = new Random();
 
             function = functions[rand.Next(functions.Count)];
-            grade = grades[rand.Next(grades.Count)];
+            klas = klassen[rand.Next(klassen.Count)];
             subject = subjects[rand.Next(subjects.Count)];
             operation = operators[rand.Next(operators.Count)];
             QuestionString = GenerateQuestion();
             solution = GetSolution();
+            ProcessAnswerCommand = new RelayCommand(_ => ProcessAnswer());
+
         }
 
         protected new void OnPropertyChanged([CallerMemberName] string? name = null)
@@ -70,7 +70,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
 
         private string GenerateQuestion()
         {
-            return $"WHICH GRADE HAS THE {operation.ToLower()} {functionStrings[functions.IndexOf(function)]} {subject} SCORE?";
+            return $"Welke klas heeft de {operation.ToLower()} {functionStrings[functions.IndexOf(function)]} {subject} scoren?";
         }
 
         private string GetSolution()
@@ -88,23 +88,30 @@ namespace SummaSQLGame.ViewModels.Puzzles
                 return result.ToString();
             }
         }
-
         private string GenerateQuery()
         {
-            if (operation == "HIGHEST")
+            string column = subject.ToLower();
+
+            if (operation == "Hoogste")
             {
-                return $"SELECT grade, {function.ToLower()}({subject.ToLower()}_score) AS aggregate FROM student GROUP BY (grade) ORDER BY (aggregate) DESC LIMIT 1";
+                return $"SELECT klas, {function.ToLower()}({column}) AS aggregate FROM studenten GROUP BY klas ORDER BY aggregate DESC LIMIT 1";
             }
-            return $"SELECT grade, {function.ToLower()}({subject.ToLower()}_score) AS aggregate FROM student GROUP BY (grade) ORDER BY (aggregate) ASC LIMIT 1";
+            return $"SELECT klas, {function.ToLower()}({column}) AS aggregate FROM studenten GROUP BY klas ORDER BY aggregate ASC LIMIT 1";
         }
+
 
         private void ProcessAnswer()
         {
-            string answer = tbAnswer.Text;
+            string answer = AnswerTb;
             if (answer == solution)
             {
                 PuzzleCompleted?.Invoke(this, new EventArgs());
                 return;
+            }
+            else
+            {
+                MessageBox.Show("Dat is niet het juiste antwoord. Probeer het nog eens.");
+                
             }
 
         }

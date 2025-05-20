@@ -10,6 +10,7 @@ namespace SummaSQLGame.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+
             migrationBuilder.CreateTable(
                 name: "studenten",
                 columns: table => new
@@ -27,7 +28,7 @@ namespace SummaSQLGame.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_student", x => x.id);
+                    table.PrimaryKey("PK_studenten", x => x.id);
                 });
         }
 

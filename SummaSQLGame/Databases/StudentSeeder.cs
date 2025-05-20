@@ -262,7 +262,7 @@ namespace SummaSQLGame.Databases
             List<Student> students = new List<Student>();
             foreach(string name in NAMES)
             {
-                Student student = new()
+                Student Student = new()
                 {
                     Name = name,
                     Group = rand.Next(5,9),
@@ -273,11 +273,11 @@ namespace SummaSQLGame.Databases
                     ChemistryScore = rand.Next(0, 11),
                     ArtScore = rand.Next(0, 11)
                 };
-                students.Add(student);
+                students.Add(Student);
             }
             using AppDbContext db = new AppDbContext();
 
-            db.Students.AddRange(
+            db.studenten.AddRange(
                 students
             );
 

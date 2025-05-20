@@ -2,6 +2,7 @@
 using SummaSQLGame.Dialog;
 using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;
+using SummaSQLGame.ViewModels.Select;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;

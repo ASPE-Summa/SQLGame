@@ -1,14 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace SummaSQLGame.Views
+namespace SummaSQLGame.Views.Select
 {
     /// <summary>
-    /// Interaction logic for FilterView.xaml
+    /// Interaction logic for SortView.xaml
     /// </summary>
-    public partial class FilterView : UserControl
+    public partial class SortView : UserControl
     {
-        public FilterView()
+        public SortView()
         {
             InitializeComponent();
         }

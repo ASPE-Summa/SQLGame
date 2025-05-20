@@ -1,14 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace SummaSQLGame.Views
+namespace SummaSQLGame.Views.Select
 {
     /// <summary>
-    /// Interaction logic for SortView.xaml
+    /// Interaction logic for AggregateView.xaml
     /// </summary>
-    public partial class SortView : UserControl
+    public partial class AggregateView : UserControl
     {
-        public SortView()
+        public AggregateView()
         {
             InitializeComponent();
         }

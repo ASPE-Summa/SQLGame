@@ -33,6 +33,7 @@ namespace SummaSQLGame.Helpers
         {
             _execute(parameter);
         }
+
         #endregion
     }
 }

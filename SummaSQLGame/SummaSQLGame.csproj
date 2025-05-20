@@ -17,6 +17,7 @@
     <None Remove="Assets\Avatar\avatar_smiling.png" />
     <None Remove="Assets\avatar_default.png" />
     <None Remove="Assets\Decorations\adventurers.png" />
+    <None Remove="Assets\Decorations\studenten_Foto.png" />
     <None Remove="Assets\Diagrams\adventurer.png" />
     <None Remove="Assets\Diagrams\anime.png" />
     <None Remove="Assets\Diagrams\bieren.png" />
@@ -65,6 +66,9 @@
     </Content>
     <Content Include="Assets\Decorations\adventurers.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Decorations\studenten_Foto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Diagrams\adventurer.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -153,10 +157,6 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.0" />
     <PackageReference Include="XamlRadialProgressBar" Version="1.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

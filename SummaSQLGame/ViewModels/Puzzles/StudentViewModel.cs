@@ -2,77 +2,73 @@
 using SummaSQLGame.Databases;
 using SummaSQLGame.Helpers;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-using System.Xml.Linq;
 
 namespace SummaSQLGame.ViewModels.Puzzles
 {
     public class StudentViewModel : BasePuzzleViewModel
     {
         public override event EventHandler<EventArgs> PuzzleCompleted;
+
         public new event PropertyChangedEventHandler? PropertyChanged;
 
         private string _questionText;
         private string _answerText;
-        private List<String> functions = new List<String>() { "SUM", "AVG" };
-        private List<String> operators = new List<String>() { "Hoogste", "Laagste" };
-        private List<String> functionStrings = new List<String>() { "totaal", "gemiddelde" };
-        private List<String> klassen = new List<String>() { "negende", "tiende", "elfde", "twaalfde" };
-        private List<String> subjects = new List<String>() { "rekenen", "engels", "geschiedenis", "aardrijkskunde", "scheikunde", "kunst" };
+        private List<String> _functions = new List<String>() { "SUM", "AVG" };
+        private List<String> _operators = new List<String>() { "Hoogste", "Laagste" };
+        private List<String> _functionStrings = new List<String>() { "totaal", "gemiddelde" };
+        private List<String> _klassen = new List<String>() { "negende", "tiende", "elfde", "twaalfde" };
+        private List<String> _subjects = new List<String>() { "rekenen", "engels", "geschiedenis", "aardrijkskunde", "scheikunde", "kunst" };
 
-        public string QuestionTb { get { return _questionText; } set { _questionText = value; OnPropertyChanged(); } }
+        public string Question { get { return _questionText; } set { _questionText = value; OnPropertyChanged(); } }
 
-        public string AnswerTb { get { return _answerText; } set { _answerText = value; OnPropertyChanged(); } }
+        public string Answer { get { return _answerText; } set { _answerText = value; OnPropertyChanged(); } }
 
         public ICommand ProcessAnswerCommand { get; }
 
-        private Random rand;
-        private string function;
-        private string operation;
-        private string klas;
-        private string subject;
-        private string solution;
+        private Random _rand;
+        private string _function;
+        private string _operation;
+        private string _klas;
+        private string _subject;
+        private string _solution;
 
-        private string questionString;
+        private string _questionString;
 
         public string QuestionString
         {
             get
             {
-                return questionString;
+                return _questionString;
             }
             set
             {
-                questionString = value; OnPropertyChanged();
+                _questionString = value; OnPropertyChanged();
             }
         }
 
         public StudentViewModel()
         {
-            rand = new Random();
+            _rand = new Random();
 
-            function = functions[rand.Next(functions.Count)];
-            klas = klassen[rand.Next(klassen.Count)];
-            subject = subjects[rand.Next(subjects.Count)];
-            operation = operators[rand.Next(operators.Count)];
+            _function = _functions[_rand.Next(_functions.Count)];
+            _klas = _klassen[_rand.Next(_klassen.Count)];
+            _subject = _subjects[_rand.Next(_subjects.Count)];
+            _operation = _operators[_rand.Next(_operators.Count)];
             QuestionString = GenerateQuestion();
-            solution = GetSolution();
-            ProcessAnswerCommand = new RelayCommand(_ => ProcessAnswer());
+            _solution = GetSolution();
+            ProcessAnswerCommand = new RelayCommand(ProcessAnswer);
 
         }
 
-        protected new void OnPropertyChanged([CallerMemberName] string? name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
+        // Genereert een natuurlijke taal vraag op basis van willekeurige componenten.
         private string GenerateQuestion()
         {
-            return $"Welke klas heeft de {operation.ToLower()} {functionStrings[functions.IndexOf(function)]} {subject} scoren?";
+            return $"Welke klas heeft de {_operation.ToLower()} {_functionStrings[_functions.IndexOf(_function)]} {_subject} score?";
         }
 
+        // Voert de gegenereerde query uit op de database om de correcte oplossing op te halen.
         private string GetSolution()
         {
             using (AppDbContext context = new AppDbContext())
@@ -88,22 +84,24 @@ namespace SummaSQLGame.ViewModels.Puzzles
                 return result.ToString();
             }
         }
+
+        // Maakt een SQL-query aan op basis van geselecteerde functie, operatie en vak.
         private string GenerateQuery()
         {
-            string column = subject.ToLower();
+            string column = _subject.ToLower();
 
-            if (operation == "Hoogste")
+            if (_operation == "Hoogste")
             {
-                return $"SELECT klas, {function.ToLower()}({column}) AS aggregate FROM studenten GROUP BY klas ORDER BY aggregate DESC LIMIT 1";
+                return $"SELECT klas, {_function.ToLower()}({column}) AS aggregate FROM studenten GROUP BY klas ORDER BY aggregate DESC LIMIT 1";
             }
-            return $"SELECT klas, {function.ToLower()}({column}) AS aggregate FROM studenten GROUP BY klas ORDER BY aggregate ASC LIMIT 1";
+            return $"SELECT klas, {_function.ToLower()}({column}) AS aggregate FROM studenten GROUP BY klas ORDER BY aggregate ASC LIMIT 1";
         }
 
-
-        private void ProcessAnswer()
+        // Verwerkt het antwoord en vergelijkt het met de oplossing; triggert event bij correct antwoord.
+        private void ProcessAnswer(object obj)
         {
-            string answer = AnswerTb;
-            if (answer == solution)
+            string answer = Answer;
+            if (answer == _solution)
             {
                 PuzzleCompleted?.Invoke(this, new EventArgs());
                 return;
@@ -111,22 +109,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
             else
             {
                 MessageBox.Show("Dat is niet het juiste antwoord. Probeer het nog eens.");
-                
             }
-
-        }
-
-        private void tbAnswer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                ProcessAnswer();
-            }
-        }
-
-        private void btnSubmit_Click(object sender, RoutedEventArgs e)
-        {
-            ProcessAnswer();
         }
     }
 }

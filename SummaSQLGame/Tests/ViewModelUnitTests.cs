@@ -1,9 +1,11 @@
 using System.Data;
-using Moq;
+using TestableIO.System.IO.Abstractions;
+using TestableIO.System.IO.Abstractions.Wrappers;
 using SummaSQLGame.Models;
 using SummaSQLGame.Services;
 using SummaSQLGame.ViewModels;
 using Xunit;
+using System.IO.Abstractions.TestingHelpers;
 
 namespace SummaSQLGame.Tests
 {
@@ -13,17 +15,22 @@ namespace SummaSQLGame.Tests
         public void LoadSaveState_LoadsStateFromService()
         {
             // Arrange
+            var fileSystem = new MockFileSystem();
             var saveState = new SaveState("test");
-            var saveStateServiceMock = new Mock<ISaveStateService>();
-            saveStateServiceMock.Setup(s => s.Load()).Returns(saveState);
-            var serviceProviderMock = new Mock<IServiceProvider>();
-            var vm = new MainViewModel(saveStateServiceMock.Object, serviceProviderMock.Object);
+            var jsonPath = @"Assets/SaveState.json";
+            var basePath = "/tmp/testapp/";
+            var fullPath = Path.Combine(basePath, jsonPath);
+            fileSystem.AddDirectory(Path.Combine(basePath, "Assets"));
+            fileSystem.AddFile(fullPath, new MockFileData(Newtonsoft.Json.JsonConvert.SerializeObject(saveState)));
+            var saveStateService = new SaveStateService(new FileSystemWrapper(fileSystem), basePath, jsonPath);
+            var serviceProvider = new TestServiceProvider();
+            var vm = new MainViewModel(saveStateService, serviceProvider);
 
             // Act
             var result = vm.SaveState;
 
             // Assert
-            Assert.Equal(saveState, result);
+            Assert.Equal(saveState.Name, result.Name);
         }
     }
 

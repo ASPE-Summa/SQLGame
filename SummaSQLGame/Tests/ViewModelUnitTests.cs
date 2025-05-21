@@ -1,42 +1,40 @@
 using System.Data;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using TestableIO.System.IO.Abstractions;
 using TestableIO.System.IO.Abstractions.Wrappers;
 using SummaSQLGame.Models;
 using SummaSQLGame.Services;
 using SummaSQLGame.ViewModels;
-using Xunit;
 using System.IO.Abstractions.TestingHelpers;
 
 namespace SummaSQLGame.Tests
 {
+    [TestClass]
     public class MainViewModelTests
     {
-        [Fact]
+        [TestMethod]
         public void LoadSaveState_LoadsStateFromService()
         {
             // Arrange
-            var fileSystem = new MockFileSystem();
             var saveState = new SaveState("test");
-            var jsonPath = @"Assets/SaveState.json";
-            var basePath = "/tmp/testapp/";
-            var fullPath = Path.Combine(basePath, jsonPath);
-            fileSystem.AddDirectory(Path.Combine(basePath, "Assets"));
-            fileSystem.AddFile(fullPath, new MockFileData(Newtonsoft.Json.JsonConvert.SerializeObject(saveState)));
-            var saveStateService = new SaveStateService(new FileSystemWrapper(fileSystem), basePath, jsonPath);
-            var serviceProvider = new TestServiceProvider();
-            var vm = new MainViewModel(saveStateService, serviceProvider);
+            var saveStateServiceMock = new Mock<ISaveStateService>();
+            saveStateServiceMock.Setup(s => s.Load()).Returns(saveState);
+            var serviceProviderMock = new Mock<IServiceProvider>();
+            var vm = new MainViewModel(saveStateServiceMock.Object, serviceProviderMock.Object);
 
             // Act
             var result = vm.SaveState;
 
             // Assert
-            Assert.Equal(saveState.Name, result.Name);
+            Assert.AreEqual(saveState, result);
         }
     }
 
+    [TestClass]
     public class ChallengeViewModelTests
     {
-        [Fact]
+        [TestMethod]
         public void SetNewPuzzle_UpdatesActivePuzzle()
         {
             // Arrange
@@ -45,7 +43,28 @@ namespace SummaSQLGame.Tests
             // Act
             vm.StartCommand.Execute(null);
             // Assert
-            Assert.NotNull(vm.ActivePuzzle);
+            Assert.IsNotNull(vm.ActivePuzzle);
+        }
+    }
+
+    [TestClass]
+    public class SelectViewModelTests
+    {
+        [TestMethod]
+        public void ExecuteAndValidateQuery_UsesQueryService()
+        {
+            // Arrange
+            var queryServiceMock = new Mock<IQueryService>();
+            var expectedTable = new DataTable();
+            expectedTable.Columns.Add("naam");
+            expectedTable.Rows.Add("Fikkie");
+            queryServiceMock.Setup(q => q.ExecuteQuery(It.IsAny<string>())).Returns(expectedTable);
+            var vm = new SummaSQLGame.ViewModels.Select.SelectViewModel(queryServiceMock.Object);
+            vm.QueryText = "select naam from honden;";
+            // Act
+            vm.QueryCommand.Execute(null);
+            // Assert
+            Assert.IsTrue(vm.QueryResult.Rows.Count == 1 && vm.QueryResult.Rows[0][0].ToString() == "Fikkie", "QueryService was not used correctly or QueryResult is incorrect.");
         }
     }
 }

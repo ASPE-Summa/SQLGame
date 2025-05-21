@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SummaSQLGame.Services;
 using SummaSQLGame.ViewModels;
+using SummaSQLGame.ViewModels.Select;
 using SummaSQLGame.Views;
 using System.Windows;
 

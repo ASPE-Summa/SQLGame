@@ -60,7 +60,6 @@ namespace SummaSQLGame.ViewModels
             StartCommand = new RelayCommand(ExecuteStartChallenge);
             ActivePuzzle = new ChallengeExplanationViewModel();
         }
-
         #endregion
 
         #region methods

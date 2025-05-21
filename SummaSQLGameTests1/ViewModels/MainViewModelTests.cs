@@ -1,14 +1,9 @@
-using System.Data;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using TestableIO.System.IO.Abstractions;
-using TestableIO.System.IO.Abstractions.Wrappers;
+﻿using Moq;
 using SummaSQLGame.Models;
 using SummaSQLGame.Services;
-using SummaSQLGame.ViewModels;
-using System.IO.Abstractions.TestingHelpers;
+using System.Data;
 
-namespace SummaSQLGame.Tests
+namespace SummaSQLGame.ViewModels.Tests
 {
     [TestClass]
     public class MainViewModelTests

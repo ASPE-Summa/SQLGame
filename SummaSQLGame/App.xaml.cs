@@ -22,6 +22,12 @@ namespace SummaSQLGame
             services.AddSingleton<MainViewModel>();
             services.AddTransient<ChallengeViewModel>();
             services.AddTransient<SelectViewModel>();
+            services.AddTransient<FilterViewModel>();
+            services.AddTransient<SortViewModel>();
+            services.AddTransient<GroupViewModel>();
+            services.AddTransient<JoinViewModel>();
+            services.AddTransient<AggregateViewModel>();
+            services.AddTransient<WildcardViewModel>();
             // Register other ViewModels as needed
             _serviceProvider = services.BuildServiceProvider();
             base.OnStartup(e);

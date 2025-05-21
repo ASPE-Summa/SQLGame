@@ -96,50 +96,43 @@ namespace SummaSQLGame.ViewModels
         }
         private void ExecuteShowSelect(object? obj)
         {
-            var selectViewModel = _serviceProvider.GetRequiredService<SelectViewModel>();
+            var selectViewModel = _serviceProvider.GetRequiredService<Select.SelectViewModel>();
             selectViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = selectViewModel;
         }
-
         private void ExecuteShowFilter(object? obj)
         {
-            FilterViewModel filterViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
+            var filterViewModel = _serviceProvider.GetRequiredService<Select.FilterViewModel>();
             filterViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = filterViewModel;
         }
-
         private void ExecuteShowWildCard(object? obj)
         {
-            WildcardViewModel wildcardViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
+            var wildcardViewModel = _serviceProvider.GetRequiredService<Select.WildcardViewModel>();
             wildcardViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = wildcardViewModel;
         }
-
         private void ExecuteShowSort(object? obj)
         {
-            SortViewModel sortViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
+            var sortViewModel = _serviceProvider.GetRequiredService<Select.SortViewModel>();
             sortViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = sortViewModel;
         }
-
         private void ExecuteShowAggregate(object? obj)
         {
-            AggregateViewModel aggregateViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
+            var aggregateViewModel = _serviceProvider.GetRequiredService<Select.AggregateViewModel>();
             aggregateViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = aggregateViewModel;
         }
-
-
         private void ExecuteShowGroup(object? obj)
         {
-            GroupViewModel groupViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
+            var groupViewModel = _serviceProvider.GetRequiredService<Select.GroupViewModel>();
             groupViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = groupViewModel;
         }
-
         private void ExecuteShowJoin(object? obj)
         {
-            JoinViewModel joinViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
+            var joinViewModel = _serviceProvider.GetRequiredService<Select.JoinViewModel>();
             joinViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = joinViewModel;
         }

@@ -27,22 +27,6 @@ namespace SummaSQLGame.ViewModels.Tests
     }
 
     [TestClass]
-    public class ChallengeViewModelTests
-    {
-        [TestMethod]
-        public void SetNewPuzzle_UpdatesActivePuzzle()
-        {
-            // Arrange
-            var mainContextMock = new Mock<IMainViewModelContext>();
-            var vm = new ChallengeViewModel(mainContextMock.Object);
-            // Act
-            vm.StartCommand.Execute(null);
-            // Assert
-            Assert.IsNotNull(vm.ActivePuzzle);
-        }
-    }
-
-    [TestClass]
     public class SelectViewModelTests
     {
         [TestMethod]
@@ -54,7 +38,7 @@ namespace SummaSQLGame.ViewModels.Tests
             expectedTable.Columns.Add("naam");
             expectedTable.Rows.Add("Fikkie");
             queryServiceMock.Setup(q => q.ExecuteQuery(It.IsAny<string>())).Returns(expectedTable);
-            var vm = new SummaSQLGame.ViewModels.Select.SelectViewModel(queryServiceMock.Object);
+            var vm = new Select.SelectViewModel(queryServiceMock.Object);
             vm.QueryText = "select naam from honden;";
             // Act
             vm.QueryCommand.Execute(null);

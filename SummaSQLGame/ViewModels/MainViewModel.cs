@@ -103,28 +103,28 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteShowFilter(object? obj)
         {
-            FilterViewModel filterViewModel = new();
+            FilterViewModel filterViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
             filterViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = filterViewModel;
         }
 
         private void ExecuteShowWildCard(object? obj)
         {
-            WildcardViewModel wildcardViewModel = new();
+            WildcardViewModel wildcardViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
             wildcardViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = wildcardViewModel;
         }
 
         private void ExecuteShowSort(object? obj)
         {
-            SortViewModel sortViewModel = new();
+            SortViewModel sortViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
             sortViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = sortViewModel;
         }
 
         private void ExecuteShowAggregate(object? obj)
         {
-            AggregateViewModel aggregateViewModel = new();
+            AggregateViewModel aggregateViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
             aggregateViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = aggregateViewModel;
         }
@@ -132,14 +132,14 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteShowGroup(object? obj)
         {
-            GroupViewModel groupViewModel = new();
+            GroupViewModel groupViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
             groupViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = groupViewModel;
         }
 
         private void ExecuteShowJoin(object? obj)
         {
-            JoinViewModel joinViewModel = new();
+            JoinViewModel joinViewModel = new(_serviceProvider.GetRequiredService<QueryService>());
             joinViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = joinViewModel;
         }

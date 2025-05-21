@@ -1,27 +1,31 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using SummaSQLGame.Dialog;
 using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;
 using SummaSQLGame.ViewModels.Select;
 using System.Diagnostics;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using SummaSQLGame.Services;
 
 namespace SummaSQLGame.ViewModels
 {
-    public class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject, IMainViewModelContext
     {
         #region fields
         private object _activeViewModel;
         private SaveState? _saveState;
         private string _path;
-        private string _jsonPath = @"Assets/SaveState.json";
+        private readonly ISaveStateService _saveStateService;
+        private readonly IServiceProvider _serviceProvider;
         #endregion
 
         #region constructors
-        public MainViewModel()
+        public MainViewModel(ISaveStateService saveStateService, IServiceProvider serviceProvider)
         {
+            _saveStateService = saveStateService;
+            _serviceProvider = serviceProvider;
             _path = System.AppDomain.CurrentDomain.BaseDirectory;
             WindowClosingCommand = new RelayCommand(SaveBeforeClosing);
             DashBoardCommand = new RelayCommand(ExecuteShowDashboard);
@@ -73,37 +77,12 @@ namespace SummaSQLGame.ViewModels
         #region methods
         private void LoadSaveState()
         {
-            if (!File.Exists(_jsonPath))
-            {
-                NameDialog dialog = new NameDialog();
-                dialog.ShowDialog();
-                SaveState = new(dialog.ResponseText);
-            }
-            else
-            {
-                try
-                {
-                    string jsonString = File.ReadAllText(_jsonPath);
-                    SaveState = JsonConvert.DeserializeObject<SaveState>(jsonString)!;
-                }
-                catch (JsonReaderException ex)
-                {
-                    Debug.Write(ex);
-                    MessageBox.Show("Error bij het lezen van je opgeslagen voortgang. Herstart de applicatie");
-                    File.Delete(_jsonPath);
-                    WindowClosingCommand.Execute(null);
-                }
-            }
+            SaveState = _saveStateService.Load();
         }
         
         private void SaveBeforeClosing(object? obj)
         {
-            string combinedPath = Path.Combine(_path, _jsonPath);
-            using(StreamWriter sw = File.CreateText(combinedPath))
-            {
-                string contents = JsonConvert.SerializeObject(SaveState, Formatting.Indented);
-                sw.Write(contents);
-            }
+            _saveStateService.Save(SaveState);
         }
 
         private void ExecuteShowDashboard(object? obj)
@@ -117,7 +96,7 @@ namespace SummaSQLGame.ViewModels
         }
         private void ExecuteShowSelect(object? obj)
         {
-            SelectViewModel selectViewModel = new();
+            var selectViewModel = _serviceProvider.GetRequiredService<SelectViewModel>();
             selectViewModel.UpdateProgressEvent += UpdateProgressEvent;
             ActiveViewModel = selectViewModel;
         }
@@ -167,7 +146,7 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteShowChallenge(object? obj) 
         {
-            ChallengeViewModel challengeViewModel = new(this);
+            var challengeViewModel = _serviceProvider.GetRequiredService<ChallengeViewModel>();
             challengeViewModel.UpdateProgressEvent += ChallengeViewModel_UpdateProgressEvent;
             ActiveViewModel = challengeViewModel;
         }
@@ -192,6 +171,20 @@ namespace SummaSQLGame.ViewModels
         {
             double completionPercentage = (double)vm.ExplanationIndex / (vm.Explanations.Count - 1) * 100;
             return (int)Math.Floor(completionPercentage);
+        }
+
+        // IMainViewModelContext implementation
+        void IMainViewModelContext.UpdateCompletion(string subject, int completionPercentage)
+        {
+            SaveState.UpdateCompletion(subject, completionPercentage);
+        }
+        void IMainViewModelContext.UpdateEncountered(string puzzleType)
+        {
+            SaveState.UpdateEncountered(puzzleType);
+        }
+        void IMainViewModelContext.UpdateCompleted(string puzzleType)
+        {
+            SaveState.UpdateCompleted(puzzleType);
         }
         #endregion
     }

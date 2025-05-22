@@ -97,6 +97,11 @@
                         <materialDesign:PackIcon Kind="Filter"/>
                     </MenuItem.Icon>
                 </MenuItem>
+                <MenuItem Header="Invoegen (INSERT)" Command="{Binding InsertCommand}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="DatabasePlus"/>
+                    </MenuItem.Icon>
+                </MenuItem>
                 <MenuItem Header="Wildcards" Command="{Binding WildCardCommand}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Percent"/>
@@ -131,6 +136,12 @@
                 <MenuItem Header="Leaderboard" Command="{Binding LeaderboardCommand}">
                     <MenuItem.Icon>
                         <materialDesign:PackIcon Kind="Podium"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Database resetten" Command="{Binding ResetDatabaseCommand}">
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="DatabaseRefresh"/>
                     </MenuItem.Icon>
                 </MenuItem>
             </Menu>

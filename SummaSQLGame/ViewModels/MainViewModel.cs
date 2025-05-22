@@ -35,6 +35,8 @@ namespace SummaSQLGame.ViewModels
             JoinCommand = new RelayCommand(ExecuteShowJoin);
             ChallengeCommand = new RelayCommand(ExecuteShowChallenge);
             LeaderboardCommand = new RelayCommand(ExecuteShowLeaderboard, e => false);
+            InsertCommand = new RelayCommand(ExecuteShowInsert);
+            ResetDatabaseCommand = new RelayCommand(ExecuteResetDatabase);
             LoadSaveState();
             ActiveViewModel = new DashboardViewModel(SaveState);
 
@@ -68,6 +70,8 @@ namespace SummaSQLGame.ViewModels
         public ICommand JoinCommand { get; }
         public ICommand ChallengeCommand { get; }
         public ICommand LeaderboardCommand {  get; }
+        public ICommand InsertCommand { get; }
+        public ICommand ResetDatabaseCommand { get; }
         #endregion
 
         #region methods
@@ -175,6 +179,42 @@ namespace SummaSQLGame.ViewModels
         private void ExecuteShowLeaderboard(object? obj) 
         { 
             throw new NotImplementedException(); 
+        }
+
+        private void ExecuteShowInsert(object? obj)
+        {
+            var insertViewModel = new SummaSQLGame.ViewModels.Insert.InsertViewModel();
+            insertViewModel.UpdateProgressEvent += UpdateProgressEvent;
+            ActiveViewModel = insertViewModel;
+        }
+
+        private void ExecuteResetDatabase(object? obj)
+        {
+            var dialog = new SummaSQLGame.Dialog.ResetDatabaseDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                try
+                {
+                    // Path to the SQLite database file
+                    string dbPath = @"Databases/database.db";
+                    if (File.Exists(dbPath))
+                    {
+                        File.Delete(dbPath);
+                    }
+
+                    // Reapply all migrations
+                    using (var db = new SummaSQLGame.Databases.AppDbContext())
+                    {
+                        db.Database.Migrate();
+                    }
+
+                    MessageBox.Show("Database is gereset naar standaardwaarden.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Database resetten is mislukt: {ex.Message}");
+                }
+            }
         }
 
         private void UpdateProgressEvent(object? sender, EventArgs e) {

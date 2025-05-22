@@ -1,0 +1,21 @@
+<UserControl x:Class="SummaSQLGame.Views.Insert.InsertView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!-- Mirror the layout of SelectView, with datatable and query input -->
+        <StackPanel>
+            <TextBlock Text="{Binding CurrentExplanation.Dialog}" Margin="10" TextWrapping="Wrap"/>
+            <TextBox Text="{Binding QueryText, UpdateSourceTrigger=PropertyChanged}" Margin="10" Height="30"/>
+            <Button Content="Uitvoeren" Command="{Binding QueryCommand}" Margin="10" Width="100"/>
+            <DataGrid ItemsSource="{Binding QueryResult}" AutoGenerateColumns="True" Margin="10" Height="200"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Vorige" Command="{Binding PreviousExplanationCommand}" Margin="5"/>
+                <Button Content="Volgende" Command="{Binding NextExplanationCommand}" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

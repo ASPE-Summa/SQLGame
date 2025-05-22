@@ -9,5 +9,6 @@
         public const string WILDCARDS = "Wildcards";
         public const string GROUP = "Groeperen";
         public const string JOIN = "Combineren";
+        public const string INSERT = "Invoegen";
     }
 }

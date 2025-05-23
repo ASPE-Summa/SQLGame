@@ -1,5 +1,6 @@
 ﻿using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;
+using SummaSQLGame.Services;
 
 namespace SummaSQLGame.ViewModels.Select
 {
@@ -8,7 +9,7 @@ namespace SummaSQLGame.ViewModels.Select
         public event EventHandler<EventArgs> UpdateProgressEvent;
 
         #region constructor
-        public AggregateViewModel()
+        public AggregateViewModel(IQueryService queryService) : base(queryService)
         {
             _subject = Subjects.AGGREGATES;
             _explanations = new List<Explanation>()

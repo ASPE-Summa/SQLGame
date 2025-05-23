@@ -1,4 +1,4 @@
-﻿using SummaSQLGame.Databases;
+using SummaSQLGame.Databases;
 using SummaSQLGame.Helpers;
 using System;
 using System.Collections.Generic;

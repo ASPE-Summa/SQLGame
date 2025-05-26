@@ -1,9 +1,5 @@
 using SummaSQLGame.Databases;
 using SummaSQLGame.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Input;
 
 namespace SummaSQLGame.ViewModels.Puzzles

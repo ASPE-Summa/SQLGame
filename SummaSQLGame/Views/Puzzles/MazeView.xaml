@@ -29,7 +29,7 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Image Source="/Assets/Decorations/maze.png"/>
+            <Image Source="\Assets\Decorations\maze.png"/>
             <Grid Grid.Row="1" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>

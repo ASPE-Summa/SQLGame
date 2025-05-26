@@ -32,7 +32,7 @@ namespace SummaSQLGame.Databases
         new Dictionary<string, string> { {"content" , ".###."}, {"pattern" , "4"}, {"sequence" , "4" } },
         new Dictionary<string, string> { {"content" , "@###$"}, {"pattern" , "4"}, {"sequence" , "5" } }
             };
-        internal void _TestData()
+        internal void TestData()
         {
             List<MazePuzzle> _mazeLines = new List<MazePuzzle>();
             Random _r = new();

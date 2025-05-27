@@ -68,8 +68,8 @@
             <DataTemplate DataType="{x:Type puzzleViewModels:ButtonViewModel}">
                 <puzzleViews:ButtonView/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type puzzleViewModels:MazeViewModel}">
-                <puzzleViews:MazeView/>
+            <DataTemplate DataType="{x:Type puzzleViewModels:SqlPracticeViewModel}">
+                <puzzleViews:SqlPracticeView/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type puzzleViewModels:StudentViewModel}">
                 <puzzleViews:StudentView/>
@@ -77,4 +77,3 @@
         </ResourceDictionary>
     </Application.Resources>
 </Application>
-    

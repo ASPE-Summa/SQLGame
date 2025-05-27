@@ -34,12 +34,12 @@ namespace SummaSQLGame.Databases
             };
         internal void TestData()
         {
-            List<MazePuzzle> _mazeLines = new List<MazePuzzle>();
+            List<SqlPracticePuzzle> _mazeLines = new List<SqlPracticePuzzle>();
             Random _r = new();
             _r.Shuffle(_PATTERNS);
             foreach(Dictionary<string,string> _pattern in _PATTERNS)
             {
-                MazePuzzle _mazeLine = new MazePuzzle()
+                SqlPracticePuzzle _mazeLine = new SqlPracticePuzzle()
                 {
                     Contents = _pattern["content"],
                     Pattern = int.Parse(_pattern["pattern"]),
@@ -49,7 +49,7 @@ namespace SummaSQLGame.Databases
             }
 
             using AppDbContext _db = new AppDbContext();
-            _db.MazePuzzles.AddRange(
+            _db.SqlPracticePuzzles.AddRange(
                 _mazeLines
             );
 

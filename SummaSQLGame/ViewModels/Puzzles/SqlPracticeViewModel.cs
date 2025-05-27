@@ -192,7 +192,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
 
         public SqlPracticeViewModel()
         {
-            _puzzleType = "SQL Practice";
+            _puzzleType = Helpers.Puzzles.SQL_PRACTICE;
             _rand = new Random();
             _variantIndex = _rand.Next(_variants.Count);
             var variant = _variants[_variantIndex];

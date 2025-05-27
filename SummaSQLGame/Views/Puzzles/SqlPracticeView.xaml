@@ -48,7 +48,6 @@
             </avalonEdit:TextEditor>
             <Button Background="OrangeRed" Foreground="White" Margin="0 10 0 0" Width="100" HorizontalAlignment="Right" Command="{Binding QueryCommand}">Uitvoeren</Button>
         </StackPanel>
-        <Image Source="/Assets/Diagrams/maze.png" Grid.Column="2" Grid.Row="1" Stretch="None"/>
         <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <TextBlock Margin="10" FontSize="18" TextWrapping="Wrap" Foreground="Black">
                 Deze puzzel gebruikt de tabel doolhoven en stelt een vraag die het gebruik van zowel WHERE als ORDER BY vereist. Gebruik SQL om het juiste antwoord te vinden en vul het in.

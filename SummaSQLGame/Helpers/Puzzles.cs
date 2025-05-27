@@ -12,6 +12,6 @@ namespace SummaSQLGame.Helpers
         public const string ADVENTURER = "Avonturiers";
         public const string BUTTON = "Knoppen";
         public const string STUDENTS = "Studenten";
-        public const string MAZE = "Doolhoven";
+        public const string SQL_PRACTICE = "SQL Practice";
     }
 }

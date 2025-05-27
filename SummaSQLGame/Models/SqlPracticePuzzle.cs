@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SummaSQLGame.Models
 {
-    [Table("doolhoven")]
+    [Table("sql_practice_puzzles")]
     [PrimaryKey("Id")]
     public class SqlPracticePuzzle : ObservableObject
     {
@@ -28,6 +28,5 @@ namespace SummaSQLGame.Models
 
         [Column("regelnummer")]
         public int Sequence { get { return _sequence; } set { _sequence = value; OnPropertyChanged(); } }
-
     }
 }

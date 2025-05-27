@@ -1,5 +1,6 @@
 using SummaSQLGame.Databases;
 using SummaSQLGame.Helpers;
+using System.Data;
 using System.Windows.Input;
 
 // Hernoemd van SqlPracticeViewModel naar SqlVragenPuzzleViewModel
@@ -116,6 +117,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
             {
                 System.Windows.MessageBox.Show("Goed gedaan! Je antwoord is correct.", "Succes", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
                 PuzzleCompleted?.Invoke(this, new EventArgs());
+                Attempts++;
                 return;
             }
             System.Windows.MessageBox.Show("Helaas, dat is niet het juiste antwoord. Probeer het opnieuw!", "Fout", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);

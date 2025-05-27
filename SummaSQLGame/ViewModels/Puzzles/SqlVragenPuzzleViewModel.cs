@@ -59,44 +59,46 @@ namespace SummaSQLGame.ViewModels.Puzzles
 
         private void GenerateQuestion()
         {
-            // Kies random een tabel
             _selectedTable = _tables[_rand.Next(_tables.Count)];
-            // Kies random een kolom uit de tabel
             var cols = _columns[_selectedTable];
             _selectedColumn = cols[_rand.Next(cols.Count)];
-            // Kies random een functie
             _selectedFunction = _functions[_rand.Next(_functions.Count)];
-            // Kies random een order
             _selectedOrder = _orders[_rand.Next(_orders.Count)];
 
-            // Optioneel: voeg een WHERE toe voor meer variatie
+            // WHERE-conditie en beschrijving
             _selectedWhere = "";
-            if (_selectedTable == "studenten" && _rand.Next(2) == 0)
+            string whereDescription = "";
+            if (_selectedTable == "studenten" && _rand.Next(2) == 0) {
                 _selectedWhere = "WHERE klas = 'A'";
-            else if (_selectedTable == "honden" && _rand.Next(2) == 0)
+                whereDescription = " waar klas = 'A'";
+            } else if (_selectedTable == "honden" && _rand.Next(2) == 0) {
                 _selectedWhere = "WHERE ras = 'Labrador'";
-            else if (_selectedTable == "bieren" && _rand.Next(2) == 0)
+                whereDescription = " waar ras = 'Labrador'";
+            } else if (_selectedTable == "bieren" && _rand.Next(2) == 0) {
                 _selectedWhere = "WHERE alcohol > 5";
-            else if (_selectedTable == "steden" && _rand.Next(2) == 0)
+                whereDescription = " waar alcohol > 5";
+            } else if (_selectedTable == "steden" && _rand.Next(2) == 0) {
                 _selectedWhere = "WHERE land = 'Nederland'";
-            else if (_selectedTable == "liedjes" && _rand.Next(2) == 0)
+                whereDescription = " waar land = 'Nederland'";
+            } else if (_selectedTable == "liedjes" && _rand.Next(2) == 0) {
                 _selectedWhere = "WHERE artiest = 'Queen'";
+                whereDescription = " waar artiest = 'Queen'";
+            }
 
             // Vraagtekst genereren
             if (_selectedFunction == "COUNT")
-                _questionText = $"Hoeveel rijen zijn er in de tabel {_selectedTable}{(_selectedWhere != "" ? " die voldoen aan de conditie" : "")}?";
+                _questionText = $"Hoeveel rijen zijn er in de tabel {_selectedTable}{whereDescription}?";
             else if (_selectedFunction == "AVG")
-                _questionText = $"Wat is het gemiddelde van de kolom {_selectedColumn} in de tabel {_selectedTable}{(_selectedWhere != "" ? " die voldoen aan de conditie" : "")}?";
+                _questionText = $"Wat is het gemiddelde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}?";
             else if (_selectedFunction == "SUM")
-                _questionText = $"Wat is de som van de kolom {_selectedColumn} in de tabel {_selectedTable}{(_selectedWhere != "" ? " die voldoen aan de conditie" : "")}?";
+                _questionText = $"Wat is de som van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}?";
             else if (_selectedFunction == "MAX")
-                _questionText = $"Wat is de hoogste waarde van {_selectedColumn} in de tabel {_selectedTable}{(_selectedWhere != "" ? " die voldoen aan de conditie" : "")}?";
+                _questionText = $"Wat is de hoogste waarde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}?";
             else if (_selectedFunction == "MIN")
-                _questionText = $"Wat is de laagste waarde van {_selectedColumn} in de tabel {_selectedTable}{(_selectedWhere != "" ? " die voldoen aan de conditie" : "")}?";
+                _questionText = $"Wat is de laagste waarde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}?";
             else
-                _questionText = $"Voer een query uit op de tabel {_selectedTable}.";
+                _questionText = $"Voer een query uit op de tabel {_selectedTable}{whereDescription}.";
 
-            // Query genereren
             _answerQuery = $"SELECT {_selectedFunction}({_selectedColumn}) FROM {_selectedTable} {_selectedWhere};";
         }
 

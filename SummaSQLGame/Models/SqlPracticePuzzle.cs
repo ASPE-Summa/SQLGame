@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SummaSQLGame.Helpers;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SummaSQLGame.Models
 {
-    [Table("sql_practice_puzzles")]
+    [Table("sql_vragen_puzzles")]
     [PrimaryKey("Id")]
-    public class SqlPracticePuzzle : ObservableObject
+    public class SqlVragenPuzzle : ObservableObject
     {
         private readonly int _id;
         private string _contents;

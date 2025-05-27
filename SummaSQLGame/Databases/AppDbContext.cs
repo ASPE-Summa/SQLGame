@@ -21,7 +21,7 @@ namespace SummaSQLGame.Databases
         public DbSet<BattleShip> BattleShips { get; set; }
         public DbSet<Button> Buttons { get; set; }
         public DbSet<ButtonSafety> ButtonSafeties { get; set; }
-        public DbSet<SqlPracticePuzzle> SqlPracticePuzzles { get; set; }
+        public DbSet<SqlVragenPuzzle> SqlVragenPuzzles { get; set; }
         public DbSet<Student> Students { get; set; }
 
         public DataTable ExecuteQuery(string queryText)

@@ -84,23 +84,15 @@ namespace SummaSQLGame.ViewModels.Puzzles
                 _selectedWhere = "WHERE artiest = 'Queen'";
             }
 
-            string whereDescription = _selectedTable switch {
-                "studenten" => " waarbij de klas gelijk is aan 'A'",
-                "honden" => " waarbij het ras 'Labrador' is",
-                "bieren" => " waarbij het alcoholpercentage groter is dan 5",
-                "steden" => " waarbij het land 'Nederland' is",
-                "liedjes" => " waarbij de artiest 'Queen' is",
-                _ => ""
-            };
-
-            string orderDescription = $", gesorteerd op {_selectedColumn} ({_selectedOrder})";
+            string whereDescription = "";
+            string orderDescription = "";
             _questionText = _selectedFunction switch {
-                "COUNT" => $"Hoeveel rijen zijn er in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
-                "AVG" => $"Wat is het gemiddelde van de kolom '{_selectedColumn}' in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
-                "SUM" => $"Wat is de som van de kolom '{_selectedColumn}' in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
-                "MAX" => $"Wat is de hoogste waarde van de kolom '{_selectedColumn}' in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
-                "MIN" => $"Wat is de laagste waarde van de kolom '{_selectedColumn}' in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
-                _ => $"Voer een query uit op de tabel '{_selectedTable}'{whereDescription}{orderDescription}. Gebruik zowel WHERE als ORDER BY in je SQL-query."
+                "COUNT" => $"Hoeveel rijen zijn er in '{_selectedTable}'?",
+                "AVG" => $"Wat is het gemiddelde van '{_selectedColumn}' uit '{_selectedTable}'?",
+                "SUM" => $"Wat is de som van '{_selectedColumn}' uit '{_selectedTable}'?",
+                "MAX" => $"Wat is de hoogste waarde van '{_selectedColumn}' uit '{_selectedTable}'?",
+                "MIN" => $"Wat is de laagste waarde van '{_selectedColumn}' uit '{_selectedTable}'?",
+                _ => $"Geef een resultaat uit '{_selectedTable}'."
             };
 
             _answerQuery = $"SELECT {_selectedFunction}({_selectedColumn}) FROM {_selectedTable} {_selectedWhere} ORDER BY {_selectedColumn} {_selectedOrder};";

@@ -50,7 +50,7 @@
         </StackPanel>
         <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <TextBlock Margin="10" FontSize="18" TextWrapping="Wrap" Foreground="Black">
-                Deze puzzel gebruikt de tabel doolhoven en stelt een vraag die het gebruik van zowel WHERE als ORDER BY vereist. Gebruik SQL om het juiste antwoord te vinden en vul het in.
+                In deze puzzel staat in de vraag welke kolom je moet gebruiken. Je oefent hier met het toepassen van zowel <Run FontWeight="Bold">WHERE</Run> als <Run FontWeight="Bold">ORDER BY</Run> in je SQL-query. 
             </TextBlock>
         </Border>
     </Grid>

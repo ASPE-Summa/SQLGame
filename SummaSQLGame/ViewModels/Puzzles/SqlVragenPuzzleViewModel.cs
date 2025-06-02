@@ -46,10 +46,15 @@ namespace SummaSQLGame.ViewModels.Puzzles
         {
             _puzzleType = Helpers.Puzzles.SQL_PRACTICE;
             _rand = new Random();
-            GenerateQuestion();
+            GenerateQuestionAndAnswer();
             ProcessAnswerCommand = new RelayCommand(ProcessAnswer);
             QueryCommand = new RelayCommand(ExecuteQuery);
             QueryResult = new DataTable();
+        }
+
+        private void GenerateQuestionAndAnswer()
+        {
+            GenerateQuestion();
             // Bepaal het juiste antwoord van tevoren
             using (AppDbContext context = new AppDbContext())
             {
@@ -66,40 +71,37 @@ namespace SummaSQLGame.ViewModels.Puzzles
             _selectedFunction = _functions[_rand.Next(_functions.Count)];
             _selectedOrder = _orders[_rand.Next(_orders.Count)];
 
-            // WHERE-conditie en beschrijving
-            _selectedWhere = "";
-            string whereDescription = "";
-            if (_selectedTable == "studenten" && _rand.Next(2) == 0) {
+            // Combineer WHERE-conditie en vraagtekst-beschrijving
+            if (_selectedTable == "studenten") {
                 _selectedWhere = "WHERE klas = 'A'";
-                whereDescription = " waar klas = 'A'";
-            } else if (_selectedTable == "honden" && _rand.Next(2) == 0) {
+            } else if (_selectedTable == "honden") {
                 _selectedWhere = "WHERE ras = 'Labrador'";
-                whereDescription = " waar ras = 'Labrador'";
-            } else if (_selectedTable == "bieren" && _rand.Next(2) == 0) {
+            } else if (_selectedTable == "bieren") {
                 _selectedWhere = "WHERE alcohol > 5";
-                whereDescription = " waar alcohol > 5";
-            } else if (_selectedTable == "steden" && _rand.Next(2) == 0) {
+            } else if (_selectedTable == "steden") {
                 _selectedWhere = "WHERE land = 'Nederland'";
-                whereDescription = " waar land = 'Nederland'";
-            } else if (_selectedTable == "liedjes" && _rand.Next(2) == 0) {
+            } else if (_selectedTable == "liedjes") {
                 _selectedWhere = "WHERE artiest = 'Queen'";
-                whereDescription = " waar artiest = 'Queen'";
             }
 
-            // Vraagtekst genereren (nu altijd expliciet: gebruik WHERE én ORDER BY)
-            string orderDescription = $" geordend op {_selectedColumn} {_selectedOrder}";
-            if (_selectedFunction == "COUNT")
-                _questionText = $"Hoeveel rijen zijn er in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
-            else if (_selectedFunction == "AVG")
-                _questionText = $"Wat is het gemiddelde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
-            else if (_selectedFunction == "SUM")
-                _questionText = $"Wat is de som van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
-            else if (_selectedFunction == "MAX")
-                _questionText = $"Wat is de hoogste waarde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
-            else if (_selectedFunction == "MIN")
-                _questionText = $"Wat is de laagste waarde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
-            else
-                _questionText = $"Voer een query uit op de tabel {_selectedTable}{whereDescription}{orderDescription}. Gebruik zowel WHERE als ORDER BY.";
+            string whereDescription = _selectedTable switch {
+                "studenten" => " waarbij de klas gelijk is aan 'A'",
+                "honden" => " waarbij het ras 'Labrador' is",
+                "bieren" => " waarbij het alcoholpercentage groter is dan 5",
+                "steden" => " waarbij het land 'Nederland' is",
+                "liedjes" => " waarbij de artiest 'Queen' is",
+                _ => ""
+            };
+
+            string orderDescription = $", gesorteerd op {_selectedColumn} ({_selectedOrder})";
+            _questionText = _selectedFunction switch {
+                "COUNT" => $"Hoeveel rijen zijn er in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
+                "AVG" => $"Wat is het gemiddelde van de kolom '{_selectedColumn}' in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
+                "SUM" => $"Wat is de som van de kolom '{_selectedColumn}' in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
+                "MAX" => $"Wat is de hoogste waarde van de kolom '{_selectedColumn}' in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
+                "MIN" => $"Wat is de laagste waarde van de kolom '{_selectedColumn}' in de tabel '{_selectedTable}'{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY in je SQL-query.",
+                _ => $"Voer een query uit op de tabel '{_selectedTable}'{whereDescription}{orderDescription}. Gebruik zowel WHERE als ORDER BY in je SQL-query."
+            };
 
             _answerQuery = $"SELECT {_selectedFunction}({_selectedColumn}) FROM {_selectedTable} {_selectedWhere} ORDER BY {_selectedColumn} {_selectedOrder};";
         }

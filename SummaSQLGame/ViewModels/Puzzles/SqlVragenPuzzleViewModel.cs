@@ -89,17 +89,17 @@ namespace SummaSQLGame.ViewModels.Puzzles
             // Vraagtekst genereren (nu altijd expliciet: gebruik WHERE én ORDER BY)
             string orderDescription = $" geordend op {_selectedColumn} {_selectedOrder}";
             if (_selectedFunction == "COUNT")
-                _questionText = $"Hoeveel rijen zijn er in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
+                _questionText = $"Hoeveel rijen zijn er in de tabel {_selectedTable}{whereDescription}{orderDescription}?";
             else if (_selectedFunction == "AVG")
-                _questionText = $"Wat is het gemiddelde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
+                _questionText = $"Wat is het gemiddelde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}?";
             else if (_selectedFunction == "SUM")
-                _questionText = $"Wat is de som van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
+                _questionText = $"Wat is de som van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}?";
             else if (_selectedFunction == "MAX")
-                _questionText = $"Wat is de hoogste waarde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
+                _questionText = $"Wat is de hoogste waarde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}?";
             else if (_selectedFunction == "MIN")
-                _questionText = $"Wat is de laagste waarde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}? Gebruik zowel WHERE als ORDER BY.";
+                _questionText = $"Wat is de laagste waarde van de kolom {_selectedColumn} in de tabel {_selectedTable}{whereDescription}{orderDescription}?";
             else
-                _questionText = $"Voer een query uit op de tabel {_selectedTable}{whereDescription}{orderDescription}. Gebruik zowel WHERE als ORDER BY.";
+                _questionText = $"Voer een query uit op de tabel {_selectedTable}{whereDescription}{orderDescription}";
 
             _answerQuery = $"SELECT {_selectedFunction}({_selectedColumn}) FROM {_selectedTable} {_selectedWhere} ORDER BY {_selectedColumn} {_selectedOrder};";
         }

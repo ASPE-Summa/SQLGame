@@ -9,7 +9,7 @@ namespace SummaSQLGame.Databases
 {
     internal class MazeSeeder
     {
-        private Dictionary<string, string>[] _PATTERNS =
+        private Dictionary<string, string>[] PATTERNS =
             {
         new Dictionary<string, string> { {"content" , "$####"}, {"pattern" , "1"}, {"sequence" , "1" } },
         new Dictionary<string, string> { {"content" , ".####"}, {"pattern" , "1"}, {"sequence" , "2" } },
@@ -32,28 +32,28 @@ namespace SummaSQLGame.Databases
         new Dictionary<string, string> { {"content" , ".###."}, {"pattern" , "4"}, {"sequence" , "4" } },
         new Dictionary<string, string> { {"content" , "@###$"}, {"pattern" , "4"}, {"sequence" , "5" } }
             };
-        internal void _TestData()
+        internal void TestData()
         {
-            List<MazePuzzle> _mazeLines = new List<MazePuzzle>();
-            Random _r = new();
-            _r.Shuffle(_PATTERNS);
-            foreach(Dictionary<string,string> _pattern in _PATTERNS)
+            List<MazePuzzle> mazeLines = new List<MazePuzzle>();
+            Random r = new();
+            r.Shuffle(PATTERNS);
+            foreach(Dictionary<string,string> pattern in PATTERNS)
             {
-                MazePuzzle _mazeLine = new MazePuzzle()
+                MazePuzzle mazeLine = new MazePuzzle()
                 {
-                    Contents = _pattern["content"],
-                    Pattern = int.Parse(_pattern["pattern"]),
-                    Sequence = int.Parse(_pattern["sequence"])
+                    Contents = pattern["content"],
+                    Pattern = int.Parse(pattern["pattern"]),
+                    Sequence = int.Parse(pattern["sequence"])
                 };
-                _mazeLines.Add(_mazeLine);
+                mazeLines.Add(mazeLine);
             }
 
-            using AppDbContext _db = new AppDbContext();
-            _db.MazePuzzles.AddRange(
-                _mazeLines
+            using AppDbContext db = new AppDbContext();
+            db.MazePuzzles.AddRange(
+                mazeLines
             );
 
-            _db.SaveChanges();
+            db.SaveChanges();
         }
     }
 }

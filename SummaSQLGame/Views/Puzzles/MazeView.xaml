@@ -2,57 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:helpers="clr-namespace:SummaSQLGame.Helpers"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SummaSQLGame.Views.Puzzles"
-             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1000">
+             d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.2*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Viewbox Grid.ColumnSpan="3" HorizontalAlignment="Center">
-            <TextBlock Text="{Binding QuestionText}"/>
-        </Viewbox>
-        <Grid Grid.Row="1" Background="DarkSlateGray" Height="400">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Image Source="/Assets/Decorations/maze.png"/>
-            <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <xctk:WatermarkTextBox Watermark="Vul hier het antwoord in op de vraag" Text="{Binding AnswerText}"/>
-                <Button Grid.Column="1" VerticalAlignment="Bottom" Command="{Binding ProcessAnswerCommand}" Background="OrangeRed" Foreground="White">Valideren</Button>
-            </Grid>
-        </Grid>
-        <DataGrid Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" MinHeight="300" AutoGenerateColumns="True" ItemsSource="{Binding QueryResult.DefaultView}" Foreground="White"/>
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,0,0" VerticalAlignment="Center">
-            <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="100">
-                <i:Interaction.Behaviors>
-                    <helpers:AvalonEditBehaviour GiveMeTheText="{Binding QueryText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </i:Interaction.Behaviors>
-            </avalonEdit:TextEditor>
-            <Button Background="OrangeRed" Foreground="White" Margin="0 10 0 0" Width="100" HorizontalAlignment="Right" Command="{Binding QueryCommand}">Uitvoeren</Button>
-        </StackPanel>
-        <Image Source="/Assets/Diagrams/maze.png" Grid.Column="2" Grid.Row="1" Stretch="None"/>
-        <Border Margin="5" BorderThickness="1" BorderBrush="Black" Background="AntiqueWhite" CornerRadius="20" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <TextBlock Margin="10" FontSize="18" TextWrapping="Wrap" Foreground="Black">
-                Deze puzzel gebruikt de tabel doolhoven en stelt een vraag die het gebruik van zowel WHERE als ORDER BY vereist. Gebruik SQL om het juiste antwoord te vinden en vul het in.
-            </TextBlock>
-        </Border>
+            
     </Grid>
 </UserControl>

@@ -11,7 +11,6 @@ namespace SummaSQLGame.Models
     {
         private int _id;
         private string? _emoji;
-        private string? _emojiNumber;
         private string _name;
         private ButtonSafety _buttonSafety;
         private bool _isSafe = false;

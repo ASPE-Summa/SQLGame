@@ -69,12 +69,6 @@ namespace SummaSQLGame.ViewModels
         {
             get { return _subject; }
         }
-
-        public IAppDbContext Context
-        {
-            get { return _context; }
-            set { _context = value; OnPropertyChanged(); }
-        }
         #endregion
 
         #region constructor
@@ -84,7 +78,6 @@ namespace SummaSQLGame.ViewModels
             NextExplanationCommand = new RelayCommand(ExecuteNextDialogue, CanExecuteNext);
             PreviousExplanationCommand = new RelayCommand(ExecutePreviousDialogue, CanExecutePrevious);
             QueryCommand = new RelayCommand(ExecuteAndValidateQuery);
-            Context = new AppDbContext();
         }
         #endregion
 

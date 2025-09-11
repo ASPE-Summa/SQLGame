@@ -51,15 +51,17 @@ namespace SummaSQLGame.ViewModels.Puzzles
         public StudentViewModel()
         {
             _rand = new Random();
+            ProcessAnswerCommand = new RelayCommand(ProcessAnswer);
 
+        }
+        public override void InitializePuzzle()
+        {
             _function = _functions[_rand.Next(_functions.Count)];
             _klas = _klassen[_rand.Next(_klassen.Count)];
             _subject = _subjects[_rand.Next(_subjects.Count)];
             _operation = _operators[_rand.Next(_operators.Count)];
             QuestionString = GenerateQuestion();
             _solution = GetSolution();
-            ProcessAnswerCommand = new RelayCommand(ProcessAnswer);
-
         }
 
         // Genereert een natuurlijke taal vraag op basis van willekeurige componenten.

@@ -1,5 +1,6 @@
 ﻿using Moq;
 using SummaSQLGame.Databases;
+using SummaSQLGame.Services;
 using SummaSQLGame.ViewModels.Select;
 
 namespace SummaSQLGame.ViewModels.Tests
@@ -11,7 +12,8 @@ namespace SummaSQLGame.ViewModels.Tests
         public void NextCommand_CanPass_GoesToNext()
         {
             // Arrange
-            var viewModel = new SelectViewModel();
+            var queryServiceMock = new Mock<IQueryService>();
+            var viewModel = new SelectViewModel(queryServiceMock.Object);
             var currentIndex = viewModel.ExplanationIndex;
             var expectedIndex = viewModel.ExplanationIndex + 1;
             viewModel.CurrentExplanation.CanPass = true;
@@ -28,7 +30,8 @@ namespace SummaSQLGame.ViewModels.Tests
         public void NextCommand_CannotPass_DoesNotGoToNext()
         {
             // Arrange
-            var viewModel = new SelectViewModel();
+            var queryServiceMock = new Mock<IQueryService>();
+            var viewModel = new SelectViewModel(queryServiceMock.Object);
             var currentIndex = viewModel.ExplanationIndex;
             var expectedIndex = currentIndex;
             viewModel.CurrentExplanation.CanPass = false;
@@ -45,7 +48,8 @@ namespace SummaSQLGame.ViewModels.Tests
         public void NextCommand_NoMoreExplanations_DoesNotGoToNext()
         {
             // Arrange
-            var viewModel = new SelectViewModel();
+            var queryServiceMock = new Mock<IQueryService>();
+            var viewModel = new SelectViewModel(queryServiceMock.Object);
             viewModel.ExplanationIndex = viewModel.Explanations.Count - 1;
             var currentIndex = viewModel.ExplanationIndex;
             var expectedIndex = currentIndex;
@@ -61,7 +65,8 @@ namespace SummaSQLGame.ViewModels.Tests
         public void PreviousCommand_GoesToPrevious()
         {
             // Arrange
-            var viewModel = new SelectViewModel();
+            var queryServiceMock = new Mock<IQueryService>();
+            var viewModel = new SelectViewModel(queryServiceMock.Object);
             viewModel.CurrentExplanation = viewModel.Explanations[1];
             viewModel.ExplanationIndex = 1;
             var expectedIndex = 0;
@@ -78,7 +83,8 @@ namespace SummaSQLGame.ViewModels.Tests
         public void PreviousCommand_AtFirstIndex_DoesNotGoToPrevious()
         {
             // Arrange
-            var viewModel = new SelectViewModel();
+            var queryServiceMock = new Mock<IQueryService>();
+            var viewModel = new SelectViewModel(queryServiceMock.Object);
             viewModel.CurrentExplanation = viewModel.Explanations[0];
             viewModel.ExplanationIndex = 0;
             var currentIndex = viewModel.ExplanationIndex;
@@ -95,19 +101,18 @@ namespace SummaSQLGame.ViewModels.Tests
         public void QueryCommand_WithCorrectQuery_SetsCanPass()
         {
             // Arrange
-            var viewModel = new SelectViewModel();
+            var queryServiceMock = new Mock<IQueryService>();
+            var viewModel = new SelectViewModel(queryServiceMock.Object);
             viewModel.CurrentExplanation = viewModel.Explanations[3];
             viewModel.QueryText = "select * from honden;";
             var expectedCanPass = true;
 
-            var mockContext = new Mock<IAppDbContext>();
             var mockDataTable = new System.Data.DataTable();
             mockDataTable.Columns.Add("id", typeof(int));
             mockDataTable.Columns.Add("naam", typeof(string));
             mockDataTable.Columns.Add("ras", typeof(string));
             mockDataTable.Rows.Add(1, "Fido", "Labrador");
-            mockContext.Setup(m => m.ExecuteQuery(It.IsAny<string>())).Returns(mockDataTable);
-            viewModel.Context = mockContext.Object;
+            queryServiceMock.Setup(m => m.ExecuteQuery(It.IsAny<string>())).Returns(mockDataTable);
 
             // Act
             viewModel.QueryCommand.Execute(null);
@@ -119,12 +124,11 @@ namespace SummaSQLGame.ViewModels.Tests
         [TestMethod]
         public void QueryCommand_WithWrongColumns_DoesNotSetCanPass()
         {
-            var viewModel = new SelectViewModel();
+            var queryServiceMock = new Mock<IQueryService>();
+            var viewModel = new SelectViewModel(queryServiceMock.Object);
             viewModel.CurrentExplanation = viewModel.Explanations[3];
             viewModel.QueryText = "select id from honden;";
             var expectedCanPass = false;
-
-            var mockContext = new Mock<IAppDbContext>();
 
             var answerMockData = new System.Data.DataTable();
             answerMockData.Columns.Add("id", typeof(int));
@@ -136,10 +140,9 @@ namespace SummaSQLGame.ViewModels.Tests
             queryMockData.Columns.Add("id", typeof(int));
             queryMockData.Rows.Add(1);
 
-            mockContext.SetupSequence(m => m.ExecuteQuery(It.IsAny<string>()))
+            queryServiceMock.SetupSequence(m => m.ExecuteQuery(It.IsAny<string>()))
                 .Returns(answerMockData)
                 .Returns(queryMockData);
-            viewModel.Context = mockContext.Object;
 
             // Act
             viewModel.QueryCommand.Execute(null);
@@ -151,12 +154,11 @@ namespace SummaSQLGame.ViewModels.Tests
         [TestMethod]
         public void QueryCommand_WithWrongRows_DoesNotSetCanPass()
         {
-            var viewModel = new SelectViewModel();
+            var queryServiceMock = new Mock<IQueryService>();
+            var viewModel = new SelectViewModel(queryServiceMock.Object);
             viewModel.CurrentExplanation = viewModel.Explanations[3];
             viewModel.QueryText = "select * from honden LIMIT 1;";
             var expectedCanPass = false;
-
-            var mockContext = new Mock<IAppDbContext>();
 
             var answerMockData = new System.Data.DataTable();
             answerMockData.Columns.Add("id", typeof(int));
@@ -171,10 +173,9 @@ namespace SummaSQLGame.ViewModels.Tests
             queryMockData.Columns.Add("ras", typeof(string));
             queryMockData.Rows.Add(1, "Fido", "Labrador");
 
-            mockContext.SetupSequence(m => m.ExecuteQuery(It.IsAny<string>()))
+            queryServiceMock.SetupSequence(m => m.ExecuteQuery(It.IsAny<string>()))
                 .Returns(answerMockData)
                 .Returns(queryMockData);
-            viewModel.Context = mockContext.Object;
 
             // Act
             viewModel.QueryCommand.Execute(null);

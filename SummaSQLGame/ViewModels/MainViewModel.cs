@@ -45,8 +45,6 @@ namespace SummaSQLGame.ViewModels
             ActiveViewModel = new DashboardViewModel(SaveState);
 
         }
-
-        public MainViewModel() : this(fileSystem: new FileSystem()) { }
         #endregion
 
         #region properties

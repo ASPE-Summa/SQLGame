@@ -18,6 +18,7 @@
     <None Remove="Assets\Avatar\avatar_smiling.png" />
     <None Remove="Assets\avatar_default.png" />
     <None Remove="Assets\Decorations\adventurers.png" />
+    <None Remove="Assets\Decorations\studenten_Foto.png" />
     <None Remove="Assets\Diagrams\adventurer.png" />
     <None Remove="Assets\Diagrams\anime.png" />
     <None Remove="Assets\Diagrams\bieren.png" />
@@ -66,6 +67,9 @@
     </Content>
     <Content Include="Assets\Decorations\adventurers.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Decorations\studenten_Foto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Diagrams\adventurer.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -149,6 +153,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+    <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
@@ -156,10 +161,6 @@
     <PackageReference Include="TestableIO.System.IO.Abstractions" Version="22.0.13" />
     <PackageReference Include="TestableIO.System.IO.Abstractions.Wrappers" Version="22.0.13" />
     <PackageReference Include="XamlRadialProgressBar" Version="1.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

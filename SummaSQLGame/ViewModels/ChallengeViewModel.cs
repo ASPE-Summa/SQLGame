@@ -1,6 +1,7 @@
 ﻿using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;
 using SummaSQLGame.ViewModels.Puzzles;
+using SummaSQLGame.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,7 @@ namespace SummaSQLGame.ViewModels
         private int _score = 0;
         private int _basePuzzleScore = 500;
         private Visibility _startButtonVisibility = Visibility.Visible;
-        private SaveState _saveState;
-        private MainViewModel _mainViewModel;
+        private IMainViewModelContext _mainContext;
         private Random _rand;
         private List<Type> _puzzleTypes;
             
@@ -45,20 +45,15 @@ namespace SummaSQLGame.ViewModels
         #endregion
 
         #region constructors
-        public ChallengeViewModel(MainViewModel mainViewModel)
+        public ChallengeViewModel(IMainViewModelContext mainContext)
         {
             _rand = new Random();
             _puzzleTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes()).Where(
-                type => typeof(IPuzzle).IsAssignableFrom(type) 
-                && !type.IsInterface 
-                && !type.IsAbstract 
-                && type != typeof(ChallengeExplanationViewModel) 
-                //&& type != typeof(AdventurerViewModel) 
-                //&& type != typeof(BattleshipViewModel) 
-                //&& type != typeof(ButtonViewModel) 
-                && type != typeof(MazeViewModel) 
-                && type != typeof(StudentViewModel)).ToList();
-            _mainViewModel = mainViewModel;
+                type => typeof(IPuzzle).IsAssignableFrom(type)
+                && !type.IsInterface
+                && !type.IsAbstract
+                && type != typeof(MazeViewModel)).ToList();
+            _mainContext = mainContext;
             _remainingTime = _totalTime;
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1);
@@ -66,7 +61,6 @@ namespace SummaSQLGame.ViewModels
             StartCommand = new RelayCommand(ExecuteStartChallenge);
             ActivePuzzle = new ChallengeExplanationViewModel();
         }
-
         #endregion
 
         #region methods
@@ -85,7 +79,7 @@ namespace SummaSQLGame.ViewModels
             IPuzzle puzzleViewModel = (IPuzzle)Activator.CreateInstance(randomPuzzleType);
             puzzleViewModel.InitializePuzzle();
             ActivePuzzle = puzzleViewModel;
-            _mainViewModel.SaveState.UpdateEncountered(ActivePuzzle.PuzzleType);
+            _mainContext.UpdateEncountered(ActivePuzzle.PuzzleType);
             ActivePuzzle.PuzzleCompleted += HandlePuzzleCompletion;
             
         }
@@ -116,7 +110,7 @@ namespace SummaSQLGame.ViewModels
             var puzzle = sender as IPuzzle;
             var score = _basePuzzleScore - (50 * puzzle.Attempts);
             Score += score > 50 ? score : 50;
-            _mainViewModel.SaveState.UpdateCompleted(ActivePuzzle.PuzzleType);
+            _mainContext.UpdateCompleted(ActivePuzzle.PuzzleType);
             SetNewPuzzle();
         }
         #endregion

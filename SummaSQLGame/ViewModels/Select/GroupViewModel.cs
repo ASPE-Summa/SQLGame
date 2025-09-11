@@ -1,5 +1,6 @@
 ﻿using SummaSQLGame.Helpers;
 using SummaSQLGame.Models;
+using SummaSQLGame.Services;
 
 namespace SummaSQLGame.ViewModels.Select
 {
@@ -9,7 +10,7 @@ namespace SummaSQLGame.ViewModels.Select
 
 
         #region constructor
-        public GroupViewModel()
+        public GroupViewModel(IQueryService queryService) : base(queryService)
         {
             _subject = Subjects.JOIN;
             _explanations = new List<Explanation>()

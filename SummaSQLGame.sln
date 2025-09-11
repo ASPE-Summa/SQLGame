@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummaSQLGame", "SummaSQLGame\SummaSQLGame.csproj", "{88280281-FF4A-4F08-905B-98A95B6550FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummaSQLGameTests1", "SummaSQLGameTests1\SummaSQLGameTests1.csproj", "{97C6FD3B-BE11-4E9B-B00D-B305D37295F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummaSQLGameTests", "SummaSQLGameTests\SummaSQLGameTests.csproj", "{57B0F24D-B029-4764-831F-678715973DDE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -12,12 +12,13 @@ namespace SummaSQLGame.ViewModels.Puzzles
         #region fields
         private string _questionText;
         private string _answerText;
-        private List<String> _functions = new List<String>() { "MIN", "MAX", "COUNT", "SUM", "AVG" };
-        private List<String> _functionStrings = new List<String>() { "LAAGSTE", "HOOGSTE", "HOEVEEL", "TOTALE", "GEMIDDELDE" };
-        private List<String> _selectors = new List<String>() { "AVONTURIER", "FIGHTER", "WIZARD", "ROGUE", "WARLOCK", "BARD", "DRUID", "RANGER", "MONK" };
-        private List<String> _subjects = new List<String>() { "NIVEAU", "KRACHT", "BEHENDIGHEID", "CONSTITUTIE", "INTELLIGENTIE", "WIJSHEID", "CHARISMA" };
-
-        private Random _rand;
+        private readonly List<String> _functions = ["MIN", "MAX", "COUNT", "SUM", "AVG"];
+        private readonly List<String> _functionStrings = ["LAAGSTE", "HOOGSTE", "HOEVEEL", "TOTALE", "GEMIDDELDE"];
+        private readonly List<String> _selectors =
+            ["AVONTURIER", "FIGHTER", "WIZARD", "ROGUE", "WARLOCK", "BARD", "DRUID", "RANGER", "MONK"];
+        private readonly List<String> _subjects =
+            ["NIVEAU", "KRACHT", "BEHENDIGHEID", "CONSTITUTIE", "INTELLIGENTIE", "WIJSHEID", "CHARISMA"];
+        private readonly Random _rand;
         private string _function;
         private string _selector;
         private string _subject;
@@ -26,11 +27,13 @@ namespace SummaSQLGame.ViewModels.Puzzles
         #endregion
 
         #region properties
-        public override event EventHandler<EventArgs> PuzzleCompleted;
+        public override event EventHandler<EventArgs>? PuzzleCompleted;
 
-        public string QuestionText { get { return _questionText; } set { _questionText = value; OnPropertyChanged(); } }
+        public string QuestionText { get => _questionText;
+            set { _questionText = value; OnPropertyChanged(); } }
 
-        public string AnswerText { get { return _answerText; } set { _answerText = value; OnPropertyChanged(); } }
+        public string AnswerText { get => _answerText;
+            set { _answerText = value; OnPropertyChanged(); } }
         #endregion
 
         #region commands
@@ -42,6 +45,13 @@ namespace SummaSQLGame.ViewModels.Puzzles
         {
             _puzzleType = Helpers.Puzzles.ADVENTURER;
             _rand = new Random();
+            ProcessAnswerCommand = new RelayCommand(ProcessAnswer);
+        }
+        #endregion
+
+        #region methods
+        public override void InitializePuzzle()
+        {
             _function = _functions[_rand.Next(_functions.Count)];
             _selector = _selectors[_rand.Next(_selectors.Count)];
             _subject = _subjects[_rand.Next(_subjects.Count)];
@@ -49,12 +59,8 @@ namespace SummaSQLGame.ViewModels.Puzzles
 
             QuestionText = GenerateQuestion();
             _solution = GetSolution();
-            ProcessAnswerCommand = new RelayCommand(ProcessAnswer);
         }
-        #endregion
-
-        #region methods
-
+        
         private string GenerateQuestion()
         {
             if (_function == "COUNT")
@@ -71,12 +77,12 @@ namespace SummaSQLGame.ViewModels.Puzzles
             using (AppDbContext context = new AppDbContext())
             {
                 var result = context.ExecuteQuery(GenerateQuery()).Rows[0][0];
-                if (result.GetType() == typeof(decimal))
+                if (result is decimal decimalResult)
                 {
-                    return (decimal)result;
+                    return decimalResult;
                 }
 
-                return decimal.Parse(result.ToString());
+                return decimal.Parse(result.ToString()!);
             }
 
         }
@@ -85,7 +91,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
         {
             if (_function == "COUNT")
             {
-                return generateSumQuery();
+                return GenerateSumQuery();
             }
 
             string query = $"SELECT {_function.ToLower()}({_subject.ToLower()}) FROM avonturiers";
@@ -97,7 +103,7 @@ namespace SummaSQLGame.ViewModels.Puzzles
             return query;
         }
 
-        private string generateSumQuery()
+        private string GenerateSumQuery()
         {
             string query = $"SELECT {_function.ToLower()}(id) FROM avonturiers";
             if (_function == "COUNT" && _selector == "AVONTURIER")
@@ -116,8 +122,8 @@ namespace SummaSQLGame.ViewModels.Puzzles
             decimal answer = -1;
             try
             {
-                AnswerText.Replace('.', ',');
-                answer = decimal.Parse(AnswerText);
+                string sanitizedAnswer = AnswerText.Replace('.', ',');
+                answer = decimal.Parse(sanitizedAnswer);
             }
             catch (Exception ex)
             {

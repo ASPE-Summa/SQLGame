@@ -13,6 +13,8 @@ namespace SummaSQLGame.ViewModels
 {
     public class MainViewModel : ObservableObject, IMainViewModelContext
     {
+        public const string JSONPATH = @"Assets/SaveState.json";
+
         #region fields
         private object _activeViewModel;
         private SaveState? _saveState;
@@ -43,6 +45,8 @@ namespace SummaSQLGame.ViewModels
             ActiveViewModel = new DashboardViewModel(SaveState);
 
         }
+
+        public MainViewModel() : this(fileSystem: new FileSystem()) { }
         #endregion
 
         #region properties

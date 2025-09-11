@@ -9,5 +9,10 @@ namespace SummaSQLGame.ViewModels.Puzzles
     public class MazeViewModel : BasePuzzleViewModel
     {
         public override event EventHandler<EventArgs> PuzzleCompleted;
+
+        public override void InitializePuzzle()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

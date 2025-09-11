@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using MySqlX.XDevAPI;
 using SummaSQLGame.Databases;
 using SummaSQLGame.Helpers;
@@ -68,6 +69,12 @@ namespace SummaSQLGame.ViewModels
         {
             get { return _subject; }
         }
+
+        public IAppDbContext Context
+        {
+            get { return _context; }
+            set { _context = value; OnPropertyChanged(); }
+        }
         #endregion
 
         #region constructor
@@ -77,6 +84,7 @@ namespace SummaSQLGame.ViewModels
             NextExplanationCommand = new RelayCommand(ExecuteNextDialogue, CanExecuteNext);
             PreviousExplanationCommand = new RelayCommand(ExecutePreviousDialogue, CanExecutePrevious);
             QueryCommand = new RelayCommand(ExecuteAndValidateQuery);
+            Context = new AppDbContext();
         }
         #endregion
 
@@ -101,6 +109,10 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecuteNextDialogue(object? obj)
         {
+            if (CurrentExplanation.CanPass == false || ExplanationIndex == Explanations.Count - 1)
+            {
+                return;
+            }
             _explanationIndex++;
             CurrentExplanation = _explanations[_explanationIndex];
             UpdateProgress();
@@ -108,6 +120,10 @@ namespace SummaSQLGame.ViewModels
 
         private void ExecutePreviousDialogue(object? obj)
         {
+            if (_explanationIndex <= 0)
+            {
+                return;
+            }
             _explanationIndex--;
             CurrentExplanation = _explanations[_explanationIndex];
         }
@@ -149,4 +165,5 @@ namespace SummaSQLGame.ViewModels
         }
         #endregion
     }
+
 }

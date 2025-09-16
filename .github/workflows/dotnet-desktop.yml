@@ -116,6 +116,18 @@ jobs:
         with:
           path: artifacts
 
+      - name: Auto Generate Next Release Tag
+        # You may pin to the exact commit or the version.
+        # uses: amitsingh-007/next-release-tag@43666cc7d412293e514756c2796dcba08c678369
+        uses: amitsingh-007/next-release-tag@v6.3.0
+        with:
+        # Github secrets token
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Prefix added to the generated release tag; supports an optional * wildcard only at the end for prefix matching
+          tag_prefix: 'v'
+          # Template format based in which release tag is generated
+          tag_template: 'yyyy.mm.dd.i'
+        
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:

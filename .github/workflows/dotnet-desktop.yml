@@ -50,7 +50,7 @@ jobs:
 
     strategy:
       matrix:
-        arch: [x64, x86x ARM64]
+        arch: [x64, x86, ARM64]
 
     runs-on: windows-latest  # For a list of available runner types, refer to
                              # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
@@ -83,10 +83,10 @@ jobs:
       run: dotnet test
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+    # - name: Restore the application
+    #   run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+    #   env:
+    #     Configuration: ${{ matrix.configuration }}
 
     - name: Build solutions
       run: msbuild SQLGame.sln /p:Configuration=Release /p:Platform=${{ matrix.arch }}

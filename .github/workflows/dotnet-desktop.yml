@@ -85,9 +85,9 @@ jobs:
         # Github secrets token
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Prefix added to the generated release tag; supports an optional * wildcard only at the end for prefix matching
-          tag_prefix: 'v'
+          tag_prefix: 'v-*'
           tag_template: 'yyyy.mm.dd.i'
-          previous_tag: '2025.09.15.1'
+          previous_tag: 'v-2025.09.15.1'
           
         
       - name: Create GitHub Release

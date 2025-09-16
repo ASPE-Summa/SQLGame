@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using SummaSQLGame.Dialog;
 using SummaSQLGame.Models;
 using System.Diagnostics;
 using System.IO;
@@ -16,8 +17,9 @@ namespace SummaSQLGame.Services
             string path = Path.Combine(_basePath, _jsonPath);
             if (!File.Exists(path))
             {
-                // For simplicity, return a new SaveState. Dialog logic should be handled elsewhere.
-                return new SaveState("");
+                NameDialog nameDialog = new NameDialog();
+                String name = nameDialog.ShowDialog() == true ? nameDialog.ResponseText : "Player";
+                return new SaveState(name);
             }
             try
             {

@@ -94,7 +94,7 @@ jobs:
     - name: Create artifact folder
       run: |
         mkdir output
-        xcopy /s /y /i "SQLGame\bin\Release\${{ matrix.arch }}" "output\${{ matrix.arch }}"
+        xcopy /s /y /i "D:\a\SQLGame\SQLGame\SummaSQLGame\bin\Release\${{ matrix.arch }}" "output\${{ matrix.arch }}"
 
     - name: Zip build output
       run: |

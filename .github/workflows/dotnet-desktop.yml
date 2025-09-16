@@ -89,7 +89,7 @@ jobs:
     #     Configuration: ${{ matrix.configuration }}
 
     - name: Build solutions
-      run: msbuild SQLGame.sln /p:Configuration=Release /p:Platform=${{ matrix.arch }}
+      run: msbuild D:\a\SQLGame\SQLGame\SummaSQLGame\SummaSQLGame.csproj /p:Configuration=Release /p:Platform=${{ matrix.arch }}
 
     - name: Create artifact folder
       run: |

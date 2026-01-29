@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="5,0,0,0" VerticalAlignment="Center">
-            <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="100">
+            <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="100" MaxHeight="250" VerticalScrollBarVisibility="Auto">
                 <i:Interaction.Behaviors>
                     <helpers:AvalonEditBehaviour GiveMeTheText="{Binding QueryText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </i:Interaction.Behaviors>

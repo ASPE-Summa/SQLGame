@@ -52,7 +52,10 @@ namespace SummaSQLGame.ViewModels
                 type => typeof(IPuzzle).IsAssignableFrom(type)
                 && !type.IsInterface
                 && !type.IsAbstract
-                && type != typeof(MazeViewModel)).ToList();
+                && type != typeof(MazeViewModel)
+                && type != typeof(ChallengeExplanationViewModel)
+                ).ToList();
+                
             _mainContext = mainContext;
             _remainingTime = _totalTime;
             _timer = new DispatcherTimer();

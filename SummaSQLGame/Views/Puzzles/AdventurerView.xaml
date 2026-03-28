@@ -44,7 +44,7 @@
 
         <DataGrid Grid.Row="1" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" MinHeight="300" AutoGenerateColumns="True" ItemsSource="{Binding QueryResult.DefaultView}" Foreground="White"></DataGrid>
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0,0,0" VerticalAlignment="Center">
-            <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="100">
+            <avalonEdit:TextEditor Loaded="tbSql_Loaded" x:Name="tbSql" FontSize="20" VerticalAlignment="Stretch" MinHeight="100" MaxHeight="250" VerticalScrollBarVisibility="Auto">
                 <i:Interaction.Behaviors>
                     <helpers:AvalonEditBehaviour GiveMeTheText="{Binding QueryText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 </i:Interaction.Behaviors>
